@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- 공통 타일 페이지 -->
+	<definition name="Base" template="/WEB-INF/views/layouts/base.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="content" value="" />
+	</definition>
+	
+	<!-- 메인페이지-->
+	<definition name="main/index" extends="Base">
+		<put-attribute name="title" value="main"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/views/main/index.jsp"></put-attribute>
+	</definition>
+	
+	
+</tiles-definitions>

@@ -1,8 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-		
-</beans>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/security/spring-context .xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+
+	<context:component-scan base-package="com.demand.site" />
+	<context:annotation-config />
+	<aop:aspectj-autoproxy />
+
+	<!-- 프로퍼티 설정 -->
+	<util:properties id="db"
+		location="/WEB-INF/properties/database.properties" />
+
+
+	<!-- 데이터베이스 설정 -->
+	<beans:bean name="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="#{db['jdbc.driverClassName']}"></beans:property>
+		<beans:property name="url" value="#{db['jdbc.url']}"></beans:property>
+		<beans:property name="username" value="#{db['jdbc.username']}"></beans:property>
+		<beans:property name="password" value="#{db['jdbc.password']}"></beans:property>
+	</beans:bean>
+
+	<!--JPA 엔티티 매니저 설정 -->
+	<beans:bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+		<beans:property name="packagesToScan">
+			<beans:array>
+				<beans:value>com.demand.site.entity</beans:value>
+			</beans:array>
+		</beans:property>
+		<beans:property name="jpaVendorAdapter">
+			<beans:bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></beans:bean>
+		</beans:property>
+
+		<beans:property name="jpaProperties">
+			<beans:props>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect
+				</beans:prop>
+				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				<beans:prop key="hibernate.format_sql">true</beans:prop>
+				<beans:prop key="hibernate.use_sql_comments">true</beans:prop>
+				<beans:prop key="hibernate.id.new_generator_mappings">false</beans:prop>
+				<beans:prop key="hibernate.physical_naming_strategy">com.demand.site.common.config.PhysicalNamingStrategyImpl
+				</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
+
+	<!-- 트랜잭션 설정 -->
+	<jpa:repositories base-package="com.demand.site.repository"
+		entity-manager-factory-ref="entityManagerFactory"
+		transaction-manager-ref="jpaTransactionManager" />
+
+	<beans:bean id="jpaTransactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<beans:property name="entityManagerFactory" ref="entityManagerFactory" />
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>
+
+	<beans:bean
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"></beans:bean>
+
+
+
+</beans:beans>

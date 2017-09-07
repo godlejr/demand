@@ -1,0 +1,93 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+html {
+	font-family: 'Nanum Gothic', Tahoma, Sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+hr {
+	margin: 40px 0;
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+body {
+	padding: 0;
+	margin: 0 auto;
+	background-color: #fff;
+	height: 100%;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+textarea {
+	overflow: auto;
+}
+
+iframe {
+	display: block;
+}
+
+.icon>img {
+	vertical-align: middle;
+}
+
+.input-disabled {
+	border: 0 !important;
+}
+
+.left {
+	float: left !important;
+}
+
+.right {
+	float: right !important;
+}
+
+.hide {
+	display: none;
+}
+
+.clear {
+	clear: both;
+}
+
+
+
+/******* 공통 레이아웃 *********/
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a img {
+	border: 0;
+	vertical-align: top;
+}
+
+ol, ul, li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
