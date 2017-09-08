@@ -4,8 +4,8 @@
 <%@ page session="false" %>
 <div class="container-content">
 	<div class="section-video-banner">
-		<video loop autoplay>
-			<source src="<c:url value='/resources/static/video/main/main_banner.mp4' />">
+		<video muted="muted"  loop autoplay >
+			<source  src="<c:url value='/resources/static/video/main/main_banner.mp4' />">
 		</video>
 		
 		<div class="video-banner-content">
