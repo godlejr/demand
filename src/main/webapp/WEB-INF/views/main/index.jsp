@@ -13,6 +13,8 @@
 			<p>
 			</p>
 		</div>
+		
+		<div class="video-banner-alternative"></div>
 	</div>
 </div>
 

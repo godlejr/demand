@@ -112,8 +112,8 @@ ol, ul, li {
 	left: 0;
 	width: 100%;
 	z-index: 900;
-    padding: 25px;
-    background: #fff;
+	padding: 25px;
+	background: #fff;
 	-webkit-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
 	transition: all 0.5s ease;
@@ -167,7 +167,7 @@ ol, ul, li {
 
 .top-content .section-menu {
 	position: fixed;
-	top:25px;
+	top: 25px;
 	right: 10px;
 	width: 50px;
 	font-size: 35px;
@@ -227,29 +227,40 @@ ol, ul, li {
 	-webkit-transition-duration: .2s;
 }
 
-.container-content{
+.container-content {
 	position: relative;
 }
 
-.container-content .section-video-banner{
+.container-content .section-video-banner {
 	position: inherit;
-    overflow: hidden;
-    max-width: 100%;
-    z-index: 100;
+	overflow: hidden;
+	max-width: 100%;
+	z-index: 100;
 }
 
-.section-video-banner .video-banner-content{
-    position: absolute;
-    top: 50%;
-    bottom: auto;
-    color: #444;
+.section-video-banner .video-banner-content {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	color: #444;
+	width: 100%;
+	text-align: center;
+}
+
+.section-video-banner video {
+	display: none;
+}
+
+.section-video-banner .video-banner-alternative {
+	background: url(../img/main/main_banner.jpg) 0 0 no-repeat;
     width: 100%;
-    text-align: center;
-}
-.section-video-banner .video-banner-content h2{
-	font-size: 65px;
+    height: 100%;
+    background-size: cover;
 }
 
+.section-video-banner .video-banner-content h2 {
+	font-size: 40px;
+}
 
 /****** Footer ******/
 #footer {
@@ -277,6 +288,9 @@ ol, ul, li {
 }
 
 @media screen and (min-width:1024px) {
+	.section-video-banner .video-banner-content h2 {
+		font-size: 65px;
+	}
 }
 
 @media screen and (min-width:1200px) {
@@ -300,5 +314,13 @@ ol, ul, li {
 	#container {
 		transform: translate(0, 0) !important
 	}
-}
+	.section-video-banner video {
+		display: block
+	}
+	.section-video-banner .video-banner-alternative {
+		display: none;
+	}
+	.section-video-banner .video-banner-content h2 {
+		font-size: 75px;
+	}
 }
