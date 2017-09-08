@@ -61,7 +61,15 @@ iframe {
 	clear: both;
 }
 
-
+.translate220 {
+	-webkit-transform: translate(-220px, 0);
+	-moz-transform: translate(-220px, 0);
+	transform: translate(-220px, 0);
+	-webkit-transition-duration: .2s;
+	-moz-transition-duration: .2s;
+	transition-duration: .2s;
+	-webkit-transition-duration: .2s;
+}
 
 /******* 공통 레이아웃 *********/
 a:link {
@@ -77,7 +85,8 @@ a:active {
 }
 
 a:hover {
-	text-decoration: underline;
+	cursor: pointer;
+	text-decoration: none;
 }
 
 a img {
@@ -90,4 +99,206 @@ ol, ul, li {
 	margin: 0;
 	padding: 0;
 	vertical-align: top;
+}
+
+/****** Header ******/
+#header {
+	position: relative;
+}
+
+.top-content {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 900;
+    padding: 25px;
+    background: #fff;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+.top-content .section-logo {
+	margin: 0 0 0 30px;
+	float: left;
+}
+
+.top-content #logo-image {
+	width: 112px;
+	height: 30px;
+}
+
+.top-content .section-login {
+	position: absolute;
+	right: 15px;
+	top: 12px;
+	color: #999;
+	display: none;
+}
+
+.top-content .section-login span {
+	margin-left: 5px;
+}
+
+.top-content .section-login:hover {
+	color: #c0a179;
+}
+
+.top-content .section-gnb {
+	position: absolute;
+	right: 60px;
+	top: 45px;
+	display: none;
+}
+
+.top-content .section-gnb li {
+	float: left;
+	margin-right: 30px;
+}
+
+.top-content .section-gnb li a:hover {
+	color: #c0a179;
+}
+
+.top-content .section-gnb li a {
+	font-size: 18px;
+}
+
+.top-content .section-menu {
+	position: fixed;
+	top:25px;
+	right: 10px;
+	width: 50px;
+	font-size: 35px;
+	height: 40px;
+	cursor: pointer;
+	z-index: 1100;
+	-webkit-transform: translate3d(0px, 0px, 0px);
+	-moz-transform: translate3d(0px, 0px, 0px);
+	-ms-transform: translate3d(0px, 0px, 0px);
+	-webkit-transition-property: -webkit-transform;
+	-webkit-transition-timing-function: cubic-bezier(0.6, 0, 0.2, 1);
+	-moz-transition-property: -moz-transform;
+	-moz-transition-timing-function: cubic-bezier(0.6, 0, 0.2, 1);
+	-ms-transition-property: -ms-transform;
+	-ms-transition-timing-function: cubic-bezier(0.6, 0, 0.2, 1);
+}
+
+.top-content .section-menu .menu-close-icon {
+	color: #fff;
+}
+
+.top-content .section-mobile-gnb {
+	position: fixed;
+	top: 0;
+	right: -220px;
+	min-width: 220px;
+	background-color: #c0a179;
+	bottom: 0;
+	color: #fff;
+	-webkit-transition-duration: .2s;
+	-moz-transition-duration: .2s;
+	transition-duration: .2s;
+	-webkit-transition-duration: .2s;
+}
+
+.top-content .section-mobile-gnb .mobile-gnb-list {
+	position: absolute;
+	top: 80px;
+	right: 0;
+	min-width: 220px;
+}
+
+.top-content .section-mobile-gnb .mobile-gnb-list li {
+	display: block;
+	padding: 20px;
+	font-size: 16px;
+	border-bottom: 1px solid #eaeaea;
+	cursor: pointer;
+}
+
+/****** Container ******/
+#container {
+	min-height: 320px;
+	-webkit-transition-duration: .2s;
+	-moz-transition-duration: .2s;
+	transition-duration: .2s;
+	-webkit-transition-duration: .2s;
+}
+
+.container-content{
+	position: relative;
+}
+
+.container-content .section-video-banner{
+	position: inherit;
+    overflow: hidden;
+    max-width: 100%;
+    z-index: 100;
+}
+
+.section-video-banner .video-banner-content{
+    position: absolute;
+    top: 50%;
+    bottom: auto;
+    color: #444;
+    width: 100%;
+    text-align: center;
+}
+.section-video-banner .video-banner-content h2{
+	font-size: 65px;
+}
+
+
+/****** Footer ******/
+#footer {
+	position: relative;
+	-webkit-transition-duration: .2s;
+	-moz-transition-duration: .2s;
+	transition-duration: .2s;
+	-webkit-transition-duration: .2s;
+}
+
+.footer-content {
+	padding: 60px 10%;
+	color: #fff;
+	line-height: 25px;
+	background: #c0a179;
+	text-align: center;
+}
+
+.footer-content p {
+	font-size: 16px;
+}
+
+/***** Media Query *****/
+@media screen and (min-width:768px) {
+}
+
+@media screen and (min-width:1024px) {
+}
+
+@media screen and (min-width:1200px) {
+	/****** Header ******/
+	#header .section-menu {
+		display: none
+	}
+	#header .section-gnb {
+		display: block
+	}
+	#header .section-login {
+		display: block
+	}
+	#header .section-mobile-gnb {
+		display: none
+	}
+	.top-content #logo-image {
+		width: 135px;
+		height: 40px;
+	}
+	#container {
+		transform: translate(0, 0) !important
+	}
+}
 }

@@ -34,7 +34,18 @@
 
 
 <body>
-	<tiles:insertAttribute name="content" />
+
+	<header id="header">
+		<tiles:insertAttribute name="top" />
+	</header>
+	
+	<div id="container">
+		<tiles:insertAttribute name="content" />
+	</div>
+	
+	<footer id="footer">
+		<tiles:insertAttribute name="footer" />
+	</footer>
 </body>
 
 </html>

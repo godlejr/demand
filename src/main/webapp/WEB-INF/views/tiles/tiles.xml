@@ -5,14 +5,16 @@
 	<!-- 공통 타일 페이지 -->
 	<definition name="Base" template="/WEB-INF/views/layouts/base.jsp">
 		<put-attribute name="title" value="" />
+		<put-attribute name="top" value="/WEB-INF/views/layouts/top.jsp" />
 		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/layouts/footer.jsp" />
 	</definition>
-	
-	<!-- 메인페이지-->
+
+	<!-- 메인페이지 -->
 	<definition name="main/index" extends="Base">
-		<put-attribute name="title" value="main"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/views/main/index.jsp"></put-attribute>
+		<put-attribute name="title" value="디맨드, 서비스를 디자인하다." />
+		<put-attribute name="content" value="/WEB-INF/views/main/index.jsp" />
 	</definition>
-	
-	
+
+
 </tiles-definitions>
