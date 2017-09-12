@@ -11,7 +11,7 @@
 		</a>
 	</div>
 	<div class="section-login">
-		<a><i class="fa fa-sign-in" aria-hidden="true"></i><span>로그인</span></a>		
+		<a href="${contextPath}/login"><i class="fa fa-sign-in" aria-hidden="true"></i><span>로그인</span></a>		
 	</div>
 	
 	<div class="section-gnb">
@@ -40,7 +40,7 @@
 			<li><a>서비스</a></li>
 			<li><a>IR</a></li>
 			<li><a>문의</a></li>
-			<li><a>로그인</a></li>
+			<li><a href="${contextPath}/login">로그인</a></li>
 		</ul>
 	</div>
 </div>

@@ -34,7 +34,6 @@
 
 
 <body>
-
 	<header id="header">
 		<tiles:insertAttribute name="top" />
 	</header>

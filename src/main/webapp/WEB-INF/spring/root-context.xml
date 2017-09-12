@@ -24,6 +24,23 @@
 	<util:properties id="db"
 		location="/WEB-INF/properties/database.properties" />
 
+	<util:properties id="redis"
+		location="/WEB-INF/properties/redis.properties" />
+
+	<!-- 레디스 설정 -->
+	<beans:bean
+		class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+		<beans:property name="maxInactiveIntervalInSeconds"
+			value="6000" />
+	</beans:bean>
+
+	<beans:bean id='jedisConnectionFactory'
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+		<beans:property name="port" value="#{redis['redis.port']}" />
+		<beans:property name="hostName" value="#{redis['redis.hostName']}" />
+		<beans:property name="usePool" value="true" />
+	</beans:bean>
+
 
 	<!-- 데이터베이스 설정 -->
 	<beans:bean name="dataSource"
@@ -40,7 +57,7 @@
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 		<beans:property name="packagesToScan">
 			<beans:array>
-				<beans:value>com.demand.site.entity</beans:value>
+				<beans:value>com.demand.site.common.entity</beans:value>
 			</beans:array>
 		</beans:property>
 		<beans:property name="jpaVendorAdapter">

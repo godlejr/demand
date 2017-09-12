@@ -16,5 +16,11 @@
 		<put-attribute name="content" value="/WEB-INF/views/main/index.jsp" />
 	</definition>
 
+	<!-- 로그인 페이지 -->
+	<definition name="main/login" extends="Base">
+		<put-attribute name="title" value="로그인" />
+		<put-attribute name="top" value="" />
+		<put-attribute name="content" value="/WEB-INF/views/main/login.jsp" />
+	</definition>
 
 </tiles-definitions>

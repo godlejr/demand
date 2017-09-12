@@ -89,6 +89,10 @@ a:hover {
 	text-decoration: none;
 }
 
+a:-webkit-any-link {
+	text-decoration: none;
+}
+
 a img {
 	border: 0;
 	vertical-align: top;
@@ -120,7 +124,6 @@ ol, ul, li {
 }
 
 .top-content .section-logo {
-	margin: 0 0 0 30px;
 	float: left;
 }
 
@@ -139,6 +142,7 @@ ol, ul, li {
 
 .top-content .section-login span {
 	margin-left: 5px;
+	color: #999;
 }
 
 .top-content .section-login:hover {
@@ -219,6 +223,8 @@ ol, ul, li {
 }
 
 /****** Container ******/
+
+/*main*/
 #container {
 	min-height: 320px;
 	-webkit-transition-duration: .2s;
@@ -252,16 +258,89 @@ ol, ul, li {
 }
 
 .section-video-banner .video-banner-alternative {
-    background: url(../img/main/main_banner.jpg);
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+	background: url(../img/main/main_banner.jpg);
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .section-video-banner .video-banner-content h2 {
 	font-size: 40px;
+}
+
+/*login*/
+.container-content .section-login {
+	margin: 0 auto;
+	padding: 30px;
+	background: #fff;
+	border-radius: 14px;
+}
+
+.container-content .section-login .login-content .login-form .form-password,
+	.container-content .section-login .login-content .login-form .form-email
+	{
+	display: flex;
+	border: 1px solid #c8c8c8;
+	margin-bottom: 14px;
+}
+
+.container-content .section-login .login-content .login-form .form-password .password-left,
+	.container-content .section-login .login-content .login-form .form-email .email-left
+	{
+	float: left;
+	width: 14px;
+	font-size: 14px;
+	margin: 10px;
+}
+
+.container-content .section-login .login-content .login-form .form-password .password-right,
+	.container-content .section-login .login-content .login-form .form-email .email-right
+	{
+	width: 100%;
+	padding-right: 14px;
+}
+
+.container-content .section-login .login-content .login-form .form-password .password-right .text-password,
+	.container-content .section-login .login-content .login-form .form-email .email-right .text-email
+	{
+	border: none;
+	outline: none;
+	height: 36px;
+	width: 100%;
+}
+
+.container-content .section-login .login-content .login-form .form-button
+	{
+	width: 100%;
+	height: 38px;
+	background-color: #c8c8c8;
+	border: none;
+	color: white;
+}
+
+.container-content .section-login .login-header {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.container-content .section-login .login-header a {
+	margin: 0 auto;
+}
+
+.container-content .section-login .login-header img {
+	height: 30px;
+	width: 136px;
+}
+
+.container-content .section-login .login-bottom .bottom-content {
+	float: right;
+	font-size: 14px;
+}
+
+.container-content .section-login .login-bottom .bottom-content span {
+	color: #444;
 }
 
 /****** Footer ******/
@@ -290,6 +369,7 @@ ol, ul, li {
 }
 
 @media screen and (min-width:1024px) {
+	/*main*/
 	.section-video-banner .video-banner-content h2 {
 		font-size: 65px;
 	}
@@ -297,6 +377,11 @@ ol, ul, li {
 
 @media screen and (min-width:1200px) {
 	/****** Header ******/
+	/*main*/
+	.top-content .section-logo {
+		margin: 0 0 0 30px;
+		float: left;
+	}
 	#header .section-menu {
 		display: none
 	}
@@ -324,5 +409,11 @@ ol, ul, li {
 	}
 	.section-video-banner .video-banner-content h2 {
 		font-size: 75px;
+	}
+
+	/*login*/
+	.container-content .section-login {
+		width: 370px;
+		height: 300px;
 	}
 }
