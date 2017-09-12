@@ -48,6 +48,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath major = createString("major");
 
+    public final StringPath name = createString("name");
+
     public final StringPath ntisRegistrationNo = createString("ntisRegistrationNo");
 
     public final StringPath password = createString("password");

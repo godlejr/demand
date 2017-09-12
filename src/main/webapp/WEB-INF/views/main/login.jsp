@@ -16,14 +16,14 @@
 			</div>
 
 			<div class="login-content">
-				<form class="login-form">
+				<form:form class="login-form" method="post" modelAttribute="user">
 					<div class="form-email">
 						<div class="email-left">
 							<i class="fa fa-user" aria-hidden="true"></i>
 						</div>
 
 						<div class="email-right">
-							<input class="text-email" type="text" placeholder="email" />
+							<form:input  class="text-email" type="text" placeholder="email" path="email"/>
 						</div>
 					</div>
 
@@ -32,20 +32,36 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</div>
 						<div class="password-right">
-							<input class="text-password" type="text" placeholder="password" />
+							<form:input  class="text-password" type="password" placeholder="password" path="password"/>
 						</div>
 					</div>
 
 					<input type="submit" class="form-button" value="로그인">
 
-				</form>
+				</form:form>
 			</div>
 
 			<div class="login-bottom">
+				<c:if test="${message != null}">
+					<c:choose>
+						<c:when test="${isJoined == true}">
+							<div class="login-message join">
+								<span>${message}</span>
+							</div>
+
+						</c:when>
+						<c:otherwise>
+							<div class="login-message">
+								<span>${message}</span>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</c:if>
 				<div class="bottom-content">
 					<a href=""><span>아이디 신청</span></a> | <a href=""><span>비밀번호
 							찾기</span></a>
 				</div>
+				
 			</div>
 		</div>
 	</div>

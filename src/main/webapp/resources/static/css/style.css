@@ -140,12 +140,27 @@ ol, ul, li {
 	display: none;
 }
 
-.top-content .section-login span {
+.top-content .section-login .session-info{
+	color: #999;
+}
+
+.top-content .section-login .session-info a{
+	margin-left: 10px;
+	color: #999;
+}
+
+.top-content .section-login .session-info a:hover{
+	color: #c0a179;
+}
+
+.top-content .section-login .session-info .login-session span,
+.top-content .section-login .login-button span,
+.top-content .section-login .login-button a {
 	margin-left: 5px;
 	color: #999;
 }
 
-.top-content .section-login:hover {
+.top-content .section-login .login-button a:hover {
 	color: #c0a179;
 }
 
@@ -221,6 +236,16 @@ ol, ul, li {
 	border-bottom: 1px solid #eaeaea;
 	cursor: pointer;
 }
+
+.top-content .section-mobile-gnb .mobile-gnb-list li a{
+	color: #fff;
+}
+
+.top-content .section-mobile-gnb .mobile-gnb-list .session-info{
+	font-size: 18px;
+	font-weight: 600;
+}
+
 
 /****** Container ******/
 
@@ -339,6 +364,13 @@ ol, ul, li {
 	font-size: 14px;
 }
 
+.container-content .section-login .login-bottom .login-message{
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 700;
+    color: #c0a179;
+}
+
 .container-content .section-login .login-bottom .bottom-content span {
 	color: #444;
 }
@@ -414,6 +446,5 @@ ol, ul, li {
 	/*login*/
 	.container-content .section-login {
 		width: 370px;
-		height: 300px;
 	}
 }
