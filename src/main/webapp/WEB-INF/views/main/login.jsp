@@ -61,7 +61,6 @@
 					<a href=""><span>아이디 신청</span></a> | <a href=""><span>비밀번호
 							찾기</span></a>
 				</div>
-				
 			</div>
 		</div>
 	</div>
