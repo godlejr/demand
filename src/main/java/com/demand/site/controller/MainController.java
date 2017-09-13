@@ -46,7 +46,7 @@ public class MainController {
 		user = userService.getUserByEmailAndPassword(email, password);
 
 		if (user == null) {
-			model.addAttribute("message", "ÀÌ¸ŞÀÏ°ú ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä.");
+			model.addAttribute("message", "ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•˜ì„¸ìš”");
 		} else {
 			session.setAttribute("user", user);
 			page = "redirect:/";
