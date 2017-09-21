@@ -548,7 +548,18 @@ ol, ul, li {
 	margin-left: 5px;
 }
 
-.content-body .section-report .report-content .report-form #form-loading-view{
+
+.content-body .section-report .report-content #form-loading-view{
+	background: url(../img/common/spinner.gif) no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    display:none;
+}
+
+.content-body .section-report .report-content .report-form #file-loading-view{
 	background: url(../img/common/spinner.gif) no-repeat;
     width: 100%;
     height: 100%;

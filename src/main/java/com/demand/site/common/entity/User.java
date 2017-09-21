@@ -1,12 +1,18 @@
 package com.demand.site.common.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.demand.site.common.embeddable.Address;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -48,6 +54,10 @@ public class User extends Base {
 
 	private String joinedAt;
 	private String resignedAt;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private List<Report> reports = new ArrayList<Report>();
 
 	public User() {
 		super();
@@ -202,6 +212,14 @@ public class User extends Base {
 
 	public void setChecked(int checked) {
 		this.checked = checked;
+	}
+
+	public List<Report> getReports() {
+		return reports;
+	}
+
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
 	}
 
 	@Override

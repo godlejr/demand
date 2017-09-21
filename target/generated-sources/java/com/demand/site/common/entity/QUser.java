@@ -60,6 +60,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath registrationNo = createString("registrationNo");
 
+    public final ListPath<Report, QReport> reports = this.<Report, QReport>createList("reports", Report.class, QReport.class, PathInits.DIRECT2);
+
     public final StringPath resignedAt = createString("resignedAt");
 
     public final StringPath secondEmail = createString("secondEmail");

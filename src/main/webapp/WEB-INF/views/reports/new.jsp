@@ -9,7 +9,7 @@
 	src="<c:url value="/resources/static/smarteditor/js/service/HuskyEZCreator.js"/>"
 	charset="utf-8"></script>
 
-<div class="container-content" style="margin-top: 120px">
+<div class="container-content" style="margin-top: 120px" >
 	<div class="content-body">
 		<div class="section-report">
 			<div class="report-header">
@@ -18,6 +18,7 @@
 			</div>
 
 			<div class="report-content">
+				<div id="form-loading-view"></div>
 				<form id="report-form" class="report-form" enctype="multipart/form-data" acceptcharset="UTF-8">
 					<table>
 						<tbody>
@@ -38,7 +39,7 @@
 							<tr>
 								<td class="form-menu">내용</td>
 								<td>
-									<div id="form-loading-view"></div>
+									<div id="file-loading-view"></div>
 									
 									<div class="menu-option">
 										<div class="option-photo" id="photo-button">
@@ -93,6 +94,7 @@
 
 
 <script>
+
 	var editor_object = [];
 	var fileZone = $("#file-drop-zone");
 
@@ -102,7 +104,8 @@
 	var	$videoFile = $('#video-file'),
 		$videoButton = $('#video-button');
 	
-	var $fileUploadingView = $('#form-loading-view');
+	var $fileUploadingView = $('#file-loading-view'),
+		$formUploadingView = $('#form-loading-view');
 	
 	var $submit=$('#submit');
 	
@@ -116,6 +119,7 @@
 		event.preventDefault();
 		$videoFile.click();
 	});
+	
 	
 	$videoFile.change(function(event){
 		var ext = $(this).val().split('.').pop().toLowerCase();
@@ -296,11 +300,8 @@
 		elPlaceHolder : "smarteditor",
 		sSkinURI : "${contextPath}/resources/static/smarteditor/SmartEditor2Skin.jsp",
 		htParams : {
-			// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 			bUseToolbar : true,
-			// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
 			bUseVerticalResizer : true,
-			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
 			bUseModeChanger : true,
 			fOnBeforeUnload : function() {
 	
@@ -308,22 +309,11 @@
 		}
 	});
 
-	//전송버튼 클릭이벤트
-	$("#addBtn")
-			.click(
-					function() {
-						//id가 smarteditor인 textarea에 에디터에서 대입
-						editor_object.getById["smarteditor"].exec(
-								"UPDATE_CONTENTS_FIELD", []);
-
-						// 이부분에 에디터 validation 검증
-						var el = document.createElement('html');
-						el.innerHTML = editor_object.getById["smarteditor"].elPlaceHolder.value;
-						//폼 submit
-						$("#frm").submit();
-					});
+	
 	
 	$submit.click(function(){
+		window.onunload = window.onbeforeunload = undefined;
+		
 		editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
 		var content =  $("#smarteditor").val();
 		var title = $("#title").val();
@@ -331,15 +321,18 @@
 		
 		if(title == '' || title == null){
 			alert('제목을 입력하세요.');
+			$title.focus();
 			return;
 		}else{
 			if(title.legth > 40){
 				alert('제목은 40자 이내로 작성해주세요.');
+				$title.focus();
 				return;
 			}
 		}
 		if(content == '' || content == null || content == '&nbsp;' || content == '<p>&nbsp;</p>' ||  content == '<p><br></p>'){
 			alert('내용을 입력하세요.');
+			$content.focus();
 			return;
 		}
 		
@@ -358,6 +351,10 @@
 		sendReport(reportForm);
 	});
 	
+	function navigateToReportListPage(){
+		 document.location.href = "${contextPath}/reports";
+	}
+	
 	function sendReport(reportForm){
 		$.ajax({
 			type: "POST",
@@ -367,13 +364,13 @@
 			enctype: 'multipart/form-data',
 			data: reportForm,
             success: function(data) {
-            	console.log(1);
+            	navigateToReportListPage();
             },
             beforeSend: function(){
-            	$fileUploadingView.show();
+            	$formUploadingView.show();
 	        },
 	        complete: function(){
-	        	$fileUploadingView.hide();
+	        	$formUploadingView.hide();
 	        }
 	    });
 	}
@@ -386,6 +383,8 @@
 			return true;
 		}
 	}
+	
+
 
 	
 </script>
