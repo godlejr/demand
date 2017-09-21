@@ -19,9 +19,8 @@
 			<c:when test="${sessionScope.user != null}">
 				<div class="session-info">
 					<span class="login-session">${sessionUser.name}
-						${sessionUser.positionCategory.name}님 </span>
-					
-					<a href="${contextPath}/logout"><i class="fa fa-sign-out"
+						${sessionUser.positionCategory.name}님 </span> <a
+						href="${contextPath}/logout"><i class="fa fa-sign-out"
 						aria-hidden="true"></i><span>로그아웃</span></a>
 				</div>
 			</c:when>
@@ -43,13 +42,13 @@
 			<li><a>IR</a></li>
 			<li><a>문의</a></li>
 			<c:if test="${sessionScope.user != null}">
-				<li><a>Report</a></li>
-				
-				<c:if test="${user.level == 9}">
+				<li><a href="${contextPath}/reports"> Report</a></li>
+
+				<c:if test="${sessionUser.level == 9}">
 					<li><a>관리</a></li>
 				</c:if>
-				
-			</c:if>	
+
+			</c:if>
 		</ul>
 	</div>
 
@@ -68,9 +67,9 @@
 		<ul class="mobile-gnb-list">
 			<c:if test="${sessionScope.user != null}">
 				<li><a><span class="session-info">${sessionUser.name}
-						${sessionUser.positionCategory.name}님</span></a></li>
+							${sessionUser.positionCategory.name}님</span></a></li>
 			</c:if>
-			
+
 			<li><a>회사소개</a></li>
 			<li><a>서비스 디자인</a></li>
 			<li><a>Health Care</a></li>
@@ -78,15 +77,15 @@
 			<li><a>문의</a></li>
 			<c:choose>
 				<c:when test="${sessionScope.user != null}">
-					<li><a>Report</a></li>
-					
-					<c:if test="${user.level == 9}">
+					<li><a href="${contextPath}/reports">Report</a></li>
+
+					<c:if test="${sessionUser.level == 9}">
 						<li><a>관리</a></li>
 					</c:if>
-					
+
 					<li><a href="${contextPath}/logout">로그아웃</a></li>
 				</c:when>
-	
+
 				<c:otherwise>
 					<li><a href="${contextPath}/login">로그인</a></li>
 				</c:otherwise>

@@ -8,6 +8,7 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.demand.site.common.annotation.AdminRequired;
+import com.demand.site.common.annotation.EmployeeRequired;
 import com.demand.site.common.annotation.LoginRequired;
 import com.demand.site.common.entity.User;
 import com.demand.site.common.flag.UserFlag;
@@ -22,6 +23,7 @@ public class LoginCheckByUserLevelInterceptor extends HandlerInterceptorAdapter 
 
 		LoginRequired loginRequired = ((HandlerMethod) handler).getMethodAnnotation(LoginRequired.class);
 		AdminRequired adminRequired = ((HandlerMethod) handler).getMethodAnnotation(AdminRequired.class);
+		EmployeeRequired employeeRequired = ((HandlerMethod) handler).getMethodAnnotation(EmployeeRequired.class);
 
 		if (loginRequired != null) {
 			HttpSession session = request.getSession(false);
@@ -43,6 +45,24 @@ public class LoginCheckByUserLevelInterceptor extends HandlerInterceptorAdapter 
 				int level = user.getLevel();
 
 				if (level != UserFlag.ADMIN_LEVEL) {
+					response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+					return false;
+				}
+			} else {
+				response.sendRedirect(loginPageUrl);
+				return false;
+			}
+		}
+
+		if (employeeRequired != null) {
+			HttpSession session = request.getSession(false);
+
+			User user = (User) session.getAttribute("user");
+
+			if (user != null) {
+				int level = user.getLevel();
+
+				if (level != UserFlag.EMPLOYEE_LEVEL && level != UserFlag.ADMIN_LEVEL) {
 					response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 					return false;
 				}

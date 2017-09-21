@@ -10,17 +10,29 @@
 		<put-attribute name="footer" value="/WEB-INF/views/layouts/footer.jsp" />
 	</definition>
 
-	<!-- 메인페이지 -->
+	<!-- 메인 관련 -->
 	<definition name="main/index" extends="Base">
 		<put-attribute name="title" value="디맨드, 서비스를 디자인하다." />
 		<put-attribute name="content" value="/WEB-INF/views/main/index.jsp" />
 	</definition>
 
-	<!-- 로그인 페이지 -->
 	<definition name="main/login" extends="Base">
 		<put-attribute name="title" value="로그인" />
 		<put-attribute name="top" value="" />
 		<put-attribute name="content" value="/WEB-INF/views/main/login.jsp" />
+	</definition>
+
+
+	<!-- 리포트 관련 -->
+	<definition name="reports/list" extends="Base">
+		<put-attribute name="title" value="보고자료" />
+		<put-attribute name="content" value="/WEB-INF/views/reports/list.jsp" />
+	</definition>
+	
+	<!-- 리포트 관련 -->
+	<definition name="reports/new" extends="Base">
+		<put-attribute name="title" value="보고자료 생성" />
+		<put-attribute name="content" value="/WEB-INF/views/reports/new.jsp" />
 	</definition>
 
 </tiles-definitions>

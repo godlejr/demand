@@ -1,9 +1,10 @@
 package com.demand.site.common.config;
 
+import java.util.Locale;
+
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
-import java.util.Locale;
 
 public class PhysicalNamingStrategyImpl extends PhysicalNamingStrategyStandardImpl {
 	public static final PhysicalNamingStrategyImpl INSTANCE = new PhysicalNamingStrategyImpl();

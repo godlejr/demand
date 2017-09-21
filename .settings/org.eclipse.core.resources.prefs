@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/views/main/index.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/smarteditor/skin.jsp=UTF-8
+encoding//src/main/webapp/resources/static/smarteditor/SmartEditor2Skin.jsp=UTF-8
+encoding/<project>=UTF-8

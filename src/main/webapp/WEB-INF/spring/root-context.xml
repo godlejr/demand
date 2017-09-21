@@ -26,6 +26,9 @@
 
 	<util:properties id="redis"
 		location="/WEB-INF/properties/redis.properties" />
+		
+	<util:properties id="aws"
+		location="/WEB-INF/properties/aws.properties" />
 
 	<!-- 레디스 설정 -->
 	<beans:bean
@@ -79,6 +82,16 @@
 		</beans:property>
 	</beans:bean>
 
+	<!-- AWS 관련 설정 -->
+	<beans:bean id="basicAWSCredentials" class="com.amazonaws.auth.BasicAWSCredentials">
+		<beans:constructor-arg value="#{aws['aws.accessKey']}" />
+		<beans:constructor-arg value="#{aws['aws.secretKey']}" />
+	</beans:bean>
+
+	<beans:bean id="amazonS3Client" class="com.amazonaws.services.s3.AmazonS3Client">
+		<beans:constructor-arg ref="basicAWSCredentials" />
+		<beans:property name="endpoint" value="#{aws['aws.s3.endPoint']}" />
+	</beans:bean>
 
 	<!-- 트랜잭션 설정 -->
 	<jpa:repositories base-package="com.demand.site.repository"
@@ -94,7 +107,12 @@
 	<beans:bean
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"></beans:bean>
 
-	
+	<!-- 멀티파트 리졸버 설정 -->
+	<beans:bean id="filterMultipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="104857600" />
+		<beans:property name="defaultEncoding" value="UTF-8" />
+	</beans:bean>
 
 
 </beans:beans>

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.demand.site.common.annotation.AdminRequired;
+import com.demand.site.common.annotation.EmployeeRequired;
 import com.demand.site.common.entity.User;
 import com.demand.site.service.UserService;
 
@@ -59,5 +59,14 @@ public class MainController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
+	}
+
+	@EmployeeRequired
+	@RequestMapping(value = "/reports", method = RequestMethod.GET)
+	public String report(Model model) {
+		User user = new User();
+		model.addAttribute("user", user);
+
+		return "reports/list";
 	}
 }
