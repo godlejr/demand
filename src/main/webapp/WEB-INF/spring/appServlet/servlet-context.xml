@@ -40,20 +40,34 @@
 		</beans:property>
 	</beans:bean>
 
-	<!-- 예외 뷰 리졸버 -->
-	<beans:bean
-		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<beans:property name="exceptionMappings">
-			<beans:props>
-				<beans:prop key=".AccessDeniedException">errors/unauthorized</beans:prop>
-				<beans:prop key=".DataAccessException">errors/dataAccessFailure</beans:prop>
-				<beans:prop key=".TypeMismatchException">errors/resourceNotFound</beans:prop>
-				<beans:prop key=".NoSuchRequestHandlingMethodException">errors/resourceNotFound</beans:prop>
-				<beans:prop key=".MissingServletRequestParameterException">errors/resourceNotFound</beans:prop>
-			</beans:props>
-		</beans:property>
-		<beans:property name="defaultErrorView" value="errors/generalError" />
+	<beans:bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean" />
+
+	
+
+	<mvc:annotation-driven conversion-service="conversionService">
+		<mvc:argument-resolvers>
+			<beans:ref bean="sortResolver" />
+			<beans:ref bean="pageableResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+
+	<beans:bean id="sortResolver"
+		class="org.springframework.data.web.SortHandlerMethodArgumentResolver" />
+	<beans:bean id="pageableResolver"
+		class="org.springframework.data.web.PageableHandlerMethodArgumentResolver">
+		<beans:constructor-arg ref="sortResolver" />
 	</beans:bean>
+
+
+	<!-- 예외 뷰 리졸버 <beans:bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
+		<beans:property name="exceptionMappings"> <beans:props> <beans:prop key=".AccessDeniedException">errors/unauthorized</beans:prop> 
+		<beans:prop key=".DataAccessException">errors/dataAccessFailure</beans:prop> 
+		<beans:prop key=".TypeMismatchException">errors/resourceNotFound</beans:prop> 
+		<beans:prop key=".NoSuchRequestHandlingMethodException">errors/resourceNotFound</beans:prop> 
+		<beans:prop key=".MissingServletRequestParameterException">errors/resourceNotFound</beans:prop> 
+		</beans:props> </beans:property> <beans:property name="defaultErrorView" 
+		value="errors/generalError" /> </beans:bean> -->
 
 	<!-- 로그인 및 관리자 세션처리 인터셉터 -->
 	<interceptors>

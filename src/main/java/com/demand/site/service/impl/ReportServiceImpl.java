@@ -4,6 +4,8 @@ import java.io.InputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,17 +75,23 @@ public class ReportServiceImpl implements ReportService {
 			file.setOriginalName(originalName);
 			file.setExt(ext);
 			file.setSize((int) size);
-			
+
 			fileRepository.saveAndFlush(file);
-			
+
 			ReportFile reportFile = new ReportFile();
 			reportFile.setReport(report);
 			reportFile.setFile(file);
-			
+
 			reportFileRepository.saveAndFlush(reportFile);
 
 		}
 
+	}
+
+	@Override
+	public Page<Report> getReportsBySearchAndPageable(String search, Pageable pageable) throws Exception {
+
+		return reportRepository.findAllBySearchAndPageable(search, pageable);
 	}
 
 }

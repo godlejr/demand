@@ -16,7 +16,7 @@
 	</div>
 	<div class="section-login">
 		<c:choose>
-			<c:when test="${sessionScope.user != null}">
+			<c:when test="${sessionScope.user ne null}">
 				<div class="session-info">
 					<span class="login-session">${sessionUser.name}
 						${sessionUser.positionCategory.name}님 </span> <a
@@ -41,10 +41,10 @@
 			<li><a>Health Care</a></li>
 			<li><a>IR</a></li>
 			<li><a>문의</a></li>
-			<c:if test="${sessionScope.user != null}">
+			<c:if test="${sessionScope.user ne null}">
 				<li><a href="${contextPath}/reports"> Report</a></li>
 
-				<c:if test="${sessionUser.level == 9}">
+				<c:if test="${sessionUser.level eq 9}">
 					<li><a>관리</a></li>
 				</c:if>
 
@@ -65,7 +65,7 @@
 
 	<div class="section-mobile-gnb">
 		<ul class="mobile-gnb-list">
-			<c:if test="${sessionScope.user != null}">
+			<c:if test="${sessionScope.user ne null}">
 				<li><a><span class="session-info">${sessionUser.name}
 							${sessionUser.positionCategory.name}님</span></a></li>
 			</c:if>
@@ -76,10 +76,10 @@
 			<li><a>IR</a></li>
 			<li><a>문의</a></li>
 			<c:choose>
-				<c:when test="${sessionScope.user != null}">
+				<c:when test="${sessionScope.user ne null}">
 					<li><a href="${contextPath}/reports">Report</a></li>
 
-					<c:if test="${sessionUser.level == 9}">
+					<c:if test="${sessionUser.level eq 9}">
 						<li><a>관리</a></li>
 					</c:if>
 

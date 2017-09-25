@@ -24,15 +24,16 @@ public class ReportController {
 
 	@EmployeeRequired
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
-	public String report(Model model) {
-
+	public String report( Model model)
+			throws Exception {
+		
 		return "reports/new";
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseBody
-	public void report(@RequestParam("isNotification") boolean isNotification,
-			@RequestParam("title") String title, @RequestParam("content") String content,
+	public void report(@RequestParam("isNotification") boolean isNotification, @RequestParam("title") String title,
+			@RequestParam("content") String content,
 			@RequestParam(name = "files", required = false) MultipartFile[] files, HttpSession httpSession)
 			throws Exception {
 		User user = (User) httpSession.getAttribute("user");
