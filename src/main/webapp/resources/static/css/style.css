@@ -606,7 +606,7 @@ ol, ul, li {
 .content-body .section-report .report-content .content-description .description-bottom
 	{
 	border-bottom: 2px solid #444;
-	padding: 5px 10px;
+	padding: 8px 10px;
 	display: flex;
 	align-items: center;
 }
@@ -642,55 +642,77 @@ ol, ul, li {
 	border-bottom: 1px solid #eaeaea;
 }
 
-.content-body .section-report .report-bottom{
-	    width: 100%;
-    margin-top: 30px;
-    border: 1px solid #eaeaea;
+.content-body .section-report .report-bottom {
+	width: 100%;
+	margin-top: 30px;
 }
 
-.content-body .section-report .report-bottom table{
+.content-body .section-report .report-bottom .report-list-button {
+	margin-top: 10px;
 	display: flex;
+	align-items: center;
 }
 
-.content-body .section-report .report-bottom table tbody{
-	 width: 100%;
-}
-
-.content-body .section-report .report-bottom table tbody tr{
-	    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #eaeaea;
-}
-
-.content-body .section-report .report-bottom table tbody tr td:first-child{
-        padding: 5px;
-    text-align: center;
-    width: 10%;
+.content-body .section-report .report-bottom .report-list-button span {
+	    padding: 8px;
+    border: 1px solid #eaeaea;
     font-size: 14px;
     color: #c0a179;
     font-weight: 800;
+    cursor: pointer;
 }
 
-.content-body .section-report .report-bottom table tbody tr td:nth-child(2){
-	    padding: 10px;
-    font-size: 14px;
-    width: 90%;
-    border-left: 1px solid #eaeaea;
+.content-body .section-report .report-bottom .report-list-button span:hover{
+	 color: #fff;
+	 background: #c0a179;
 }
 
-.content-body .section-report .report-bottom table tbody tr td:nth-child(2) a{
-	    cursor: pointer;
-    width: 100%;
-    word-break: break-all;
-    color: #888;
+.content-body .section-report .report-bottom table {
+	display: flex;
+	border: 1px solid #eaeaea;
 }
 
+.content-body .section-report .report-bottom table tbody {
+	width: 100%;
+}
 
-.content-body .section-report .report-bottom table tbody tr td:nth-child(2) a:hover{
+.content-body .section-report .report-bottom table tbody tr {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.content-body .section-report .report-bottom table tbody tr td:first-child
+	{
+	padding: 5px;
+	text-align: center;
+	width: 10%;
+	font-size: 14px;
+	color: #c0a179;
+	font-weight: 800;
+}
+
+.content-body .section-report .report-bottom table tbody tr td:nth-child(2)
+	{
+	padding: 10px;
+	font-size: 14px;
+	width: 90%;
+	border-left: 1px solid #eaeaea;
+}
+
+.content-body .section-report .report-bottom table tbody tr td:nth-child(2) a
+	{
+	cursor: pointer;
+	width: 100%;
+	word-break: break-all;
+	color: #888;
+}
+
+.content-body .section-report .report-bottom table tbody tr td:nth-child(2) a:hover
+	{
 	text-decoration: underline;
 	color: #666;
 }
-
 
 .content-body .section-report .report-content .content-attachment {
 	width: 100%;
@@ -714,7 +736,6 @@ ol, ul, li {
 
 .content-body .section-report .report-content .content-attachment table tbody tr:first-child td:first-child
 	{
-
 	padding: 20px;
 	text-align: center;
 	width: 20%;
@@ -726,7 +747,7 @@ ol, ul, li {
 	{
 	padding: 10px;
 	width: 75%;
-		border-left: 1px solid #eaeaea;
+	border-left: 1px solid #eaeaea;
 }
 
 .content-body .section-report .report-content .content-attachment table tbody tr:first-child td:nth-child(2) li

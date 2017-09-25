@@ -83,8 +83,13 @@
 								</td>
 							</tr>
 						</c:if>
+						
 					</tbody>
 				</table>
+				
+				<div class="report-list-button">
+					<span onclick="javascript:navigateToReportList()">목록</span>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -93,6 +98,11 @@
 <script>
 	function navigateToReportDetail(id){
 		var url = "${contextPath}/reports/" +id;
+	 	location.href = url; 
+	}
+	
+	function navigateToReportList() {
+		var url = "${contextPath}/reports";
 	 	location.href = url; 
 	}
 </script>
