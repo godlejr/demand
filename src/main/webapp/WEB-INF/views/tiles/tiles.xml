@@ -25,14 +25,18 @@
 
 	<!-- 리포트 관련 -->
 	<definition name="reports/list" extends="Base">
-		<put-attribute name="title" value="보고자료" />
+		<put-attribute name="title" value="보고자료 리스트" />
 		<put-attribute name="content" value="/WEB-INF/views/reports/list.jsp" />
 	</definition>
-	
-	<!-- 리포트 관련 -->
+
 	<definition name="reports/new" extends="Base">
 		<put-attribute name="title" value="보고자료 생성" />
 		<put-attribute name="content" value="/WEB-INF/views/reports/new.jsp" />
+	</definition>
+
+	<definition name="reports/detail" extends="Base">
+		<put-attribute name="title" value="보고자료 상세" />
+		<put-attribute name="content" value="/WEB-INF/views/reports/detail.jsp" />
 	</definition>
 
 </tiles-definitions>

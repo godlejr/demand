@@ -17,7 +17,7 @@
 				<p>한 주간의 업무한 내용을 보고해주세요</p>
 			</div>
 
-			<div class="report-content">
+			<div class="report-content" style="padding: 20px;">
 				<div id="form-loading-view"></div>
 				<form id="report-form" class="report-form" enctype="multipart/form-data" acceptcharset="UTF-8">
 					<table>

@@ -1,6 +1,6 @@
 package com.demand.site.service;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,5 +15,7 @@ public interface ReportService {
 			throws Exception;
 
 	Page<Report> getReportsBySearchAndPageable(String search, Pageable pageable) throws Exception;
+
+	Map<String, Report> getPrevPresentNextReportMapsById(long id) throws Exception;
 
 }

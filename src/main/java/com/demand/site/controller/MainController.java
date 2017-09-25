@@ -93,6 +93,7 @@ public class MainController {
 		model.addAttribute("reportPage", reportPage);
 		model.addAttribute("startPageNo", startPageNo);
 		model.addAttribute("endPageNo", endPageNo);
+		model.addAttribute("search", search);
 		return "reports/list";
 	}
 }

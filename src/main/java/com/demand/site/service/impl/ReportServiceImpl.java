@@ -1,6 +1,8 @@
 package com.demand.site.service.impl;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -92,6 +94,25 @@ public class ReportServiceImpl implements ReportService {
 	public Page<Report> getReportsBySearchAndPageable(String search, Pageable pageable) throws Exception {
 
 		return reportRepository.findAllBySearchAndPageable(search, pageable);
+	}
+
+	@Override
+	public Map<String, Report> getPrevPresentNextReportMapsById(long id) throws Exception {
+
+		Map<String, Report> reportMap = new HashMap<String, Report>();
+
+		Report report = reportRepository.findById(id);
+		int hits = report.getHits();
+		report.setHits(hits + 1);
+
+		reportMap.put("report", reportRepository.saveAndFlush(report));
+
+		Report prevReport = reportRepository.findFirstByIdLessThanOrderByIdDesc(id);
+		Report nextReport = reportRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+
+		reportMap.put("prevReport", prevReport);
+		reportMap.put("nextReport", nextReport);
+		return reportMap;
 	}
 
 }

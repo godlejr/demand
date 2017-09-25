@@ -19,13 +19,21 @@ int startPage = ((currentPageNo - 1) / sizeOfPage) * sizeOfPage + 1;
 				<h1>업무 보고</h1>
 				<p>한 주간의 업무를 보고한 리스트 입니다.</p>
 				
-				<div class= "section-search">
-					<div class="search-content"> 
-						<input type="text" id="search-text"  onkeypress="javascript:search()" value="${search}" placeholder="제목, 내용, 보고자 검색"/>
+				<div class="header-content">
+					<div class= "section-write">
+						<div class="write-content" onclick="javascript:navigateToNewReport()">
+							<span>글쓰기</span>
+						</div>
 					</div>
 					
-					<div class="search-submit">
-						<span>검색</span>
+					<div class= "section-search">
+						<div class="search-content"> 
+							<input type="text" id="search-text"  onkeypress="javascript:if(event.keyCode == 13){search()}" value="${search}" placeholder="제목, 내용, 보고자 검색"/>
+						</div>
+						
+						<div class="search-submit">
+							<span>검색</span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -114,6 +122,15 @@ int startPage = ((currentPageNo - 1) / sizeOfPage) * sizeOfPage + 1;
 		search();
 	});
 	
+	function navigateToNewReport(){
+		var url = "${contextPath}/reports/new";
+	    location.href = url; 
+	}
+	
+	function navigateToReportDetail(id){
+		var url = "${contextPath}/reports/" +id;
+	 	location.href = url; 
+	}
 	
 	function search(){
 		var search = $(document.getElementById('search-text')).val();
