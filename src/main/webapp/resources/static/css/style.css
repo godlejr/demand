@@ -294,6 +294,102 @@ ol, ul, li {
 	font-size: 40px;
 }
 
+#container .section-healthcare-intro,
+ #container .section-design-intro {
+   padding: 10% 5%;
+}
+
+#container .section-healthcare-intro {
+   background: #f0f0f0;
+}
+
+.container-content .section-healthcare-intro .intro-header,
+   .container-content .section-design-intro .intro-header {
+   text-align: center;
+   color: #3c3c3c;
+   margin-bottom: 80px;
+}
+
+.container-content .section-healthcare-intro .intro-header .header-title-sub,
+   .container-content .section-design-intro .intro-header .header-title-sub {
+   font-size: 18px;
+   margin-top: 40px;
+   line-height: 28px;
+}
+
+.container-content .section-healthcare-intro .intro-header .header-button,
+   .container-content .section-design-intro .intro-header .header-button {
+   font-size: 16px;
+   padding: 12px 56px 14px;
+   background: rgba(255, 255, 255, 0);
+   border: 1px solid #010101;
+   font-weight: bold;
+   outline: none;
+   cursor: pointer;
+   display: inline-block;
+   margin-top: 30px;
+}
+
+.container-content .section-healthcare-intro .intro-header .header-button:hover,
+   .container-content .section-design-intro .intro-header .header-button:hover
+   {
+   color: #fff;
+   background-color: #000;
+}
+
+.container-content .section-design-intro .intro-content {
+   display: flex;
+   color: #3c3c3c;
+}
+
+
+.container-content .section-healthcare-intro .intro-content ul,
+.container-content .section-design-intro .intro-content ul {
+   width: 100%;
+   text-align: center;
+}
+
+.container-content .section-design-intro .intro-content ul li {
+   display: inline-block;
+   margin: 0 20 40 20;
+}
+
+.container-content .section-healthcare-intro .intro-content ul li {
+   display: inline-block;
+   margin: 0 40 40 40;
+}
+
+
+.container-content .section-design-intro .intro-content .content-item {
+   max-width: 270;
+   padding: 20 110 20 20;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-image: url(../img/main/design_step_bg.png);
+}
+
+.container-content .section-healthcare-intro .intro-content .content-item{
+   max-width: 270px;
+}
+
+.container-content .section-design-intro .intro-content .content-item .item-title-sub,
+   .container-content .section-design-intro .intro-content .content-item .item-title
+   {
+   text-align: left;
+   margin: 0;
+}
+
+.container-content .section-healthcare-intro .intro-content .content-item .item-image
+   {
+   width: 200px;
+}
+
+.container-content .section-healthcare-intro .intro-content .content-item .item-title-sub
+   {
+   font-size: 16px;
+   line-height: 28px;
+}
+
 /*login*/
 .container-content .section-login {
 	margin: 0 auto;
