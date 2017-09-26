@@ -7,5 +7,7 @@ import com.demand.site.common.entity.User;
 public interface UserRepository extends JpaRepository<User, Long>{
 
 	User findByEmailAndPassword(String email, String password) throws Exception;
+
+	User findByEmail(String email) throws Exception;
 	
 }

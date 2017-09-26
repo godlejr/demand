@@ -1,6 +1,5 @@
 package com.demand.site.common.entity;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.demand.site.common.annotation.Password;
+import com.demand.site.common.annotation.RegistrationNo;
 import com.demand.site.common.embeddable.Address;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -22,10 +29,27 @@ public class User extends Base {
 
 	private static final long serialVersionUID = 1L;
 
+	@NotEmpty(message = "이메일을 입력하세요.")
+	@Email(message = "올바른 이메일 형식이 아닙니다.")
 	private String email;
+
+	@Password
 	private String password;
+
+	@Transient
+	@NotNull(message = "비밀번호가 일치하지 않습니다.")
+	private String passwordConfirm;
+
+	@NotEmpty(message = "이름 입력하세요.")
+	@NotNull
 	private String name;
+
+	@RegistrationNo
 	private String registrationNo;
+
+	@Transient
+	@AssertTrue(message = "이메일 중복확인을 해주세요.")
+	private boolean emailCheck;
 
 	@Embedded
 	private Address address;
@@ -128,6 +152,14 @@ public class User extends Base {
 		this.ntisRegistrationNo = ntisRegistrationNo;
 	}
 
+	public boolean isEmailCheck() {
+		return emailCheck;
+	}
+
+	public void setEmailCheck(boolean emailCheck) {
+		this.emailCheck = emailCheck;
+	}
+
 	public String getFinalUniversity() {
 		return finalUniversity;
 	}
@@ -213,6 +245,21 @@ public class User extends Base {
 
 	public void setChecked(int checked) {
 		this.checked = checked;
+	}
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+		checkPassword();
+	}
+
+	private void checkPassword() {
+		if (!password.equals(passwordConfirm)) {
+			passwordConfirm = null;
+		}
 	}
 
 	public List<Report> getReports() {

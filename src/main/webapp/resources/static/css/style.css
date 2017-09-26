@@ -372,6 +372,7 @@ ol, ul, li {
 
 .container-content .section-login .login-bottom .bottom-content span {
 	color: #444;
+	cursor: pointer;
 }
 
 /*report*/

@@ -8,8 +8,8 @@ import com.demand.site.repository.user.UserRepository;
 import com.demand.site.service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -17,8 +17,24 @@ public class UserServiceImpl implements UserService{
 	public User getUserByEmailAndPassword(String email, String password) throws Exception {
 		return userRepository.findByEmailAndPassword(email, password);
 	}
-	
-	
-	
-	
+
+	@Override
+	public boolean isEmailExist(String email) throws Exception {
+		User user = userRepository.findByEmail(email);
+		if (user == null) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
+	@Override
+	public void saveUserWithCheck(User user, int checked) throws Exception {
+
+		user.setChecked(checked);
+		userRepository.save(user);
+
+	}
+
 }

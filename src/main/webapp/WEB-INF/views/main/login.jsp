@@ -42,9 +42,24 @@
 		</div>
 
 		<div class="login-bottom">
+			<c:if test="${message != null}">
+				<c:choose>
+					<c:when test="${isJoined == true}">
+						<div class="login-message join">
+							<span>${message}</span>
+						</div>
+
+					</c:when>
+					<c:otherwise>
+						<div class="login-message">
+							<span>${message}</span>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</c:if>
 			<div class="bottom-content">
-				<a href="" class="join-button"><span>아이디 신청</span></a> | <a href=""><span>비밀번호
-						찾기</span></a>
+				<span class="join-button">아이디 신청</span> | <span>비밀번호
+						찾기</span>
 			</div>
 		</div>
 	</div>
@@ -64,7 +79,7 @@
    function showJoin(){
       $.ajax({
          type : "GET",
-         url : "${pageContext.request.contextPath}/join",
+         url : "${contextPath}/join",
          success : function(response) {
             var template = $(response).find('#join-container').html();
             var joinContainer = $('#join-container');
