@@ -757,7 +757,7 @@ ol, ul, li {
 
 .content-body .section-report .report-content .content-description .description-content
 	{
-	display: flow-root;;
+	display: flex;
 	align-items: center;
 	padding: 10px;
 	border-bottom: 1px solid #eaeaea;
