@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page session="false"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
 
@@ -58,7 +59,7 @@
 								</div>
 
 								<div class="left-registration">
-									<form:input id="join-registration" class="input-text"
+									<form:input id="join-registrationNo" class="input-text"
 										type="text" placeholder="주민번호 ('-' 없이 입력)" path="registrationNo" />
 								</div>
 							</div>
@@ -66,7 +67,7 @@
 							<div class="form-right">
 								<div class="right-email">
 									<input type="button" value="중복 확인" class="email-button"
-										onclick="onClickEmailCheck();">
+										onclick="onClickEmailCheck();"/>
 								</div>
 
 							</div>
@@ -77,7 +78,7 @@
 
 					<div class="join-bottom">
 						<input value="신청" type="button" class="form-button"
-							onclick="onClickSubmit();">
+							onclick="onClickSubmit();" />
 					</div>
 
 					<script>

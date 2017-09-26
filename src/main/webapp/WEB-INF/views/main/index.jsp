@@ -8,9 +8,24 @@
 		</video>
 		
 		<div class="video-banner-content">
-			<h2>디맨드, 헬쓰케어 & 서비스 디자인</h2>
-			<p>
-			</p>
+			<div class ="section-demand-intro">
+				<div class="intro-content">
+					<div class="content-title">
+						<h1>DESIGN HUMAN LIFE</h1>
+					</div>
+					<div class="content-body">
+						<p>Demand의 목표는 인간 친화적인 디자인을 통해, <br> 사람들의 삶을 풍요롭게 만드는 것입니다</p>
+					</div>
+					<div class="content-button">
+		               <span>MORE</span>
+		            </div>
+		           
+	            </div>
+            </div>
+		</div>
+		
+		<div class="video-banner-bottom">
+			<i id="arrow" class="fa fa-angle-down" aria-hidden="true"></i>
 		</div>
 		
 		<div class="video-banner-alternative"></div>
@@ -79,7 +94,7 @@
             </div>
 
             <div class="header-button">
-               <span>More</span>
+               <span>MORE</span>
             </div>
          </div>
 
@@ -164,4 +179,10 @@ if(!isMobile()) {
 }else{
     $('.section-video-banner video').prop('autoplay', false);
 }
+
+$("#arrow").click(function(){
+    $('html, body').animate({
+       scrollTop: $(".section-design-intro").offset().top
+    }, 600);
+ });
 </script>

@@ -80,6 +80,7 @@
       $.ajax({
          type : "GET",
          url : "${contextPath}/join",
+         cache: false,
          success : function(response) {
             var template = $(response).find('#join-container').html();
             var joinContainer = $('#join-container');
