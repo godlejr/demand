@@ -23,7 +23,7 @@ public interface AwsS3Util {
 	 * @throws AmazonServiceException
 	 * @throws AmazonClientException
 	 */
-	void deleteFileByLocationAndEncryptedFileName(String location, String fileName)
+	void deleteFileByLocationAndStorageFileName(String location, String fileName)
 			throws AmazonServiceException, AmazonClientException;
 
 	/**
@@ -40,6 +40,6 @@ public interface AwsS3Util {
 	 * 
 	 * @return String
 	 */
-	String selectEncryptedFileNameByUploadingFileAndFileNameToTheLocation(String location, InputStream inputStream,
+	String getStorageFileNameByUploadingFileAndFileNameToTheLocation(String location, InputStream inputStream,
 			String fileName) throws AmazonServiceException, IllegalStateException, IOException;
 }

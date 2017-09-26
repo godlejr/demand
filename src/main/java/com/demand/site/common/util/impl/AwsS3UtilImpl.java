@@ -27,29 +27,29 @@ public class AwsS3UtilImpl implements AwsS3Util {
 	private String BUCKET;
 
 	@Override
-	public void deleteFileByLocationAndEncryptedFileName(String location, String fileName)
+	public void deleteFileByLocationAndStorageFileName(String location, String fileName)
 			throws AmazonServiceException, AmazonClientException {
 		amazonS3Client.deleteObject(new DeleteObjectRequest(BUCKET, location + "/" + fileName));
 	}
 
 	@Override
-	public String selectEncryptedFileNameByUploadingFileAndFileNameToTheLocation(String location,
+	public String getStorageFileNameByUploadingFileAndFileNameToTheLocation(String location,
 			InputStream inputStream, String fileName)
 			throws AmazonServiceException, IllegalStateException, IOException {
 		String ext = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
-		String encryptedFileName = System.currentTimeMillis() + "." + ext;
+		String storageFileName = System.currentTimeMillis() + "." + ext;
 
 		ObjectMetadata objectMetadata = new ObjectMetadata();
 
-		PutObjectRequest putObjectRequest = new PutObjectRequest(BUCKET, location + "/" + encryptedFileName,
+		PutObjectRequest putObjectRequest = new PutObjectRequest(BUCKET, location + "/" + storageFileName,
 				inputStream, objectMetadata);
 
 		putObjectRequest.setCannedAcl(CannedAccessControlList.PublicRead);
 		amazonS3Client.putObject(putObjectRequest);
 
-		System.out.println(encryptedFileName);
+		System.out.println(storageFileName);
 
-		return encryptedFileName;
+		return storageFileName;
 	}
 
 }

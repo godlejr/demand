@@ -35,9 +35,9 @@ public class SmartEditorServiceImpl implements SmartEditorService {
 			location = REPORT_VIDEO_URL;
 		}
 		
-		String encryptedFileName = awsS3Util.selectEncryptedFileNameByUploadingFileAndFileNameToTheLocation(location,
+		String storageFileName = awsS3Util.getStorageFileNameByUploadingFileAndFileNameToTheLocation(location,
 				inputStream, fileName);
 
-		return S3_DOMAIN_URL + "/" + location + "/" + encryptedFileName;
+		return S3_DOMAIN_URL + "/" + location + "/" + storageFileName;
 	}
 }

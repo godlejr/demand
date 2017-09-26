@@ -41,18 +41,30 @@ public class ReportController {
 			@RequestParam(name = "files", required = false) MultipartFile[] files, HttpSession httpSession)
 			throws Exception {
 		User user = (User) httpSession.getAttribute("user");
-		reportService.saveReport(user, isNotification, title, content, files);
+		if (user != null) {
+			reportService.saveReport(user, isNotification, title, content, files);
+		}
 	}
 
 	@EmployeeRequired
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String report(@PathVariable long id, Model model) throws Exception {
+	public String reports(@PathVariable long id, Model model) throws Exception {
 		Map<String, Report> reportMap = reportService.getPrevPresentNextReportMapsById(id);
-		
+
 		model.addAttribute("report", reportMap.get("report"));
 		model.addAttribute("prevReport", reportMap.get("prevReport"));
 		model.addAttribute("nextReport", reportMap.get("nextReport"));
-		
+
 		return "reports/detail";
+	}
+
+	@EmployeeRequired
+	@RequestMapping(value = "/{id}/delete", method = { RequestMethod.GET, RequestMethod.POST })
+	public String delete(@PathVariable long id, Model model, HttpSession httpSession) throws Exception {
+		User user = (User) httpSession.getAttribute("user");
+		if (user != null) {
+			reportService.deleteReport(user, id);
+		}
+		return "redirect:/reports";
 	}
 }

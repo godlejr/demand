@@ -18,4 +18,6 @@ public interface ReportService {
 
 	Map<String, Report> getPrevPresentNextReportMapsById(long id) throws Exception;
 
+	void deleteReport(User user, long id) throws Exception;
+
 }

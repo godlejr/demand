@@ -2,6 +2,7 @@ package com.demand.site.service.impl;
 
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import com.demand.site.common.entity.File;
 import com.demand.site.common.entity.Report;
 import com.demand.site.common.entity.ReportFile;
 import com.demand.site.common.entity.User;
+import com.demand.site.common.flag.UserFlag;
 import com.demand.site.common.util.AwsS3Util;
 import com.demand.site.repository.file.FileRepository;
 import com.demand.site.repository.report.ReportRepository;
@@ -68,8 +70,8 @@ public class ReportServiceImpl implements ReportService {
 			long size = multipartFile.getSize();
 			InputStream inputStream = multipartFile.getInputStream();
 
-			String storageName = awsS3Util.selectEncryptedFileNameByUploadingFileAndFileNameToTheLocation(
-					REPORT_FILE_URL, inputStream, originalName);
+			String storageName = awsS3Util.getStorageFileNameByUploadingFileAndFileNameToTheLocation(REPORT_FILE_URL,
+					inputStream, originalName);
 
 			File file = new File();
 			file.setType(4);
@@ -113,6 +115,31 @@ public class ReportServiceImpl implements ReportService {
 		reportMap.put("prevReport", prevReport);
 		reportMap.put("nextReport", nextReport);
 		return reportMap;
+	}
+
+	@Override
+	public void deleteReport(User user, long id) throws Exception {
+
+		Report report = reportRepository.findById(id);
+		User reportUser = report.getUser();
+		long reportUserId = reportUser.getId();
+		long userId = user.getId();
+		int userLevel = user.getLevel();
+
+		if (reportUserId == userId || userLevel == UserFlag.ADMIN_LEVEL) {
+
+			List<ReportFile> reportFiles = report.getReportFiles();
+			for (ReportFile reportFile : reportFiles) {
+				File file = reportFile.getFile();
+				String storageName = file.getStorageName();
+				fileRepository.delete(file);
+				awsS3Util.deleteFileByLocationAndStorageFileName(REPORT_FILE_URL, storageName);
+			}
+			
+			reportRepository.delete(report);
+
+		}
+
 	}
 
 }

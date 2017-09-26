@@ -4,7 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
-
+<c:if test="${sessionScope.user != null}">
+	<c:set var="sessionUser" value="${sessionScope.user}"></c:set>
+</c:if>
 
 <div class="container-content" style="margin-top: 120px">
 	<div class="content-body">
@@ -33,7 +35,18 @@
 						<div class="report-date">
 							<span>${report.getCustomCreatedAt() }</span>
 						</div>
-
+						
+						<c:if test="${report.user.id eq sessionUser.id}">
+							<div class="report-edit">
+								<i class="fa fa-pencil" aria-hidden="true"></i><span>편집</span>
+							</div>
+							
+						</c:if>
+						<c:if test="${report.user.id eq sessionUser.id || sessionUser.level eq 9}">
+							<div class="report-delete" onclick="javascript:deleteReport(${report.id})">
+								<i class="fa fa-trash" aria-hidden="true"></i><span>삭제</span>
+							</div>
+						</c:if>
 					</div>
 				</div>
 				<div class="content-body">${report.content }</div>
@@ -96,6 +109,11 @@
 </div>
 
 <script>
+	function deleteReport(id){
+		var url = "${contextPath}/reports/" +id + "/delete";
+	 	location.href = url; 
+	}
+
 	function navigateToReportDetail(id){
 		var url = "${contextPath}/reports/" +id;
 	 	location.href = url; 
