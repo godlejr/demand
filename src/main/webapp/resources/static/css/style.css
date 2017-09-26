@@ -766,14 +766,17 @@ ol, ul, li {
 .content-body .section-report .report-content .content-description .description-content .report-title
 	{
 	float: left;
-	font-size: 18px;
+    width: 80%;
+    font-size: 18px;
 }
 
 .content-body .section-report .report-content .content-description .description-content .report-hits
 	{
 	float: right;
-	color: #666;
-	font-size: 14px;
+    width: 20%;
+    text-align: right;
+    color: #666;
+    font-size: 14px;
 }
 
 .content-body .section-report .report-content .content-description .description-content .report-hits span:first-child
