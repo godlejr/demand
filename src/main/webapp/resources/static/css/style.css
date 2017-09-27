@@ -308,7 +308,7 @@ ol, ul, li {
 	background-repeat: no-repeat;
 	background-position: center;
 }
-
+.container-content .section-promote-question-intro .intro-header .header-title h1,
 .container-content .section-healthcare-intro .intro-header .header-title h1,
 	.container-content .section-design-intro .intro-header  .header-title h1,
 	.section-video-banner .video-banner-content  .section-demand-intro .intro-content .content-title h1
@@ -326,7 +326,7 @@ ol, ul, li {
 	text-align: center;
 	color: #3c3c3c;
 }
-
+.container-content .section-promote-question-intro .intro-header .header-title-sub,
 .container-content .section-healthcare-intro .intro-header .header-title-sub,
 	.container-content .section-design-intro .intro-header .header-title-sub
 	{
@@ -370,7 +370,7 @@ ol, ul, li {
 #container .section-healthcare-intro {
 	background: #f0f0f0;
 }
-
+.container-content .section-promote-question-intro .intro-header,
 .container-content .section-healthcare-intro .intro-header,
 	.container-content .section-design-intro .intro-header {
 	text-align: center;
@@ -472,6 +472,58 @@ ol, ul, li {
 	font-size: 16px;
 	line-height: 28px;
 	color: #444;
+}
+
+.container-content .section-promote-question-intro{
+
+	background:#fff;
+	padding: 10% 0%;
+}
+.container-content .section-promote-question-intro .intro-content{
+	        width: 100%;
+    align-items: center;
+    position: relative;
+}
+
+.container-content .section-promote-question-intro .intro-content .content-left{
+	width: 100%;
+	background: url(../img/main/promote_logo.jpg);
+	background-size: cover;
+	cursor: pointer;
+	height: 400px;
+	background-repeat: no-repeat;
+	background-position: center;
+    display: flex;
+    align-items: center;
+
+}
+
+.container-content .section-promote-question-intro .intro-content .content-left:hover,
+.container-content .section-promote-question-intro .intro-content .content-right:hover{
+	-webkit-transform: scale(1.03);
+	transform: scale(1.03);
+	transition: transform .36s;
+}
+
+.container-content .section-promote-question-intro .intro-content .content-right{
+	background: url(../img/main/question_logo.jpg);
+	background-size: cover;
+	cursor: pointer;
+	height: 400px;
+   width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.container-content .section-promote-question-intro .intro-content .content-left span,
+.container-content .section-promote-question-intro .intro-content .content-right span{
+	color: #666;
+    margin: 0 auto;
+    font-weight: 600;
+    font-size: 40px;
+    z-index: 1100;
 }
 
 /*login*/
@@ -1304,20 +1356,26 @@ ol, ul, li {
 		width: 50px;
 		font-size: 50px;
 	}
+	
+	.container-content .section-promote-question-intro .intro-header .header-title h1,
 	.container-content .section-healthcare-intro .intro-header .header-title h1,
 		.container-content .section-design-intro .intro-header  .header-title h1,
 		.section-video-banner .video-banner-content  .section-demand-intro .intro-content .content-title h1
 		{
 		font-size: 65px;
 	}
+	
 	.content-body .section-report-list .report-list-bottom .section-pagination  a
 		{
 		padding: 6px;
 	}
+	
 	.section-video-banner .video-banner-content .section-demand-intro .intro-content .content-body p
 		{
 		font-size: 22px;
 	}
+	
+	.container-content .section-promote-question-intro .intro-header .header-title-sub,
 	.container-content .section-healthcare-intro .intro-header .header-title-sub,
 		.container-content .section-design-intro .intro-header .header-title-sub
 		{
@@ -1335,6 +1393,7 @@ ol, ul, li {
 		width: 80px;
 		font-size: 80px;
 	}
+	.container-content .section-promote-question-intro .intro-header .header-title h1,
 	.container-content .section-healthcare-intro .intro-header .header-title h1,
 		.container-content .section-design-intro .intro-header  .header-title h1,
 		.section-video-banner .video-banner-content  .section-demand-intro .intro-content .content-title h1
@@ -1345,6 +1404,8 @@ ol, ul, li {
 		{
 		font-size: 25px;
 	}
+	
+	.container-content .section-promote-question-intro .intro-header .header-title-sub,
 	.container-content .section-healthcare-intro .intro-header .header-title-sub,
 		.container-content .section-design-intro .intro-header .header-title-sub
 		{
@@ -1378,6 +1439,22 @@ ol, ul, li {
 	}
 	.section-video-banner .video-banner-alternative {
 		display: none;
+	}
+	
+	.container-content .section-promote-question-intro .intro-content .content-left,
+	.container-content .section-promote-question-intro .intro-content .content-right{
+		float:left;
+   		width: 50%;
+   		height: 500px;
+	}
+	
+	.container-content .section-promote-question-intro .intro-content{
+		display: flex;
+	}
+	
+	.container-content .section-promote-question-intro .intro-content .content-left span,
+	.container-content .section-promote-question-intro .intro-content .content-right span{
+		font-size: 70px;
 	}
 
 	/*login*/

@@ -134,6 +134,29 @@
 
      </div>
 	
+	 <div class="section-promote-question-intro">
+   		<div class="intro-header">
+          <div class="header-title">
+             <h1>디맨드를 확인해보세요</h1>
+          </div>
+
+          <div class="header-title-sub">
+             <p>
+		               디맨드 관련 대내외 홍보와, 보도 및 최근 자료 등을 확인해보세요. 
+             </p>
+          </div>
+       	</div>
+   		<div class="intro-content">
+   			<div class="content-left">
+   				<span>홍보</span>
+	   		</div>
+	   		<div class="content-right">
+	   			<span>문의</span>
+	   		</div>
+   		</div>
+   		
+   		
+   </div>
 </div>
 
 <script>
