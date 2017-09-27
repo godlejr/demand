@@ -182,6 +182,7 @@ ol, ul, li {
 
 .top-content .section-gnb li a {
 	font-size: 18px;
+	color: #444;
 }
 
 .top-content .section-menu {
@@ -237,7 +238,7 @@ ol, ul, li {
 	cursor: pointer;
 }
 
-.top-content .section-mobile-gnb .mobile-gnb-list li a {
+.top-content .section-mobile-gnb .mobile-gnb-list a {
 	color: #fff;
 }
 
@@ -370,6 +371,11 @@ ol, ul, li {
 #container .section-healthcare-intro {
 	background: #f0f0f0;
 }
+
+.container-content .section-promote-question-intro .intro-header{
+    padding: 0% 5%;
+}
+
 .container-content .section-promote-question-intro .intro-header,
 .container-content .section-healthcare-intro .intro-header,
 	.container-content .section-design-intro .intro-header {
@@ -523,7 +529,6 @@ ol, ul, li {
     margin: 0 auto;
     font-weight: 600;
     font-size: 40px;
-    z-index: 1100;
 }
 
 /*login*/

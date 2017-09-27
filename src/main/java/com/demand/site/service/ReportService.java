@@ -20,4 +20,6 @@ public interface ReportService {
 
 	void deleteReport(User user, long id) throws Exception;
 
+	Report getReportById(long id) throws Exception;
+
 }

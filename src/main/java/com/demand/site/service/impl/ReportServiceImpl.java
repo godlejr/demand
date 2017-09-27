@@ -142,4 +142,9 @@ public class ReportServiceImpl implements ReportService {
 
 	}
 
+	@Override
+	public Report getReportById(long id) throws Exception {
+		return reportRepository.findById(id);
+	}
+
 }

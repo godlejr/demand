@@ -66,28 +66,28 @@
 	<div class="section-mobile-gnb">
 		<ul class="mobile-gnb-list">
 			<c:if test="${sessionScope.user ne null}">
-				<li><a><span class="session-info">${sessionUser.name}
-							${sessionUser.positionCategory.name}님</span></a></li>
+				<a><li><span class="session-info">${sessionUser.name}
+							${sessionUser.positionCategory.name}님</span></li></a>
 			</c:if>
 
-			<li><a>회사소개</a></li>
-			<li><a>서비스 디자인</a></li>
-			<li><a>Health Care</a></li>
-			<li><a>IR</a></li>
-			<li><a>문의</a></li>
+			<a><li>회사소개</li></a>
+			<a><li>서비스 디자인</li></a>
+			<a><li>Health Care</li></a>
+			<a><li>IR</li></a>
+			<a><li>문의</li></a>
 			<c:choose>
 				<c:when test="${sessionScope.user ne null}">
-					<li><a href="${contextPath}/reports">Report</a></li>
+					<a href="${contextPath}/reports"><li>Report</li></a>
 
 					<c:if test="${sessionUser.level eq 9}">
-						<li><a>관리</a></li>
+						<a><li>관리</li></a>
 					</c:if>
 
-					<li><a href="${contextPath}/logout">로그아웃</a></li>
+					<a href="${contextPath}/logout"><li>로그아웃</li></a>
 				</c:when>
 
 				<c:otherwise>
-					<li><a href="${contextPath}/login">로그인</a></li>
+					<a href="${contextPath}/login"><li>로그인</li></a>
 				</c:otherwise>
 			</c:choose>
 		</ul>

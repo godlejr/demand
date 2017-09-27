@@ -37,7 +37,7 @@
 						</div>
 						
 						<c:if test="${report.user.id eq sessionUser.id}">
-							<div class="report-edit">
+							<div class="report-edit" onclick="javascript:navigateToReportEdit(${report.id})">
 								<i class="fa fa-pencil" aria-hidden="true"></i><span>편집</span>
 							</div>
 							
@@ -109,6 +109,11 @@
 </div>
 
 <script>
+	function navigateToReportEdit(id){
+		var url = "${contextPath}/reports/" +id + "/edit";
+	 	location.href = url; 
+	}
+	
 	function deleteReport(id){
 		var url = "${contextPath}/reports/" +id + "/delete";
 	 	location.href = url; 

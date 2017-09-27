@@ -23,7 +23,7 @@
 	</definition>
 	
 	<definition name="main/join" extends="Base">
-		<put-attribute name="title" value="아이디신청" />
+		<put-attribute name="title" value="아이디 신청" />
 		<put-attribute name="top" value="" />
 		<put-attribute name="content" value="/WEB-INF/views/main/join.jsp" />
 	</definition>
@@ -43,6 +43,11 @@
 	<definition name="reports/detail" extends="Base">
 		<put-attribute name="title" value="보고자료 상세" />
 		<put-attribute name="content" value="/WEB-INF/views/reports/detail.jsp" />
+	</definition>
+	
+	<definition name="reports/edit" extends="Base">
+		<put-attribute name="title" value="보고자료  편집" />
+		<put-attribute name="content" value="/WEB-INF/views/reports/edit.jsp" />
 	</definition>
 
 </tiles-definitions>

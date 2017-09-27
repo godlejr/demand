@@ -29,7 +29,6 @@ public class ReportController {
 	@EmployeeRequired
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String report(Model model) throws Exception {
-
 		return "reports/new";
 	}
 
@@ -67,4 +66,15 @@ public class ReportController {
 		}
 		return "redirect:/reports";
 	}
+	
+	@EmployeeRequired
+	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+	public String edit(@PathVariable long id, Model model) throws Exception {
+		Report report = reportService.getReportById(id);
+
+		model.addAttribute("report",report);
+
+		return "reports/edit";
+	}
+	
 }
