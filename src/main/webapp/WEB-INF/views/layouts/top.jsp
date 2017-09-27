@@ -67,7 +67,7 @@
 		<ul class="mobile-gnb-list">
 			<c:if test="${sessionScope.user ne null}">
 				<a><li><span class="session-info">${sessionUser.name}
-							${sessionUser.positionCategory.name}님</span></li></a>
+							${sessionUser.positionCategory.name}</span></li></a>
 			</c:if>
 
 			<a><li>회사소개</li></a>
