@@ -1176,6 +1176,7 @@ ol, ul, li {
 	{
 	margin-right: 10px;
 	margin-left: 5px;
+	word-break: break-all;
 }
 
 .content-body .section-report .report-content #form-loading-view {

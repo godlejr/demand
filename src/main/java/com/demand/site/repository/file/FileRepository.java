@@ -6,5 +6,7 @@ import com.demand.site.common.entity.File;
 
 public interface FileRepository extends JpaRepository<File,Long>{
 
+	void deleteByStorageNameAndType(String storageName, int type) throws Exception;
+
 	
 }

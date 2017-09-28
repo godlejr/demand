@@ -19,7 +19,7 @@
 			<c:when test="${sessionScope.user ne null}">
 				<div class="session-info">
 					<span class="login-session">${sessionUser.name}
-						${sessionUser.positionCategory.name}님 </span> <a
+						${sessionUser.positionCategory.name}</span> <a
 						href="${contextPath}/logout"><i class="fa fa-sign-out"
 						aria-hidden="true"></i><span>로그아웃</span></a>
 				</div>

@@ -18,6 +18,8 @@ import com.demand.site.common.entity.File;
 import com.demand.site.common.entity.Report;
 import com.demand.site.common.entity.ReportFile;
 import com.demand.site.common.entity.User;
+import com.demand.site.common.flag.FileFlag;
+import com.demand.site.common.flag.ReportFlag;
 import com.demand.site.common.flag.UserFlag;
 import com.demand.site.common.util.AwsS3Util;
 import com.demand.site.repository.file.FileRepository;
@@ -57,7 +59,7 @@ public class ReportServiceImpl implements ReportService {
 		report.setContent(content);
 
 		if (isNotification) {
-			report.setType(1);
+			report.setType(ReportFlag.NOTIFICATION_TYPE);
 		}
 
 		reportRepository.saveAndFlush(report);
@@ -74,7 +76,7 @@ public class ReportServiceImpl implements ReportService {
 					inputStream, originalName);
 
 			File file = new File();
-			file.setType(4);
+			file.setType(FileFlag.REPORT_FILE_TYPE);
 			file.setStorageName(storageName);
 			file.setOriginalName(originalName);
 			file.setExt(ext);
@@ -135,7 +137,7 @@ public class ReportServiceImpl implements ReportService {
 				fileRepository.delete(file);
 				awsS3Util.deleteFileByLocationAndStorageFileName(REPORT_FILE_URL, storageName);
 			}
-			
+
 			reportRepository.delete(report);
 
 		}
@@ -145,6 +147,56 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public Report getReportById(long id) throws Exception {
 		return reportRepository.findById(id);
+	}
+
+	@Override
+	public void editReport(User user, long id, boolean isNotification, String title, String content,
+			String[] deletedFileStorageNames, MultipartFile[] files) throws Exception {
+		Report report = reportRepository.findById(id);
+		report.setTitle(title);
+		report.setContent(content);
+		if (isNotification) {
+			report.setType(ReportFlag.NOTIFICATION_TYPE);
+		}else{
+			report.setType(ReportFlag.NORMAL_TYPE);
+		}
+
+		if (files != null) {
+			for (int i = 0; i < files.length; i++) {
+				MultipartFile multipartFile = files[i];
+				String originalName = multipartFile.getOriginalFilename();
+				String ext = originalName.substring(originalName.lastIndexOf(".") + 1, originalName.length());
+				long size = multipartFile.getSize();
+				InputStream inputStream = multipartFile.getInputStream();
+
+				String storageName = awsS3Util.getStorageFileNameByUploadingFileAndFileNameToTheLocation(
+						REPORT_FILE_URL, inputStream, originalName);
+
+				File file = new File();
+				file.setType(FileFlag.REPORT_FILE_TYPE);
+				file.setStorageName(storageName);
+				file.setOriginalName(originalName);
+				file.setExt(ext);
+				file.setSize((int) size);
+
+				fileRepository.saveAndFlush(file);
+
+				ReportFile reportFile = new ReportFile();
+				reportFile.setReport(report);
+				reportFile.setFile(file);
+
+				reportFileRepository.saveAndFlush(reportFile);
+
+			}
+		}
+
+		if (deletedFileStorageNames != null) {
+			for (int i = 0; i < deletedFileStorageNames.length; i++) {
+				String storageName = deletedFileStorageNames[i];
+				awsS3Util.deleteFileByLocationAndStorageFileName(REPORT_FILE_URL, storageName);
+				fileRepository.deleteByStorageNameAndType(storageName, FileFlag.REPORT_FILE_TYPE);
+			}
+		}
 	}
 
 }

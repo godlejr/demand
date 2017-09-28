@@ -321,18 +321,17 @@
 		
 		if(title == '' || title == null){
 			alert('제목을 입력하세요.');
-			$title.focus();
+			$("#title").focus();
 			return;
 		}else{
 			if(title.legth > 40){
 				alert('제목은 40자 이내로 작성해주세요.');
-				$title.focus();
+				$("#title").focus();
 				return;
 			}
 		}
 		if(content == '' || content == null || content == '&nbsp;' || content == '<p>&nbsp;</p>' ||  content == '<p><br></p>'){
 			alert('내용을 입력하세요.');
-			$content.focus();
 			return;
 		}
 		

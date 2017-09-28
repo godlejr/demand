@@ -66,15 +66,29 @@ public class ReportController {
 		}
 		return "redirect:/reports";
 	}
-	
+
 	@EmployeeRequired
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
 	public String edit(@PathVariable long id, Model model) throws Exception {
 		Report report = reportService.getReportById(id);
 
-		model.addAttribute("report",report);
+		model.addAttribute("report", report);
 
 		return "reports/edit";
 	}
-	
+
+	@EmployeeRequired
+	@RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
+	@ResponseBody
+	public void edit(@PathVariable long id, @RequestParam("isNotification") boolean isNotification,
+			@RequestParam("title") String title, @RequestParam("content") String content,
+			@RequestParam(name = "deletedFileStorageNames", required = false) String[] deletedFileStorageNames,
+			@RequestParam(name = "files", required = false) MultipartFile[] files, HttpSession httpSession)
+			throws Exception {
+
+		User user = (User) httpSession.getAttribute("user");
+		if (user != null) {
+			reportService.editReport(user, id, isNotification, title, content, deletedFileStorageNames, files);
+		}
+	}
 }

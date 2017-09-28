@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
 <c:set var="sessionUser" value="${sessionScope.user}"></c:set>
@@ -72,8 +73,15 @@
 										
 									</div>
 									
-									<div class="file-content-zone" hidden="hidden">
+									<div class="file-content-zone" ${fn:length(report.reportFiles) gt 0? '':'hidden'} >
 										<ul id="file-list">
+											<c:forEach var="reportFile" items="${report.reportFiles}">
+												<li class="list-item">
+													<i class="fa fa-file-code-o" aria-hidden="true"></i>
+													<span class="item-name">${reportFile.file.originalName}</span>
+													<i class="fa fa-times" aria-hidden="true" style="cursor:pointer;" onClick="javascript:deleteOriginalFileList(this,'${reportFile.file.storageName}')"></i>
+												</li>
+											</c:forEach>
 										</ul>
 									</div>
 									
@@ -83,7 +91,7 @@
 					</table>
 
 					<div class="form-submit">
-						<input class="submit-button" id="submit" type="button" value="제출" />
+						<input class="submit-button" id="submit" type="button" value="수정" />
 					</div>
 				</form>
 			</div>
@@ -95,7 +103,230 @@
 <script>
 
 	var editor_object = [];
+	var fileZone = $("#file-drop-zone");
 
+	var $photoFile = $('#photo-file'),
+		$photoButton = $('#photo-button');
+	
+	var	$videoFile = $('#video-file'),
+		$videoButton = $('#video-button');
+	
+	var $fileUploadingView = $('#file-loading-view'),
+		$formUploadingView = $('#form-loading-view');
+	
+	var fileSize = ${fn:length(report.reportFiles)},
+		isFileListShown = fileSize > 0 ? true:false,
+		autoFileCount = 0;
+
+	var reportFileTempForm = new FormData();
+	var reportFileDeleteForm = new FormData();
+	
+	var $submit=$('#submit');
+	
+	$videoButton.click(function(event){
+		event.preventDefault();
+		$videoFile.click();
+	});
+	
+	
+	$videoFile.change(function(event){
+		var ext = $(this).val().split('.').pop().toLowerCase();
+		
+		if (ext.length > 0) {
+	        if ($.inArray(ext, ['avi', 'mpeg4', 'mp4']) == -1) {
+	            $(this).val('');
+	            alert('비디오 파일(avi, mpeg4, mp4)만 업로드 할수 있습니다.');
+	            return false;
+	        }
+	        var file = $videoFile[0].files[0];
+	        
+	        if(checkFileSizeLimitFiveMB(file.size)){
+	        	var formdata = new FormData();
+	 	        formdata.append("file",file );
+	 	        formdata.append("fileFlag",2);
+	       
+	 	        singleFileUploader(formdata, 2);
+	        }else{
+	            alert('비디오 파일 크기는 20MB 미만으로 업로드 할수 있습니다.');
+	        }
+	    }
+	});
+	
+	
+	$photoButton.click(function(event){
+		event.preventDefault();
+		$photoFile.click();
+	});
+	
+	$photoFile.change(function(){
+		var ext = $(this).val().split('.').pop().toLowerCase();
+		
+		if (ext.length > 0) {
+	        if ($.inArray(ext, ['jpg', 'jpeg', 'png','ico']) == -1) {
+	            $(this).val('');
+	            alert('사진 파일(jpg, png, ico)만 업로드 할수 있습니다.');
+	            return false;
+	        }
+
+	        var file = $photoFile[0].files[0];
+	       
+	        var formdata = new FormData();
+	        formdata.append("file",file );
+	        formdata.append("fileFlag",1);
+      
+	        singleFileUploader(formdata, 1);
+	    }
+	});
+	
+	function attachFileToEditor(fileUrl,sortOfFile){
+		
+		var fileTemplate = "";
+		
+		if(sortOfFile == 1){  //photo == 1
+			fileTemplate = "<img style='max-width:100%;' src='" + fileUrl + "'/>";
+		}else{
+			fileTemplate =	"<video style='max-width:100%;' controls >" +
+							"<source src='" + fileUrl + "'>" +
+							"</video>";
+		}
+	
+		editor_object.getById["smarteditor"].exec("PASTE_HTML", [fileTemplate]);
+	}
+	
+	function singleFileUploader(formdata, fileFlag){
+		$.ajax({
+			type: "POST",
+			url: "${contextPath}/smarteditor/uploader",
+			processData: false,  
+			contentType: false,
+			enctype: 'multipart/form-data',
+			data: formdata,
+            success: function(data) {
+            	attachFileToEditor(data, fileFlag);
+            },
+            beforeSend: function(){
+            	$fileUploadingView.show();
+	        },
+	        complete: function(){
+	        	$fileUploadingView.hide();
+	        }
+	    });
+	}
+	
+	document.getElementById('file-input').addEventListener('change',prepareFileUpload,false);
+	
+	function updateFileListView(fileSize, file){
+		if(fileSize > 0 ){
+			if(!isFileListShown){
+				$('.file-content-zone').show();
+				isFileListShown = true;
+				
+			}
+			reportFileTempForm.append('files' + autoFileCount , file);
+			
+			var fileIndex = fileSize - 1;
+			
+			var fileItemTemplate = "<li class='list-item'>"+
+									"<i class='fa fa-file-code-o' aria-hidden='true'></i>" +
+									"<span class='item-name'>"+ file.name + "</span>" + 
+									"<i class='fa fa-times' style='cursor:pointer;' onClick='deleteFileList(this," + autoFileCount + ");' aria-hidden='true'></i>" + 
+									"</li>";
+			
+			$("#file-list").append(fileItemTemplate);
+			
+			++autoFileCount;
+			
+		}else{
+			if(isFileListShown){
+				$('.file-content-zone').hide();
+				isFileListShown = false;
+			}
+		}
+	}
+	
+	function deleteFileList(self, fileIndex){
+		--fileSize;
+		console.log(reportFileTempForm.get("files"+ fileIndex).name);
+		reportFileTempForm.delete("files"+ fileIndex);
+		$(self).parent().remove();
+		
+		if(fileSize == 0){
+			if(isFileListShown){
+				$('.file-content-zone').hide();
+				isFileListShown = false;
+			}
+		}
+	}
+	
+	function deleteOriginalFileList(self, originalName){
+		--fileSize;
+		reportFileDeleteForm.append("deletedFiles",originalName);
+		$(self).parent().remove();
+		
+		if(fileSize == 0){
+			if(isFileListShown){
+				$('.file-content-zone').hide();
+				isFileListShown = false;
+			}
+		}
+	}
+	
+	reportFileDeleteForm
+	
+	function prepareFileUpload(event) {
+	 	var files = event.target.files;
+		 
+	 	if (files.length < 1)
+			return;
+	 	
+	 	for (var i = 0; i < files.length; i++) {
+			++fileSize;
+			updateFileListView(fileSize, files[i]);
+     	}
+	}
+	
+
+	fileZone.on('dragenter', function(event) {
+		event.stopPropagation();
+		event.preventDefault();
+		$(this).css('border', '2px solid #c0a179');
+	});
+
+	fileZone.on('dragleave', function(event) {
+		event.stopPropagation();
+		event.preventDefault();
+		$(this).css('border', '2px dotted #c0a179');
+	});
+
+	fileZone.on('dragover', function(event) {
+		event.stopPropagation();
+		event.preventDefault();
+	});
+
+	fileZone.on('drop', function(event) {
+		event.preventDefault();
+		$(this).css('border', '2px dotted #c0a179');
+
+		var files = event.originalEvent.dataTransfer.files;
+		if (files.length < 1)
+			return;
+		
+		for (var i = 0; i < files.length; i++) {
+			++fileSize;
+			updateFileListView(fileSize, files[i]);
+        }
+	});	
+	
+	function checkFileSizeLimitFiveMB(originalfileSize){
+		var fileSize = originalfileSize/1024/1024;
+		if(fileSize > 20){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef : editor_object,
 		elPlaceHolder : "smarteditor",
@@ -112,4 +343,74 @@
 			editor_object.getById["smarteditor"].exec("PASTE_HTML", [content]);
 		}
 	});
+	
+	$submit.click(function(){
+		window.onunload = window.onbeforeunload = undefined;
+		
+		editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
+		var content =  $("#smarteditor").val();
+		var title = $("#title").val();
+		var isNotification = $('input:checkbox[id="notification"]').is(":checked");
+		
+		if(title == '' || title == null){
+			alert('제목을 입력하세요.');
+			$("#title").focus();
+			return;
+		}else{
+			if(title.legth > 40){
+				alert('제목은 40자 이내로 작성해주세요.');
+				$("#title").focus();
+				return;
+			}
+		}
+		if(content == '' || content == null || content == '&nbsp;' || content == '<p>&nbsp;</p>' ||  content == '<p><br></p>'){
+			alert('내용을 입력하세요.');
+			return;
+		}
+		
+		
+		var reportForm = new FormData();
+		reportForm.append("title",title);
+		reportForm.append("content",content);
+		reportForm.append("isNotification",isNotification);
+		
+		
+		for(var i =0 ; i < autoFileCount ; i++ ){
+			if(reportFileTempForm.has('files'+ i)){
+				reportForm.append("files", reportFileTempForm.get('files'+ i));
+			}
+		}
+		
+		var deletedFiles = reportFileDeleteForm.getAll("deletedFiles");
+		
+		for(var i =0 ; i < deletedFiles.length ; i++ ){
+			reportForm.append("deletedFileStorageNames", deletedFiles[i]);
+		}
+		
+		sendReport(reportForm);
+	});
+	
+	function navigateToReportListPage(){
+		 document.location.href = "${contextPath}/reports";
+	}
+	
+	function sendReport(reportForm){
+		$.ajax({
+			type: "POST",
+			url: "${contextPath}/reports/" + ${report.id}+ "/edit" ,
+			processData: false,  
+			contentType: false,
+			enctype: 'multipart/form-data',
+			data: reportForm,
+            success: function(data) {
+            	navigateToReportListPage();
+            },
+            beforeSend: function(){
+            	$formUploadingView.show();
+	        },
+	        complete: function(){
+	        	$formUploadingView.hide();
+	        }
+	    });
+	}
 </script>
