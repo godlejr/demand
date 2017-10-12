@@ -28,7 +28,7 @@
 					</div>
 					<div class="description-bottom">
 						<div class="report-writer">
-							<span>${report.user.name }
+							<span onclick="javascript:navigateToUserDetail(${report.user.id})">${report.user.name }
 								${report.user.positionCategory.name } </span>
 						</div>
 
@@ -109,6 +109,12 @@
 </div>
 
 <script>
+	
+	function navigateToUserDetail(id){
+		var url = "${contextPath}/users/" +id;
+	 	location.href = url; 
+	}
+
 	function navigateToReportEdit(id){
 		var url = "${contextPath}/reports/" +id + "/edit";
 	 	location.href = url; 

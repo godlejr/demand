@@ -18,7 +18,7 @@
 		<c:choose>
 			<c:when test="${sessionScope.user ne null}">
 				<div class="session-info">
-					<span class="login-session">${sessionUser.name}
+					<span class="login-session" onclick="javascript:navigateToUserDetail(${sessionUser.id})">${sessionUser.name}
 						${sessionUser.positionCategory.name}</span> <a
 						href="${contextPath}/logout"><i class="fa fa-sign-out"
 						aria-hidden="true"></i><span>로그아웃</span></a>
@@ -66,7 +66,7 @@
 	<div class="section-mobile-gnb">
 		<ul class="mobile-gnb-list">
 			<c:if test="${sessionScope.user ne null}">
-				<a><li><span class="session-info">${sessionUser.name}
+				<a href="${contextPath}/users/${sessionUser.id}"><li><span class="session-info">${sessionUser.name}
 							${sessionUser.positionCategory.name}</span></li></a>
 			</c:if>
 
@@ -111,4 +111,9 @@
 		$(this).addClass("hide");
 
 	});
+	
+	function navigateToUserDetail(id){
+		var url = "${contextPath}/users/" + id;
+	    location.href = url; 
+	}
 </script>

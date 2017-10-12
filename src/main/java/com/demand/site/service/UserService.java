@@ -10,4 +10,6 @@ public interface UserService {
 
 	void saveUserWithCheck(User user, int checked) throws Exception;
 
+	User getUserById(long id) throws Exception;
+
 }

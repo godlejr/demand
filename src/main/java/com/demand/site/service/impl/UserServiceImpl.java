@@ -37,4 +37,10 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	public User getUserById(long id) throws Exception {
+		User user = userRepository.findOne(id);
+		return user;
+	}
+
 }

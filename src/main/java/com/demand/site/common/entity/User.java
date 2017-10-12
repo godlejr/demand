@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertTrue;
@@ -79,6 +80,11 @@ public class User extends Base {
 
 	private String joinedAt;
 	private String resignedAt;
+
+	@ManyToOne
+	@JoinColumn(name = "AVATAR_FILE_ID")
+	@JsonManagedReference
+	private File avatarFile;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	@JsonBackReference
@@ -213,6 +219,19 @@ public class User extends Base {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	public File getAvatarFile() {
+		return avatarFile;
+	}
+
+	public void setAvatarFile(File avatarFile) {
+		if (this.avatarFile != null) {
+			this.avatarFile.getUsers().remove(this);
+		}
+
+		this.avatarFile = avatarFile;
+		this.avatarFile.getUsers().add(this);
 	}
 
 	public String getJoinedAt() {

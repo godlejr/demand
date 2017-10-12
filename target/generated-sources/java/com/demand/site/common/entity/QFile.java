@@ -43,6 +43,8 @@ public class QFile extends EntityPathBase<File> {
     //inherited
     public final StringPath updatedAt = _super.updatedAt;
 
+    public final ListPath<User, QUser> users = this.<User, QUser>createList("users", User.class, QUser.class, PathInits.DIRECT2);
+
     public QFile(String variable) {
         super(File.class, forVariable(variable));
     }

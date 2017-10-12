@@ -199,4 +199,10 @@ public class ReportServiceImpl implements ReportService {
 		}
 	}
 
+	@Override
+	public Page<Report> getReportsByUserIdAndPageable(long userId, Pageable pageable) throws Exception {
+		return reportRepository.findAllByUserIdAndPageable(userId, pageable);
+
+	}
+
 }

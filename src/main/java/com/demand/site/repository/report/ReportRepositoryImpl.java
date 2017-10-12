@@ -43,4 +43,24 @@ public class ReportRepositoryImpl extends QueryDslRepositorySupport implements R
 		return new PageImpl<Report>(reports, pageable, total);
 	}
 
+	@Override
+	public Page<Report> findAllByUserIdAndPageable(long userId, Pageable pageable) {
+		QReport report = QReport.report;
+
+		int offset = pageable.getOffset();
+		int size = pageable.getPageSize();
+
+		BooleanBuilder booleanBuilder = new BooleanBuilder();
+		booleanBuilder.and(report.user.id.eq(userId));
+		
+		SearchResults<Report> searchResults = from(report).where(booleanBuilder)
+				.orderBy(report.updatedAt.desc()).offset(offset).limit(size).listResults(report);
+
+		long total = searchResults.getTotal();
+
+		List<Report> reports = total > offset ? searchResults.getResults() : Collections.<Report>emptyList();
+
+		return new PageImpl<Report>(reports, pageable, total);
+	}
+
 }

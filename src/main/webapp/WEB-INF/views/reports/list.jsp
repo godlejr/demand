@@ -9,9 +9,6 @@
 <c:set var="reportTotalPageNumber" value="${reportPage.getTotalPages()}"></c:set>
 
 
-int startPage = ((currentPageNo - 1) / sizeOfPage) * sizeOfPage + 1;
-		int endPage = startPage + sizeOfPage - 1;
-
 <div class="container-content" style="margin-top: 120px">
 	<div class="content-body">
 		<div class="section-report-list">
@@ -67,7 +64,7 @@ int startPage = ((currentPageNo - 1) / sizeOfPage) * sizeOfPage + 1;
 					                </c:otherwise>
 					            </c:choose>
 
-								<td>${report.user.name } ${report.user.positionCategory.name }</td>
+								<td><span onclick="javascript:navigateToUserDetail(${report.user.id})">${report.user.name } ${report.user.positionCategory.name }</span></td>
 								<td>${report.getCustomCreatedAt() }</td>
 								<td>${report.hits }</td>
 							</tr>
@@ -129,6 +126,11 @@ int startPage = ((currentPageNo - 1) / sizeOfPage) * sizeOfPage + 1;
 	
 	function navigateToReportDetail(id){
 		var url = "${contextPath}/reports/" +id;
+	 	location.href = url; 
+	}
+	
+	function navigateToUserDetail(id){
+		var url = "${contextPath}/users/" +id;
 	 	location.href = url; 
 	}
 	

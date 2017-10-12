@@ -26,6 +26,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final com.demand.site.common.embeddable.QAddress address;
 
+    public final QFile avatarFile;
+
     public final NumberPath<Integer> checked = createNumber("checked", Integer.class);
 
     //inherited
@@ -88,6 +90,7 @@ public class QUser extends EntityPathBase<User> {
     public QUser(Class<? extends User> type, PathMetadata<?> metadata, PathInits inits) {
         super(type, metadata, inits);
         this.address = inits.isInitialized("address") ? new com.demand.site.common.embeddable.QAddress(forProperty("address")) : null;
+        this.avatarFile = inits.isInitialized("avatarFile") ? new QFile(forProperty("avatarFile")) : null;
         this.degreeCategory = inits.isInitialized("degreeCategory") ? new QDegreeCategory(forProperty("degreeCategory")) : null;
         this.educationStatusCategory = inits.isInitialized("educationStatusCategory") ? new QEducationStatusCategory(forProperty("educationStatusCategory")) : null;
         this.positionCategory = inits.isInitialized("positionCategory") ? new QPositionCategory(forProperty("positionCategory")) : null;

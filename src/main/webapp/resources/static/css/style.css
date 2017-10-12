@@ -142,6 +142,7 @@ ol, ul, li {
 
 .top-content .section-login .session-info {
 	color: #999;
+	cursor: pointer;
 }
 
 .top-content .section-login .session-info a {
@@ -309,8 +310,9 @@ ol, ul, li {
 	background-repeat: no-repeat;
 	background-position: center;
 }
+
 .container-content .section-promote-question-intro .intro-header .header-title h1,
-.container-content .section-healthcare-intro .intro-header .header-title h1,
+	.container-content .section-healthcare-intro .intro-header .header-title h1,
 	.container-content .section-design-intro .intro-header  .header-title h1,
 	.section-video-banner .video-banner-content  .section-demand-intro .intro-content .content-title h1
 	{
@@ -327,8 +329,9 @@ ol, ul, li {
 	text-align: center;
 	color: #3c3c3c;
 }
+
 .container-content .section-promote-question-intro .intro-header .header-title-sub,
-.container-content .section-healthcare-intro .intro-header .header-title-sub,
+	.container-content .section-healthcare-intro .intro-header .header-title-sub,
 	.container-content .section-design-intro .intro-header .header-title-sub
 	{
 	font-size: 18px;
@@ -372,12 +375,12 @@ ol, ul, li {
 	background: #f0f0f0;
 }
 
-.container-content .section-promote-question-intro .intro-header{
-    padding: 0% 5%;
+.container-content .section-promote-question-intro .intro-header {
+	padding: 0% 5%;
 }
 
 .container-content .section-promote-question-intro .intro-header,
-.container-content .section-healthcare-intro .intro-header,
+	.container-content .section-healthcare-intro .intro-header,
 	.container-content .section-design-intro .intro-header {
 	text-align: center;
 	color: #3c3c3c;
@@ -480,18 +483,19 @@ ol, ul, li {
 	color: #444;
 }
 
-.container-content .section-promote-question-intro{
-
-	background:#fff;
+.container-content .section-promote-question-intro {
+	background: #fff;
 	padding: 10% 0%;
 }
-.container-content .section-promote-question-intro .intro-content{
-	        width: 100%;
-    align-items: center;
-    position: relative;
+
+.container-content .section-promote-question-intro .intro-content {
+	width: 100%;
+	align-items: center;
+	position: relative;
 }
 
-.container-content .section-promote-question-intro .intro-content .content-left{
+.container-content .section-promote-question-intro .intro-content .content-left
+	{
 	width: 100%;
 	background: url(../img/main/promote_logo.jpg);
 	background-size: cover;
@@ -499,36 +503,38 @@ ol, ul, li {
 	height: 400px;
 	background-repeat: no-repeat;
 	background-position: center;
-    display: flex;
-    align-items: center;
-
+	display: flex;
+	align-items: center;
 }
 
 .container-content .section-promote-question-intro .intro-content .content-left:hover,
-.container-content .section-promote-question-intro .intro-content .content-right:hover{
+	.container-content .section-promote-question-intro .intro-content .content-right:hover
+	{
 	-webkit-transform: scale(1.03);
 	transform: scale(1.03);
 	transition: transform .36s;
 }
 
-.container-content .section-promote-question-intro .intro-content .content-right{
+.container-content .section-promote-question-intro .intro-content .content-right
+	{
 	background: url(../img/main/question_logo.jpg);
 	background-size: cover;
 	cursor: pointer;
 	height: 400px;
-   width: 100%;
+	width: 100%;
 	background-repeat: no-repeat;
 	background-position: center;
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .container-content .section-promote-question-intro .intro-content .content-left span,
-.container-content .section-promote-question-intro .intro-content .content-right span{
+	.container-content .section-promote-question-intro .intro-content .content-right span
+	{
 	color: #666;
-    margin: 0 auto;
-    font-weight: 600;
-    font-size: 40px;
+	margin: 0 auto;
+	font-weight: 600;
+	font-size: 40px;
 }
 
 /*login*/
@@ -621,8 +627,14 @@ ol, ul, li {
 	margin-bottom: 90px;
 }
 
-.content-body .section-report-list, .content-body .section-report {
+.content-body .section-report-list, .content-body .section-report,
+	.content-body .section-user-info {
 	margin: 15px;
+}
+
+.content-body .section-user-info .user-info-header .header-content {
+	margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .content-body .section-report-list .report-list-header .header-content {
@@ -703,10 +715,196 @@ ol, ul, li {
 	color: #fff
 }
 
-.content-body .section-report-list .report-list-header, .content-body .section-report .report-header
-	{
+.content-body .section-user-info .user-info-header, .content-body .section-report-list .report-list-header,
+	.content-body .section-report .report-header {
 	color: #525252;
 	margin-bottom: 5px;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-profile
+	{
+	display: flex;
+    align-items: center;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-profile .user-profile-content
+	{
+	    margin: 0 auto;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-profile .user-profile-content .content-avatar
+	{
+    margin: 10 auto;
+	width: 150px;
+	height: 150px;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 50%;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-profile .user-profile-content .content-button
+	{
+	display: flex;
+    align-items: center;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-profile .user-profile-content .content-button span{
+	border: 1px solid #c0a179;
+    padding: 9px;
+    margin: 0 auto;
+    color: #c0a179;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-profile .user-profile-content .content-button span:hover{
+	background: #c0a179;
+    color: #fff;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte{
+	display: flex;
+    text-align: center;
+} 
+
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content{
+    margin: 30px auto;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-report{
+	    padding: 10px;
+    display: inline-block;
+    max-width: 200px;
+    margin: 10px;
+    border: 1px solid;
+    cursor: pointer;
+    
+    color: #485513;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-report:hover{
+	 background: #485513;
+	color: #fff;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-promotion{
+	    padding: 10px;
+    display: inline-block;
+    max-width: 200px;
+    margin: 10px;
+    border: 1px solid;
+    cursor: pointer;
+    color: #518a88;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-promotion:hover{
+	background: #518a88;
+	color: #fff;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-promotion .promotion-image,
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-report .report-image{
+	display: flex;
+    margin: 10px;
+    width: 100px;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-promotion .promotion-image i,
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-report .report-image i{
+	font-size: 50px;
+    margin: 0 auto;
+}
+
+.content-body .section-user-info .user-info-content{
+	
+}
+
+.content-body .section-user-info .user-info-content .content-report-list{
+	
+}
+
+.content-body .section-user-info .user-info-content .content-schedule .schedule-header,
+.content-body .section-user-info .user-info-content .content-report-list .report-list-header{
+	color: #525252;
+}
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-content{
+	
+}
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-content table{
+	width: 100%;
+	border: 1px solid #e2e2e2;
+	border-top: 3px solid #375535;
+}
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-content table tbody td{
+	height: 35px;
+	color: #444;
+	padding: 10px;
+	text-align: center;
+	border-left: 1px solid #dee3eb;
+	border-top: 1px solid #dee3eb;
+	border-left: 1px solid #dee3eb;
+}
+
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-content table thead{
+	
+}
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-content table thead th{
+	height: 40px;
+    color: #515151;
+    background: url(../img/common/bg_th.gif) no-repeat left #eeeee7;
+}
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-content table thead th:first-child{
+	background-image: none;
+}
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-content table tbody td:first-child
+	{
+	text-align: left;
+}
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-content table tbody td:first-child span
+	{
+	cursor: pointer;
+}
+.content-body .section-user-info .user-info-content .content-report-list .report-list-content  table thead th:first-child
+	{
+	width: 60%;
+}
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-content table tbody td:first-child span:hover
+	{
+	text-decoration: underline;
+}
+
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-bottom .section-pagination
+	{
+	text-align: center;
+	font-size: 15px;
+	font-weight: 700;
+	margin-top: 20px;
+	height: 50px;
+}
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-bottom .section-pagination span
+	{
+	
+}
+
+.content-body .section-user-info .user-info-content .content-report-list .report-list-bottom .section-pagination  a
+	{
+	background: #fff;
+	padding: 3px;
+	border: 1px solid #dee3eb;
+	color: #1b1b1b;
+	margin-left: 5px;
 }
 
 .content-body .section-report-list .report-list-header p, .content-body .section-report .report-header p
@@ -782,12 +980,14 @@ ol, ul, li {
 	text-align: left;
 }
 
-.content-body .section-report-list .report-list-content table tbody td:nth-child(2) span
+.content-body .section-report-list .report-list-content table tbody td:nth-child(2) span,
+.content-body .section-report-list .report-list-content table tbody td:nth-child(3) span
 	{
 	cursor: pointer;
 }
 
-.content-body .section-report-list .report-list-content table tbody td:nth-child(2) span:hover
+.content-body .section-report-list .report-list-content table tbody td:nth-child(2) span:hover,
+.content-body .section-report-list .report-list-content table tbody td:nth-child(3) span:hover
 	{
 	text-decoration: underline;
 }
@@ -867,11 +1067,11 @@ ol, ul, li {
 	cursor: pointer;
 }
 
-
 .content-body .section-report .report-content .content-description .description-bottom .report-delete:hover,
-	.content-body .section-report .report-content .content-description .description-bottom .report-edit:hover{
-	color:#c0a179;
-	}
+	.content-body .section-report .report-content .content-description .description-bottom .report-edit:hover
+	{
+	color: #c0a179;
+}
 
 .content-body .section-report .report-content .content-description .description-bottom .report-delete span,
 	.content-body .section-report .report-content .content-description .description-bottom .report-edit span
@@ -883,6 +1083,16 @@ ol, ul, li {
 	{
 	color: #666;
 	margin-right: 10px;
+}
+
+.content-body .section-report .report-content .content-description .description-bottom .report-writer span
+	{
+	cursor: pointer;
+}
+
+.content-body .section-report .report-content .content-description .description-bottom .report-writer span:hover
+	{
+	text-decoration: underline;
 }
 
 .content-body .section-report .report-content .content-description .description-bottom .report-writer span
@@ -1362,32 +1572,37 @@ ol, ul, li {
 		width: 50px;
 		font-size: 50px;
 	}
-	
 	.container-content .section-promote-question-intro .intro-header .header-title h1,
-	.container-content .section-healthcare-intro .intro-header .header-title h1,
+		.container-content .section-healthcare-intro .intro-header .header-title h1,
 		.container-content .section-design-intro .intro-header  .header-title h1,
 		.section-video-banner .video-banner-content  .section-demand-intro .intro-content .content-title h1
 		{
 		font-size: 65px;
 	}
 	
+	.section-video-banner .video-banner-content .section-demand-intro .intro-content .content-body p
+		{
+		font-size: 22px;
+	}
+	.container-content .section-promote-question-intro .intro-header .header-title-sub,
+		.container-content .section-healthcare-intro .intro-header .header-title-sub,
+		.container-content .section-design-intro .intro-header .header-title-sub
+		{
+		font-size: 22px;
+	}
+	
+	/*report*/
 	.content-body .section-report-list .report-list-bottom .section-pagination  a
 		{
 		padding: 6px;
 	}
 	
-	.section-video-banner .video-banner-content .section-demand-intro .intro-content .content-body p
-		{
-		font-size: 22px;
-	}
-	
-	.container-content .section-promote-question-intro .intro-header .header-title-sub,
-	.container-content .section-healthcare-intro .intro-header .header-title-sub,
-		.container-content .section-design-intro .intro-header .header-title-sub
-		{
-		font-size: 22px;
+	/*user*/
+	.content-body .section-user-info .user-info-content .content-report-list .report-list-bottom .section-pagination  a{
+		padding: 6px;
 	}
 }
+
 
 @media screen and (min-width:1200px) {
 	/****** Header ******/
@@ -1400,7 +1615,7 @@ ol, ul, li {
 		font-size: 80px;
 	}
 	.container-content .section-promote-question-intro .intro-header .header-title h1,
-	.container-content .section-healthcare-intro .intro-header .header-title h1,
+		.container-content .section-healthcare-intro .intro-header .header-title h1,
 		.container-content .section-design-intro .intro-header  .header-title h1,
 		.section-video-banner .video-banner-content  .section-demand-intro .intro-content .content-title h1
 		{
@@ -1410,9 +1625,8 @@ ol, ul, li {
 		{
 		font-size: 25px;
 	}
-	
 	.container-content .section-promote-question-intro .intro-header .header-title-sub,
-	.container-content .section-healthcare-intro .intro-header .header-title-sub,
+		.container-content .section-healthcare-intro .intro-header .header-title-sub,
 		.container-content .section-design-intro .intro-header .header-title-sub
 		{
 		font-size: 25px;
@@ -1446,20 +1660,19 @@ ol, ul, li {
 	.section-video-banner .video-banner-alternative {
 		display: none;
 	}
-	
 	.container-content .section-promote-question-intro .intro-content .content-left,
-	.container-content .section-promote-question-intro .intro-content .content-right{
-		float:left;
-   		width: 50%;
-   		height: 500px;
+		.container-content .section-promote-question-intro .intro-content .content-right
+		{
+		float: left;
+		width: 50%;
+		height: 500px;
 	}
-	
-	.container-content .section-promote-question-intro .intro-content{
+	.container-content .section-promote-question-intro .intro-content {
 		display: flex;
 	}
-	
 	.container-content .section-promote-question-intro .intro-content .content-left span,
-	.container-content .section-promote-question-intro .intro-content .content-right span{
+		.container-content .section-promote-question-intro .intro-content .content-right span
+		{
 		font-size: 70px;
 	}
 
@@ -1467,6 +1680,13 @@ ol, ul, li {
 	.container-content .section-login {
 		width: 370px;
 	}
+	
+	.container-content .section-join .join-content .join-form .form-left div
+		{
+		width: 250px;
+	}
+	
+	/*report*/
 	.content-body .section-report .report-content .report-form .form-menu-content .photo-add-zone
 		{
 		width: 22%;
@@ -1475,24 +1695,30 @@ ol, ul, li {
 		{
 		padding: 10px;
 	}
-	.container-content .section-join .join-content .join-form .form-left div
+
+	/*user*/
+	.content-body .section-user-info .user-info-header .header-content .section-user-profile .user-profile-content .content-avatar 
 		{
-		width: 250px;
+		width: 180px;
+		height: 180px;
+	}
+	
+	.content-body .section-user-info .user-info-content .content-report-list .report-list-bottom .section-pagination  a{
+		padding: 10px;
 	}
 }
 
-@-webkit-keyframes move-up-down {
-	0% { translateY (0);}
+@-webkit-keyframes move-up-down { 
+	0% { translateY (0); }
 
-	50% { transform:translateY(30%);}
+	50% { transform :translateY (30%); }
 
-	100%{ translateY (0);}
+	100%{ translateY(0); }
 }
 @keyframes move-up-down { 
-	
 	0% { translateY (0);}
 
-	50%{ transform:translateY(30%);}
-	
-	100%{ translateY (0);}
+	50%{ transform:translateY(30%); }
+
+	100%{ translateY(0);}
 }

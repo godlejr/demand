@@ -49,5 +49,11 @@
 		<put-attribute name="title" value="보고자료  편집" />
 		<put-attribute name="content" value="/WEB-INF/views/reports/edit.jsp" />
 	</definition>
+	
+	<!-- 유저 관련 -->
+	<definition name="user/detail" extends="Base">
+		<put-attribute name="title" value="사용자 정보" />
+		<put-attribute name="content" value="/WEB-INF/views/user/detail.jsp" />
+	</definition>
 
 </tiles-definitions>

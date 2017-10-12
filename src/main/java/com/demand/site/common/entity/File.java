@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -22,6 +23,10 @@ public class File extends Base {
 	@OneToMany(mappedBy = "file", fetch = FetchType.LAZY)
 	@JsonBackReference
 	private List<ReportFile> reportFiles = new ArrayList<ReportFile>();
+
+	@OneToMany(mappedBy = "avatarFile", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private List<User> users = new ArrayList<User>();
 
 	public File() {
 		super();
@@ -73,6 +78,14 @@ public class File extends Base {
 
 	public void setReportFiles(List<ReportFile> reportFiles) {
 		this.reportFiles = reportFiles;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override
