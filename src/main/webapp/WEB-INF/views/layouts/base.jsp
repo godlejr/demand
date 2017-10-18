@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%
+	 response.setHeader("Cache-Control","no-cache");
+	 response.setHeader("Pragma","no-cache");
+	 response.setDateHeader("Expires",0);
+%>
+
 
 <html lang="ko">
 <head>
