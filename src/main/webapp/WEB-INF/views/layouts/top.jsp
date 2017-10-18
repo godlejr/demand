@@ -123,6 +123,8 @@
 		$( ".section-gnb ul li:first-child a" ).addClass( "current" );
 	}else if(currentPathName == "${contextPath}/serviceDesign"){
 		$( ".section-gnb ul li:nth-child(2) a" ).addClass( "current" );
+	}else if(currentPathName == "${contextPath}/reports"){
+		$( ".section-gnb ul li:nth-child(6) a" ).addClass( "current" );
 	}else{
 		//
 	}
