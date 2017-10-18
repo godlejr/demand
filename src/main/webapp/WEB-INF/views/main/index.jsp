@@ -45,7 +45,7 @@
                </p>
             </div>
 
-            <div class="header-button">
+            <div class="header-button" onclick="javascript:navigateToServiceDesign()">
                <span>MORE</span>
             </div>
          </div>
@@ -150,10 +150,10 @@
        	</div>
    		<div class="intro-content">
    			<div class="content-left">
-   				<span>홍보</span>
+   				<span>뉴스 / IR</span>
 	   		</div>
 	   		<div class="content-right">
-	   			<span>문의</span>
+	   			<span>고객센터</span>
 	   		</div>
    		</div>
    		
@@ -166,6 +166,11 @@
 function navigateToCompany(){
 	var url = "${contextPath}/company";
     location.href = url; 
+}
+
+function navigateToServiceDesign(){
+	var url = "${contextPath}/serviceDesign";
+    location.href = url;
 }
 
 $('.section-video-banner video').on('loadedmetadata', function() {
@@ -216,4 +221,5 @@ $("#arrow").click(function(){
        scrollTop: $(".section-design-intro").offset().top
     }, 600);
  });
+ 
 </script>

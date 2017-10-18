@@ -186,6 +186,10 @@ ol, ul, li {
 	color: #444;
 }
 
+.top-content .section-gnb li .current{
+	color: #c0a179;
+}
+
 .top-content .section-menu {
 	position: fixed;
 	top: 25px;
@@ -385,6 +389,56 @@ ol, ul, li {
 	height: 800px;
 	background: #eaeaea;
 	position: relative;
+}
+
+.container-content .section-servicedesign-intro {
+   padding: 10% 5%;
+}
+
+.container-content .section-servicedesign-intro .intro-header {
+   text-align: center;
+}
+
+.container-content .section-servicedesign-intro .intro-content p {
+   font-size: 18px;
+   line-height: 1.71;
+   letter-spacing: -0.3px;
+   text-align: center;
+   color: #444;
+}
+
+.container-content .section-servicedesign-process {
+   background: url(../img/main/design_background.png);
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   display: inline-block;
+   padding: 10% 5%;
+   width: 100%;
+}
+
+.container-content .section-servicedesign-process .process-content ul li
+   {
+   width: 100%;
+   display: inline-block;
+   margin: 10px;
+}
+
+.container-content .section-servicedesign-process .process-content ul li .content-item .item-content p
+   {
+   font-size: 18px;
+   line-height: 1.71;
+   letter-spacing: -0.3px;
+   color: #444;
+}
+
+.container-content .section-servicedesign-process .process-content ul li:nth-child(3) .content-item,
+.container-content .section-servicedesign-process .process-content ul li:first-child .content-item{
+   float:left;
+}
+
+.container-content .section-servicedesign-process .process-content ul li:nth-child(2) .content-item{
+   float:right;
 }
 
 
@@ -1737,22 +1791,28 @@ ol, ul, li {
 	
 	.section-video-banner .video-banner-content .section-demand-intro .intro-content .content-body p
 		{
-		font-size: 22px;
+		font-size: 20px;
 	}
 	.container-content .section-promote-question-intro .intro-header .header-title-sub,
 		.container-content .section-healthcare-intro .intro-header .header-title-sub,
 		.container-content .section-design-intro .intro-header .header-title-sub
 		{
-		font-size: 22px;
+		font-size: 20px;
 	}
 	
 	.container-content .section-company-intro .intro-content p{
-		font-size: 22px;
+		font-size: 20px;
 	}
 	
 	.container-content .section-company-object .object-left .left-content p{
-		font-size: 22px;
+		font-size: 20px;
 	}
+	 .container-content .section-servicedesign-intro .intro-content p,
+      .container-content .section-servicedesign-process .process-content ul li .content-item .item-content p
+      {
+      font-size: 20px;
+   }
+	
 	.container-content .section-company-object{
 	    padding: 0 10%;
 	}
@@ -1795,18 +1855,29 @@ ol, ul, li {
 		.container-content .section-design-intro .intro-header  .header-title h1,
 		.section-video-banner .video-banner-content  .section-demand-intro .intro-content .content-title h1
 		{
-		font-size: 75px;
+		font-size: 55px;
 	}
 	.section-video-banner .video-banner-content .section-demand-intro .intro-content .content-body p
 		{
-		font-size: 25px;
+		font-size: 22px;
 	}
 	.container-content .section-promote-question-intro .intro-header .header-title-sub,
 		.container-content .section-healthcare-intro .intro-header .header-title-sub,
 		.container-content .section-design-intro .intro-header .header-title-sub
 		{
-		font-size: 25px;
+		font-size: 22px;
 	}
+	
+	.container-content .section-servicedesign-process, .container-content .section-servicedesign-intro
+      {
+      padding: 7% 15%;
+   }
+   .container-content .section-servicedesign-intro .intro-content p,
+      .container-content .section-servicedesign-process .process-content ul li .content-item .item-content p
+      {
+      font-size: 22px;
+   }
+	
 	.top-content .section-logo {
 		margin: 0 0 0 30px;
 		float: left;
@@ -1849,15 +1920,15 @@ ol, ul, li {
 	.container-content .section-promote-question-intro .intro-content .content-left span,
 		.container-content .section-promote-question-intro .intro-content .content-right span
 		{
-		font-size: 70px;
+		font-size: 50px;
 	}
 	
 	.container-content .section-company-intro .intro-content p{
-		font-size: 25px;
+		font-size: 22px;
 	}
 	
 	.container-content .section-company-object .object-left .left-content p{
-		font-size: 25px;
+		font-size: 22px;
 	    text-align: left; 
 	}
 	

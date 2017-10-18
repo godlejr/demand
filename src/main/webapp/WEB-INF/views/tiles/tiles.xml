@@ -21,18 +21,22 @@
 		<put-attribute name="top" value="" />
 		<put-attribute name="content" value="/WEB-INF/views/main/login.jsp" />
 	</definition>
-	
+
 	<definition name="main/join" extends="Base">
 		<put-attribute name="title" value="아이디 신청" />
 		<put-attribute name="top" value="" />
 		<put-attribute name="content" value="/WEB-INF/views/main/join.jsp" />
 	</definition>
-	
+
 	<definition name="main/company" extends="Base">
 		<put-attribute name="title" value="회사소개 - 디맨드" />
 		<put-attribute name="content" value="/WEB-INF/views/main/company.jsp" />
 	</definition>
 
+	<definition name="main/serviceDesign" extends="Base">
+		<put-attribute name="title" value="서비스디자인 - 디맨드" />
+		<put-attribute name="content" value="/WEB-INF/views/main/serviceDesign.jsp" />
+	</definition>
 
 	<!-- 리포트 관련 -->
 	<definition name="reports/list" extends="Base">
@@ -49,12 +53,12 @@
 		<put-attribute name="title" value="보고자료 상세" />
 		<put-attribute name="content" value="/WEB-INF/views/reports/detail.jsp" />
 	</definition>
-	
+
 	<definition name="reports/edit" extends="Base">
 		<put-attribute name="title" value="보고자료  편집" />
 		<put-attribute name="content" value="/WEB-INF/views/reports/edit.jsp" />
 	</definition>
-	
+
 	<!-- 유저 관련 -->
 	<definition name="user/detail" extends="Base">
 		<put-attribute name="title" value="사용자 정보" />

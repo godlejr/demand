@@ -52,6 +52,11 @@ public class MainController {
 			
 		return "main/company";
 	}
+	
+	@RequestMapping(value = "/serviceDesign", method = RequestMethod.GET)
+	public String serviceDesign(Model model) throws Exception {
+		return "main/serviceDesign";
+	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model, @RequestParam(required = false) boolean isJoined) throws Exception {

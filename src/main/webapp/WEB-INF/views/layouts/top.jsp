@@ -37,12 +37,12 @@
 	<div class="section-gnb">
 		<ul>
 			<li><a href="${contextPath}/company">회사소개</a></li>
-			<li><a>서비스 디자인</a></li>
+			<li><a href="${contextPath}/serviceDesign">서비스 디자인</a></li>
 			<li><a>Health Care</a></li>
-			<li><a>IR</a></li>
-			<li><a>문의</a></li>
+			<li><a>뉴스 / IR</a></li>
+			<li><a>고객센터</a></li>
 			<c:if test="${sessionScope.user ne null}">
-				<li><a href="${contextPath}/reports"> Report</a></li>
+				<li><a href="${contextPath}/reports">업무보고</a></li>
 
 				<c:if test="${sessionUser.level eq 9}">
 					<li><a>관리</a></li>
@@ -71,13 +71,13 @@
 			</c:if>
 
 			<a href="${contextPath}/company"><li>회사소개</li></a>
-			<a><li>서비스 디자인</li></a>
+			<a href="${contextPath}/serviceDesign"><li>서비스 디자인</li></a>
 			<a><li>Health Care</li></a>
-			<a><li>IR</li></a>
-			<a><li>문의</li></a>
+			<a><li>뉴스 / IR</li></a>
+			<a><li>고객센터</li></a>
 			<c:choose>
 				<c:when test="${sessionScope.user ne null}">
-					<a href="${contextPath}/reports"><li>Report</li></a>
+					<a href="${contextPath}/reports"><li>업무보고</li></a>
 
 					<c:if test="${sessionUser.level eq 9}">
 						<a><li>관리</li></a>
@@ -116,4 +116,15 @@
 		var url = "${contextPath}/users/" + id;
 	    location.href = url; 
 	}
+	
+	var currentPathName = window.location.pathname;
+	
+	if(currentPathName == "${contextPath}/company"){
+		$( ".section-gnb ul li:first-child a" ).addClass( "current" );
+	}else if(currentPathName == "${contextPath}/serviceDesign"){
+		$( ".section-gnb ul li:nth-child(2) a" ).addClass( "current" );
+	}else{
+		//
+	}
+		
 </script>
