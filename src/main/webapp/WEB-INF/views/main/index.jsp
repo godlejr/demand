@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
+
 <div class="container-content">
 	<div class="section-video-banner">
 		<video muted="muted"  loop autoplay >
@@ -16,8 +18,8 @@
 					<div class="content-body">
 						<p>Demand의 목표는 인간 친화적인 디자인을 통해, <br> 사람들의 삶을 풍요롭게 만드는 것입니다</p>
 					</div>
-					<div class="content-button">
-		               <span>MORE</span>
+					<div class="content-button" onclick="javascript:navigateToCompany()">
+		               <span >MORE</span>
 		            </div>
 		           
 	            </div>
@@ -160,6 +162,12 @@
 </div>
 
 <script>
+
+function navigateToCompany(){
+	var url = "${contextPath}/company";
+    location.href = url; 
+}
+
 $('.section-video-banner video').on('loadedmetadata', function() {
     var $width, $height,
         $videoWidth = this.videoWidth,

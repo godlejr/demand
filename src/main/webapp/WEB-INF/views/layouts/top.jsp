@@ -36,7 +36,7 @@
 
 	<div class="section-gnb">
 		<ul>
-			<li><a>회사소개</a></li>
+			<li><a href="${contextPath}/company">회사소개</a></li>
 			<li><a>서비스 디자인</a></li>
 			<li><a>Health Care</a></li>
 			<li><a>IR</a></li>
@@ -70,7 +70,7 @@
 							${sessionUser.positionCategory.name}</span></li></a>
 			</c:if>
 
-			<a><li>회사소개</li></a>
+			<a href="${contextPath}/company"><li>회사소개</li></a>
 			<a><li>서비스 디자인</li></a>
 			<a><li>Health Care</li></a>
 			<a><li>IR</li></a>

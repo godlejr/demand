@@ -27,6 +27,11 @@
 		<put-attribute name="top" value="" />
 		<put-attribute name="content" value="/WEB-INF/views/main/join.jsp" />
 	</definition>
+	
+	<definition name="main/company" extends="Base">
+		<put-attribute name="title" value="회사소개 - 디맨드" />
+		<put-attribute name="content" value="/WEB-INF/views/main/company.jsp" />
+	</definition>
 
 
 	<!-- 리포트 관련 -->

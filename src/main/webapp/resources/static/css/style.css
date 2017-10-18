@@ -270,6 +270,149 @@ ol, ul, li {
 	z-index: 100;
 }
 
+.container-content .section-company-object{
+	padding: 0 5%;
+ 	background-color: #ececec;
+ 	display: flex;
+}
+
+.container-content .section-company-object .object-left{
+	padding: 10% 0;
+    z-index: 800;
+}
+
+.container-content .section-company-object .object-left .left-content p{
+	font-size: 18px;
+  	line-height: 1.71;
+	letter-spacing: -0.3px;
+	text-align: center;
+	color: #444;
+}
+
+.container-content .section-company-object .object-right{
+	display: none;
+}
+
+.container-content .section-company-object .object-right img{
+}
+
+.container-content .section-company-business-intro{
+	 background-color: #d02b29;
+ 	color: #fff;
+}
+
+.container-content .section-company-business-intro .intro-content {
+	display: flex;
+	color: #fff;
+	margin-bottom: 50px;
+}
+
+.container-content .section-company-business-intro .intro-content ul{
+	width: 100%;
+	text-align: center;
+}
+
+
+.container-content .section-company-business-intro .intro-content ul li {
+	display: inline-block;
+	margin: 1% 3%;
+}
+
+.container-content .section-company-business-intro .intro-content ul li:FIRST-CHILD{
+	margin: 1% 3% 1% 0;
+}
+
+.container-content .section-company-business-intro .intro-content ul li:LAST-CHILD{
+	margin: 1% 0% 1% 3%;
+}
+
+
+.container-content .section-company-business-intro .intro-content .content-item
+	{
+	max-width: 208px;
+}
+
+.container-content .section-company-business-intro .intro-content .content-item p,
+	.container-content .section-company-business-intro .intro-content .content-item h2
+	{
+	text-align: center;
+	margin: 0;
+ 	line-height: 1.71;
+  	letter-spacing: -0.3px;
+}
+
+.container-content .section-company-business-intro .intro-content .content-item img
+{
+	padding:22px;
+}
+
+
+.container-content .section-company-business-intro,
+.container-content .section-company-intro{
+	padding: 10% 5%;
+}
+
+.container-content .section-company-business-intro .intro-header,
+.container-content .section-company-intro .intro-header{
+    display: flex;
+    align-items: center;
+    padding: 30px 0px;
+}
+
+
+.container-content .section-company-intro .intro-header img {
+	width: 240px;
+  	height: 52px;
+    margin: 0 auto;
+}
+
+.container-content .section-company-intro .intro-content{
+
+}
+
+.container-content .section-company-intro .intro-content p{
+  font-size: 18px;
+  line-height: 1.71;
+  letter-spacing: -0.3px;
+  text-align: center;
+  color: #444;
+}
+
+
+.container-content .section-image-banner{
+	max-width: 100%;
+	z-index: 100;
+	height: 800px;
+	background: #eaeaea;
+	position: relative;
+}
+
+
+.section-image-banner .image-banner-content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: inherit;
+	bottom: auto;
+	color: #444;
+	width: 100%;
+	text-align: center;
+}
+
+.section-image-banner .image-banner-bottom i {
+	width: 30px;
+	font-size: 30px;
+	color: #444;
+	cursor: pointer;
+}
+
+.section-image-banner .image-banner-bottom {
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	bottom: 4%;
+}
+
 .section-video-banner .video-banner-content {
 	position: absolute;
 	top: 0;
@@ -1551,7 +1694,7 @@ ol, ul, li {
 	padding: 60px 10%;
 	color: #fff;
 	line-height: 25px;
-	background: #c0a179;
+	background: #444;
 	text-align: center;
 }
 
@@ -1568,10 +1711,22 @@ ol, ul, li {
 	.section-video-banner .video-banner-bottom {
 		bottom: 7%;
 	}
+	
 	.section-video-banner .video-banner-bottom i {
 		width: 50px;
 		font-size: 50px;
 	}
+	
+	.section-image-banner .image-banner-bottom {
+		bottom: 7%;
+	}
+	
+	.section-image-banner .image-banner-bottom i{
+		width: 50px;
+		font-size: 50px;
+	}
+	
+	
 	.container-content .section-promote-question-intro .intro-header .header-title h1,
 		.container-content .section-healthcare-intro .intro-header .header-title h1,
 		.container-content .section-design-intro .intro-header  .header-title h1,
@@ -1589,6 +1744,17 @@ ol, ul, li {
 		.container-content .section-design-intro .intro-header .header-title-sub
 		{
 		font-size: 22px;
+	}
+	
+	.container-content .section-company-intro .intro-content p{
+		font-size: 22px;
+	}
+	
+	.container-content .section-company-object .object-left .left-content p{
+		font-size: 22px;
+	}
+	.container-content .section-company-object{
+	    padding: 0 10%;
 	}
 	
 	/*report*/
@@ -1614,6 +1780,16 @@ ol, ul, li {
 		width: 80px;
 		font-size: 80px;
 	}
+	
+	.section-image-banner .image-banner-bottom {
+		bottom: 8%;
+	}
+	
+	.section-image-banner .image-banner-bottom i{
+		width: 80px;
+		font-size: 80px;
+	}
+	
 	.container-content .section-promote-question-intro .intro-header .header-title h1,
 		.container-content .section-healthcare-intro .intro-header .header-title h1,
 		.container-content .section-design-intro .intro-header  .header-title h1,
@@ -1674,6 +1850,33 @@ ol, ul, li {
 		.container-content .section-promote-question-intro .intro-content .content-right span
 		{
 		font-size: 70px;
+	}
+	
+	.container-content .section-company-intro .intro-content p{
+		font-size: 25px;
+	}
+	
+	.container-content .section-company-object .object-left .left-content p{
+		font-size: 25px;
+	    text-align: left; 
+	}
+	
+	.container-content .section-company-object .object-right{
+		display: block;
+	 	position: absolute;
+    	right: 0;
+		
+	}
+	
+	
+	.container-content .section-company-object{
+	    padding: 0 15%;
+	}
+	
+	.container-content .section-company-intro,
+	.container-content .section-company-business-intro{
+    	padding: 7% 15%;
+		
 	}
 
 	/*login*/
