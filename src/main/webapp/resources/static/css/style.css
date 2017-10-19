@@ -386,7 +386,7 @@ ol, ul, li {
 .container-content .section-image-banner{
 	max-width: 100%;
 	z-index: 100;
-	height: 800px;
+	height: 300px;
 	background: #eaeaea;
 	position: relative;
 }
@@ -458,7 +458,8 @@ ol, ul, li {
 .container-content .section-servicedesign-factory .factory-content img,
 .container-content .section-servicedesign-fiveworkshop .fiveworkshop-content img,
 .container-content .section-servicedesign-tenworkshop .tenworkshop-content img{
-   display:none;
+     	margin: 30px auto;
+    width: 100%;
 }
 
 .container-content .section-servicedesign-process {
@@ -1875,6 +1876,10 @@ ol, ul, li {
 	    padding: 0 10%;
 	}
 	
+	.container-content .section-image-banner{
+		height: 500px
+	}
+	
 	/*report*/
 	.content-body .section-report-list .report-list-bottom .section-pagination  a
 		{
@@ -1942,14 +1947,6 @@ ol, ul, li {
 	.container-content .section-servicedesign-tenworkshop .tenworkshop-header .header-title-sub p
 	{
 	   font-size: 22px;
-	}
-	
-	.container-content .section-servicedesign-factory .factory-content img,
-	.container-content .section-servicedesign-fiveworkshop .fiveworkshop-content img,
-	.container-content .section-servicedesign-tenworkshop .tenworkshop-content img{
-		display:block;
-		margin:30px auto;
-		width: 100%;
 	}
 	
 	.top-content .section-logo {
@@ -2022,6 +2019,10 @@ ol, ul, li {
 	.container-content .section-company-business-intro{
     	padding: 7% 15%;
 		
+	}
+	
+	.container-content .section-image-banner{
+		height: 650px
 	}
 
 	/*login*/
