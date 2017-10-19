@@ -407,6 +407,60 @@ ol, ul, li {
    color: #444;
 }
 
+.container-content .section-servicedesign-factory ,
+.container-content .section-servicedesign-fiveworkshop,
+.container-content .section-servicedesign-tenworkshop
+{
+   padding: 10% 5%;
+}
+
+.container-content .section-servicedesign-factory .factory-header .header-title,
+.container-content .section-servicedesign-tenworkshop .tenworkshop-header .header-title{
+   text-align: center;
+   color:#444;
+}
+
+.container-content .section-servicedesign-intro .intro-content p,
+.container-content .section-servicedesign-factory .factory-header .header-title-sub p,
+.container-content .section-servicedesign-tenworkshop .tenworkshop-header .header-title-sub p{
+   font-size: 18px;
+   line-height: 1.71;
+   letter-spacing: -0.3px;
+   text-align: center;
+   color: #444;
+}
+
+.container-content .section-servicedesign-fiveworkshop{
+   background-color: #3a3a3a;
+}
+
+
+.container-content .section-servicedesign-fiveworkshop .fiveworkshop-header .header-title{
+   color:white;
+   text-align: center;
+}
+
+.container-content .section-servicedesign-fiveworkshop .fiveworkshop-header .header-title-sub p{
+   font-size: 18px;
+   line-height: 1.71;
+   letter-spacing: -0.3px;
+   text-align: center;
+   color: #fff;
+}
+
+.container-content .section-servicedesign-factory .factory-content,
+.container-content .section-servicedesign-fiveworkshop .fiveworkshop-content,
+.container-content .section-servicedesign-tenworkshop .tenworkshop-content
+{
+   display:flex;
+}
+
+.container-content .section-servicedesign-factory .factory-content img,
+.container-content .section-servicedesign-fiveworkshop .fiveworkshop-content img,
+.container-content .section-servicedesign-tenworkshop .tenworkshop-content img{
+   display:none;
+}
+
 .container-content .section-servicedesign-process {
    background: url(../img/main/design_background.png);
    background-size: cover;
@@ -1807,11 +1861,15 @@ ol, ul, li {
 	.container-content .section-company-object .object-left .left-content p{
 		font-size: 20px;
 	}
-	 .container-content .section-servicedesign-intro .intro-content p,
-      .container-content .section-servicedesign-process .process-content ul li .content-item .item-content p
-      {
-      font-size: 20px;
-   }
+	.container-content .section-servicedesign-intro .intro-content p,
+	.container-content .section-servicedesign-process .process-content ul li .content-item .item-content p,
+	.container-content .section-servicedesign-factory .factory-header .header-title-sub p,
+	.container-content .section-servicedesign-fiveworkshop .fiveworkshop-header .header-title-sub p,
+	.container-content .section-servicedesign-tenworkshop .tenworkshop-header .header-title-sub p
+	{
+	   font-size: 20px;
+	}
+	
 	
 	.container-content .section-company-object{
 	    padding: 0 10%;
@@ -1868,15 +1926,31 @@ ol, ul, li {
 		font-size: 22px;
 	}
 	
-	.container-content .section-servicedesign-process, .container-content .section-servicedesign-intro
-      {
-      padding: 7% 15%;
-   }
-   .container-content .section-servicedesign-intro .intro-content p,
-      .container-content .section-servicedesign-process .process-content ul li .content-item .item-content p
-      {
-      font-size: 22px;
-   }
+	.container-content .section-servicedesign-process, 
+	.container-content .section-servicedesign-intro,
+	.container-content .section-servicedesign-factory,
+	.container-content .section-servicedesign-fiveworkshop,
+	.container-content .section-servicedesign-tenworkshop 
+	{
+	   padding: 7% 15%;
+	}
+
+	.container-content .section-servicedesign-intro .intro-content p,
+	.container-content .section-servicedesign-process .process-content ul li .content-item .item-content p,
+	.container-content .section-servicedesign-factory .factory-header .header-title-sub p,
+	.container-content .section-servicedesign-fiveworkshop .fiveworkshop-header .header-title-sub p,
+	.container-content .section-servicedesign-tenworkshop .tenworkshop-header .header-title-sub p
+	{
+	   font-size: 22px;
+	}
+	
+	.container-content .section-servicedesign-factory .factory-content img,
+	.container-content .section-servicedesign-fiveworkshop .fiveworkshop-content img,
+	.container-content .section-servicedesign-tenworkshop .tenworkshop-content img{
+		display:block;
+		margin:30px auto;
+		width: 100%;
+	}
 	
 	.top-content .section-logo {
 		margin: 0 0 0 30px;
