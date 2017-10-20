@@ -59,7 +59,8 @@
 						<img class="item-image"
 							src="<c:url value='/resources/static/img/main/svc_dsg.png' />">
 						<h2 class="item-title">서비스디자인</h2>
-						<p>자체 개발한 서비스경험디자인 방법론을 바탕으로 , 세계 최고의 기업을 대상으로 서비스디자인 컨설팅을 수행합니다.</p>
+						<p>자체 개발한 서비스경험디자인 방법론을 바탕으로 , 세계 최고의 기업을 대상으로 서비스디자인 컨설팅을
+							수행합니다.</p>
 					</div>
 				</li>
 				<li>
@@ -75,7 +76,7 @@
 						<img class="item-image"
 							src="<c:url value='/resources/static/img/main/randd.png' />">
 						<h2 class="item-title">정부 R&D 사업</h2>
-						<p>서비스디자인을 바탕으로 정부 R&D사업을 수행하여 사용자 조사 및 다양한 서비스 모델을 개발합니다. </p>
+						<p>서비스디자인을 바탕으로 정부 R&D사업을 수행하여 사용자 조사 및 다양한 서비스 모델을 개발합니다.</p>
 					</div>
 				</li>
 				<li>
@@ -83,23 +84,31 @@
 						<img class="item-image"
 							src="<c:url value='/resources/static/img/main/tech.png' />">
 						<h2 class="item-title">기술 사업화</h2>
-						<p>정부 R&D 사업을 통해 개발된 기술 및 자원을 활용하여 사업화를 진행합니다. </p>
+						<p>정부 R&D 사업을 통해 개발된 기술 및 자원을 활용하여 사업화를 진행합니다.</p>
 					</div>
 				</li>
 			</ul>
 		</div>
 	</div>
-	
-	<div class="section-company-partners">
-	
+
+	<div class="section-company-contact">
+		<div class="contact-header">
+			<h1>찾아오시는 길</h1>
+		</div>
+
+		<div class="contact-content">
+			<iframe frameborder="0" style="border: 0"
+				src="https://www.google.com/maps/embed/v1/place?key=${googleMapApiKey}&q=디맨드,경기도+성남시"
+				allowfullscreen> </iframe>
+		</div>
 	</div>
 
 </div>
 
 <script>
-$("#arrow").click(function(){
-    $('html, body').animate({
-       scrollTop: $(".section-company-intro").offset().top
-    }, 600);
- });
+	$("#arrow").click(function() {
+		$('html, body').animate({
+			scrollTop : $(".section-company-intro").offset().top
+		}, 600);
+	});
 </script>

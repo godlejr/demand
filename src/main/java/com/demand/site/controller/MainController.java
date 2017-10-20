@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -40,6 +41,9 @@ public class MainController {
 
 	@Autowired
 	private ReportService reportService;
+	
+	@Value("#{google['google.map.key']}")
+	private String GOOGLE_MAP_API_KEY;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Locale locale, Model model) throws Exception {
@@ -49,7 +53,8 @@ public class MainController {
 	
 	@RequestMapping(value = "/company", method = RequestMethod.GET)
 	public String company(Model model) throws Exception {
-			
+		
+		model.addAttribute("googleMapApiKey", GOOGLE_MAP_API_KEY);
 		return "main/company";
 	}
 	

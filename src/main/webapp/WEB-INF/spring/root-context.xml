@@ -21,6 +21,9 @@
 	<aop:aspectj-autoproxy />
 
 	<!-- 프로퍼티 설정 -->
+	<util:properties id="google"
+		location="/WEB-INF/properties/google.properties" />
+	
 	<util:properties id="db"
 		location="/WEB-INF/properties/database.properties" />
 
