@@ -286,7 +286,7 @@ ol, ul, li {
 }
 
 .container-content .section-company-object .object-left .left-content p{
-	font-size: 18px;
+	font-size: 14px;
   	line-height: 1.71;
 	letter-spacing: -0.3px;
 	text-align: center;
@@ -298,6 +298,47 @@ ol, ul, li {
 }
 
 .container-content .section-company-object .object-right img{
+}
+
+.container-content .section-company-ceo-intro {
+   background-color: #3a3a3a;
+   display: inline-block;
+    width: 100%;
+    padding:10% 15%;
+    position: relative;
+}
+
+.container-content .section-company-ceo-intro .intro-content .content-left{
+   float:left;
+}
+
+.container-content .section-company-ceo-intro .intro-content .content-left img{
+    display:none;
+}
+
+.container-content .section-company-ceo-intro .intro-content .content-right{
+   float:right;
+}
+
+.container-content .section-company-ceo-intro .intro-content .content-right .right-header{
+   
+}
+
+.container-content .section-company-ceo-intro .intro-content .content-right .right-header h1{
+    color: #fff;
+   
+}
+
+.container-content .section-company-ceo-intro .intro-content .content-right .right-content{
+   
+   
+}
+
+.container-content .section-company-ceo-intro .intro-content .content-right .right-content p{
+   color: #fff;
+    font-size: 14px;
+    line-height: 1.71;
+    letter-spacing: -0.3px;
 }
 
 .container-content .section-company-business-intro{
@@ -386,7 +427,7 @@ ol, ul, li {
 }
 
 .container-content .section-company-intro .intro-content p{
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.71;
   letter-spacing: -0.3px;
   text-align: center;
@@ -411,7 +452,7 @@ ol, ul, li {
 }
 
 .container-content .section-servicedesign-intro .intro-content p {
-   font-size: 18px;
+   font-size: 14px;
    line-height: 1.71;
    letter-spacing: -0.3px;
    text-align: center;
@@ -434,7 +475,7 @@ ol, ul, li {
 .container-content .section-servicedesign-intro .intro-content p,
 .container-content .section-servicedesign-factory .factory-header .header-title-sub p,
 .container-content .section-servicedesign-tenworkshop .tenworkshop-header .header-title-sub p{
-   font-size: 18px;
+   font-size: 14px;
    line-height: 1.71;
    letter-spacing: -0.3px;
    text-align: center;
@@ -452,7 +493,7 @@ ol, ul, li {
 }
 
 .container-content .section-servicedesign-fiveworkshop .fiveworkshop-header .header-title-sub p{
-   font-size: 18px;
+   font-size: 14px;
    line-height: 1.71;
    letter-spacing: -0.3px;
    text-align: center;
@@ -474,7 +515,7 @@ ol, ul, li {
 }
 
 .container-content .section-servicedesign-process {
-   background: url(../img/main/design_background.png);
+   background: url(../img/main/servicedesign_background.png);
    background-size: cover;
    background-repeat: no-repeat;
    background-position: center;
@@ -492,7 +533,7 @@ ol, ul, li {
 
 .container-content .section-servicedesign-process .process-content ul li .content-item .item-content p
    {
-   font-size: 18px;
+   font-size: 14px;
    line-height: 1.71;
    letter-spacing: -0.3px;
    color: #444;
@@ -587,7 +628,7 @@ ol, ul, li {
 
 .section-video-banner .video-banner-content .section-demand-intro .intro-content .content-body p
 	{
-	font-size: 18px;
+	font-size: 14px;
 	line-height: 1.71;
 	text-align: center;
 	color: #3c3c3c;
@@ -597,7 +638,7 @@ ol, ul, li {
 	.container-content .section-healthcare-intro .intro-header .header-title-sub,
 	.container-content .section-design-intro .intro-header .header-title-sub
 	{
-	font-size: 18px;
+	font-size: 14px;
 	margin-top: 40px;
 	line-height: 1.71;
 }
@@ -741,7 +782,7 @@ ol, ul, li {
 
 .container-content .section-healthcare-intro .intro-content .content-item p
 	{
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 28px;
 	color: #444;
 }
@@ -798,6 +839,34 @@ ol, ul, li {
 	margin: 0 auto;
 	font-weight: 600;
 	font-size: 40px;
+}
+
+.container-content .section-customercenter-navi{
+	display: flex;
+	background-color: #c1a077;
+}
+
+.container-content .section-customercenter-navi ul{
+	margin: 0 auto;
+}
+
+.container-content .section-customercenter-navi ul li{
+	float: left;
+ 	width: 160px;
+ 	height: 60px;
+ 	display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container-content .section-customercenter-navi ul li a{
+	margin: 0 auto;
+	color: #ffffff;
+	font-size: 18px;
+}
+
+.section-customercenter-navi ul .current{
+	background-color: #8d7456;
 }
 
 /*login*/
@@ -1857,21 +1926,22 @@ ol, ul, li {
 	
 	.section-video-banner .video-banner-content .section-demand-intro .intro-content .content-body p
 		{
-		font-size: 20px;
+		font-size: 16px;
 	}
 	.container-content .section-promote-question-intro .intro-header .header-title-sub,
 		.container-content .section-healthcare-intro .intro-header .header-title-sub,
 		.container-content .section-design-intro .intro-header .header-title-sub
 		{
-		font-size: 20px;
+		font-size: 16px;
 	}
 	
 	.container-content .section-company-intro .intro-content p{
-		font-size: 20px;
+		font-size: 16px;
 	}
 	
+	.container-content .section-company-ceo-intro .intro-content .content-right .right-content p,
 	.container-content .section-company-object .object-left .left-content p{
-		font-size: 20px;
+		font-size: 16px;
 	}
 	.container-content .section-servicedesign-intro .intro-content p,
 	.container-content .section-servicedesign-process .process-content ul li .content-item .item-content p,
@@ -1879,7 +1949,10 @@ ol, ul, li {
 	.container-content .section-servicedesign-fiveworkshop .fiveworkshop-header .header-title-sub p,
 	.container-content .section-servicedesign-tenworkshop .tenworkshop-header .header-title-sub p
 	{
-	   font-size: 20px;
+	   font-size: 16px;
+	}
+	.container-content .section-customercenter-navi ul li a{
+		font-size: 16px;
 	}
 	
 	
@@ -1893,6 +1966,9 @@ ol, ul, li {
 	
 	.container-content .section-company-contact .contact-content iframe{
 		height: 400px;
+	}
+	.container-content .section-customercenter-navi ul li{
+		width: 180px;
 	}
 	
 	/*report*/
@@ -1928,6 +2004,10 @@ ol, ul, li {
 		font-size: 80px;
 	}
 	
+	.container-content .section-customercenter-navi ul li{
+		width:200px;
+	}
+	
 	.container-content .section-promote-question-intro .intro-header .header-title h1,
 		.container-content .section-healthcare-intro .intro-header .header-title h1,
 		.container-content .section-design-intro .intro-header  .header-title h1,
@@ -1937,20 +2017,26 @@ ol, ul, li {
 	}
 	.section-video-banner .video-banner-content .section-demand-intro .intro-content .content-body p
 		{
-		font-size: 22px;
+		font-size: 18px;
 	}
+	
+	.container-content .section-customercenter-navi ul li a{
+		font-size: 18px;
+	}
+	
 	.container-content .section-promote-question-intro .intro-header .header-title-sub,
 		.container-content .section-healthcare-intro .intro-header .header-title-sub,
 		.container-content .section-design-intro .intro-header .header-title-sub
 		{
-		font-size: 22px;
+		font-size: 18px;
 	}
 	
 	.container-content .section-servicedesign-process, 
 	.container-content .section-servicedesign-intro,
 	.container-content .section-servicedesign-factory,
 	.container-content .section-servicedesign-fiveworkshop,
-	.container-content .section-servicedesign-tenworkshop 
+	.container-content .section-servicedesign-tenworkshop ,
+	  .container-content .section-company-ceo-intro
 	{
 	   padding: 7% 15%;
 	}
@@ -1959,10 +2045,26 @@ ol, ul, li {
 	.container-content .section-servicedesign-process .process-content ul li .content-item .item-content p,
 	.container-content .section-servicedesign-factory .factory-header .header-title-sub p,
 	.container-content .section-servicedesign-fiveworkshop .fiveworkshop-header .header-title-sub p,
-	.container-content .section-servicedesign-tenworkshop .tenworkshop-header .header-title-sub p
+	.container-content .section-servicedesign-tenworkshop .tenworkshop-header .header-title-sub p,
+	.container-content .section-company-ceo-intro .intro-content .content-right .right-content p
 	{
-	   font-size: 22px;
+	   font-size: 18px;
 	}
+	
+	.container-content .section-company-ceo-intro .intro-content .content-left img {
+     	display:block;
+     	position: absolute;
+    	bottom: 0;
+ 		width:440px;
+	 }
+	  
+     .container-content .section-company-ceo-intro .intro-content .content-left{
+	     width:50%
+	  }
+	  
+  	.container-content .section-company-ceo-intro .intro-content .content-right{
+	     width:50%
+	  }
 	
 	.top-content .section-logo {
 		margin: 0 0 0 30px;
@@ -2010,11 +2112,11 @@ ol, ul, li {
 	}
 	
 	.container-content .section-company-intro .intro-content p{
-		font-size: 22px;
+		font-size: 18px;
 	}
 	
 	.container-content .section-company-object .object-left .left-content p{
-		font-size: 22px;
+		font-size: 18px;
 	    text-align: left; 
 	}
 	

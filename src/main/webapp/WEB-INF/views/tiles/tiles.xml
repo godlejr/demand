@@ -37,6 +37,11 @@
 		<put-attribute name="title" value="서비스디자인 - 디맨드" />
 		<put-attribute name="content" value="/WEB-INF/views/main/serviceDesign.jsp" />
 	</definition>
+	
+	<definition name="main/notice" extends="Base">
+		<put-attribute name="title" value="고객센터 - 디맨드" />
+		<put-attribute name="content" value="/WEB-INF/views/main/notice.jsp" />
+	</definition>
 
 	<!-- 리포트 관련 -->
 	<definition name="reports/list" extends="Base">

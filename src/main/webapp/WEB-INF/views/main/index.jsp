@@ -5,7 +5,7 @@
 
 <div class="container-content">
 	<div class="section-video-banner">
-		<video muted="muted"  loop autoplay >
+		<video id="video" muted="muted"  loop autoplay >
 			<source  src="<c:url value='/resources/static/video/main/main_banner.mp4' />">
 		</video>
 		
@@ -173,7 +173,7 @@ function navigateToServiceDesign(){
     location.href = url;
 }
 
-$('.section-video-banner video').on('loadedmetadata', function() {
+$('#video').on('loadedmetadata', function() {
     var $width, $height,
         $videoWidth = this.videoWidth,
         $videoHeight = this.videoHeight,
@@ -188,12 +188,12 @@ $('.section-video-banner video').on('loadedmetadata', function() {
                     
         $adjustRatio = $aspectRatio / $boxRatio;
                     
-        $('#section-video-banner').css({'width' : $width+'px', 'height' : $height+'px'}); 
+        $('.section-video-banner').css({'width' : $width+'px', 'height' : $height+'px'}); 
                     
         if($boxRatio < $aspectRatio) { 
-            $vid = $('.section-video-banner video').css({'width' : $width*$adjustRatio+'px'}); 
+            $vid = $('#video').css({'width' : $width*$adjustRatio+'px'}); 
         } else {
-            $vid = $('.section-video-banner video').css({'width' : $width+'px'});
+            $vid = $('#video').css({'width' : $width+'px'});
         }
 
     })();

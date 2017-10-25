@@ -4,13 +4,12 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page session="false"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
 
 
 <div class="container-content">
-	<div class="section-image-banner">
+	<div class="section-image-banner" style="background: url('<c:url value='/resources/static/img/main/servicedesign_banner.png' />'); background-size: cover; background-repeat: no-repeat; background-position: center;">
 		<div class="image-banner-header"></div>
 
 		<div class="image-banner-content"></div>

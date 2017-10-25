@@ -7,7 +7,6 @@
 	<c:set var="sessionUser" value="${sessionScope.user}"></c:set>
 </c:if>
 
-
 <div class="top-content">
 	<div class="section-logo">
 		<a href="${contextPath}/"> <img id="logo-image"
@@ -40,7 +39,7 @@
 			<li><a href="${contextPath}/serviceDesign">서비스 디자인</a></li>
 			<li><a>Health Care</a></li>
 			<li><a>뉴스 / IR</a></li>
-			<li><a>고객센터</a></li>
+			<li><a href="${contextPath}/notice">고객센터</a></li>
 			<c:if test="${sessionScope.user ne null}">
 				<li><a href="${contextPath}/reports">업무보고</a></li>
 
@@ -74,7 +73,7 @@
 			<a href="${contextPath}/serviceDesign"><li>서비스 디자인</li></a>
 			<a><li>Health Care</li></a>
 			<a><li>뉴스 / IR</li></a>
-			<a><li>고객센터</li></a>
+			<a href="${contextPath}/notice"><li>고객센터</li></a>
 			<c:choose>
 				<c:when test="${sessionScope.user ne null}">
 					<a href="${contextPath}/reports"><li>업무보고</li></a>
@@ -125,6 +124,8 @@
 		$( ".section-gnb ul li:nth-child(2) a" ).addClass( "current" );
 	}else if(currentPathName == "${contextPath}/reports"){
 		$( ".section-gnb ul li:nth-child(6) a" ).addClass( "current" );
+	}else if(currentPathName == "${contextPath}/customerCenter"){
+		$( ".section-gnb ul li:nth-child(5) a" ).addClass( "current" );
 	}else{
 		//
 	}

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container-content">
-	<div class="section-image-banner">
+	<div class="section-image-banner" style="background: url('<c:url value='/resources/static/img/main/company_banner.png' />'); background-size: cover; background-repeat: no-repeat; background-position: center;">
 		<div class="image-banner-header"></div>
 
 		<div class="image-banner-content"></div>
@@ -40,11 +40,39 @@
 					친화적인 세상을 구현하는 것이 저희의 목표입니다.
 				</p>
 			</div>
+
 		</div>
 
 		<div class="object-right">
 			<img
 				src="<c:url value='/resources/static/img/main/company_object_banner.png' />">
+		</div>
+	</div>
+
+	<div class="section-company-ceo-intro">
+		<div class="intro-content">
+			<div class="content-left">
+				<img
+					src="<c:url value='/resources/static/img/main/company_ceo_banner.png' />">
+			</div>
+
+			<div class="content-right">
+				<div class="right-header">
+					<h1>CEO MESSAGE</h1>
+				</div>
+				<div class="right-content">
+					<p>
+						안녕하세요. 저희는 서비스디자인을 전문으로하는 기업으로 2014년 창업 이래 서비스디자인이라는 독특한 영역을 한국에서
+						새롭게 개척해 왔고, 2015년에는 서비스디자인 분야에서의 공헌을 인정받아 정부로 부터 ‘국민훈장 목련장’을
+						수훈했으며, 2017년에는 헬스케어서비스 분야에서의 디자인의 우수성을 인정받아 독일에서 ‘2017 iF Design
+						Award’ 수상하기에 이르렀습니다. 근래에는, 이러한 노력의 결실로 저희들이 디자인하고 개발한 헬스케어 서비스
+						플랫폼인 ‘웰패밀리하우스’를 제공하고 있습니다.<br /> <br /> 당사의 비전인 ‘Design Human
+						Life’라는 슬로건 아래 사람들의 일상 생활이 즐거움으로 가득차고, 즐거움 속에서 건강한 삶을 이루는 Life
+						Fun의 세상을 만드는 것에 더욱 헌신토록 하겠습니다. 감사합니다.<br /> <br /> (주) 디맨드 대표이사<br />
+						김 광 순 배상
+					</p>
+				</div>
+			</div>
 		</div>
 	</div>
 
