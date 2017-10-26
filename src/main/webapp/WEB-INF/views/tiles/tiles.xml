@@ -45,7 +45,7 @@
 	</definition>
 	
 	<definition name="notice/new" extends="Base">
-		<put-attribute name="title" value="보고자료 생성" />
+		<put-attribute name="title" value="공지사항 생성" />
 		<put-attribute name="content" value="/WEB-INF/views/notice/new.jsp" />
 	</definition>
 
