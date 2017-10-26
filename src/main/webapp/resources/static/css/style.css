@@ -900,7 +900,7 @@ ol, ul, li {
 .content-body .section-notice-list .notice-list-header{
     display: inline-block;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .content-body .section-notice-list .notice-list-header .section-write{
@@ -1038,6 +1038,79 @@ ol, ul, li {
 	background-color: #c1a077;
 	color:#fff;
 }
+
+.content-body .section-notice-list .notice-list-content  table{
+	width: 100%;
+	border: 1px solid #e2e2e2;
+	border-top: 1px solid #e2e2e2;
+	background-color: #fff;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody td{
+	height: 35px;
+	color: #444;
+	padding: 10px;
+	text-align: center;
+	border-left: 1px solid #e2e2e2;
+	border-top: 1px solid #e2e2e2;
+	border-left: 1px solid #e2e2e2;
+}
+
+
+.content-body .section-notice-list .notice-list-content table thead{
+	background-color: #f2f2f2;
+}
+
+.content-body .section-notice-list .notice-list-content table thead th{
+	height: 40px;
+    color: #515151;
+  	 border-left: 1px solid #e2e2e2;
+}
+
+
+.content-body .section-notice-list .notice-list-content table tbody td:NTH-CHILD(3) span
+	{
+	cursor: pointer;
+}
+.content-body .section-notice-list .notice-list-content  table thead th:NTH-CHILD(3)
+	{
+	width: 60%;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody tr:NTH-CHILD(2n){
+	background-color: #fbfbfb;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody td:NTH-CHILD(3) span:hover
+	{
+	text-decoration: underline;
+}
+
+
+.content-body .section-notice-list .notice-list-bottom .section-pagination
+	{
+	text-align: center;
+	font-size: 15px;
+	font-weight: 700;
+	margin-top: 20px;
+	height: 50px;
+}
+
+.content-body .section-notice-list .notice-list-bottom .section-pagination span
+	{
+	
+}
+
+.content-body .section-notice-list .notice-list-bottom .section-pagination  a
+	{
+	background: #fff;
+	padding: 3px;
+	border: 1px solid #dee3eb;
+	color: #1b1b1b;
+	margin-left: 5px;
+}
+
+
 
 .content-body .section-notice .notice-content {
 	position: relative;
@@ -1581,6 +1654,22 @@ ol, ul, li {
 	color: #fff;
 }
 
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-notice{
+	    padding: 10px;
+    display: inline-block;
+    max-width: 200px;
+    margin: 10px;
+    border: 1px solid;
+    cursor: pointer;
+    color: #c0a179;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-notice:hover{
+	background: #c0a179;
+	color: #fff;
+}
+
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-notice .notice-image,
 .content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-promotion .promotion-image,
 .content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-report .report-image{
 	display: flex;
@@ -1588,6 +1677,7 @@ ol, ul, li {
     width: 100px;
 }
 
+.content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-notice .notice-image i,
 .content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-promotion .promotion-image i,
 .content-body .section-user-info .user-info-header .header-content .section-user-wirte .user-write-content .content-report .report-image i{
 	font-size: 50px;

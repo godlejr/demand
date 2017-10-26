@@ -1,6 +1,9 @@
 package com.demand.site.common.entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -103,6 +106,40 @@ public class Notice extends Base {
 
 	public void setNoticeFiles(List<NoticeFile> noticeFiles) {
 		this.noticeFiles = noticeFiles;
+	}
+	
+	public String getCustomCreatedAt() {
+		return calculateDate(this.getCreatedAt());
+	}
+	
+	public String calculateDate(String dateTime) {
+		String message = null;
+
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = null;
+
+		try {
+			date = simpleDateFormat.parse(dateTime);
+			long currentTime = System.currentTimeMillis();
+			long registeredTime = date.getTime();
+			long differentOfTime = (currentTime - registeredTime) / 1000;
+
+			if (differentOfTime < 60) {
+				message = differentOfTime + "초전";
+			} else if ((differentOfTime /= 60) < 60) {
+				message = differentOfTime + "분전";
+			} else if ((differentOfTime /= 60) < 24) {
+				message = (differentOfTime) + "시간전";
+			} else if ((differentOfTime /= 24) < 7) {
+				message = (differentOfTime) + "일전";
+			} else {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 M월 d일");
+				message = dateFormat.format(date);
+			}
+		} catch (ParseException e) {
+			message = "알수없음";
+		}
+		return message;
 	}
 
 }

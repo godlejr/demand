@@ -4,6 +4,8 @@ import java.io.InputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,19 +24,19 @@ import com.demand.site.service.NoticeService;
 
 @Service
 public class NoticeServiceImpl implements NoticeService {
-	
+
 	@Autowired
 	private NoticeRepository noticeRepository;
-	
-	@Autowired 
+
+	@Autowired
 	private FileRepository fileRepository;
-	
+
 	@Autowired
 	private NoticeFileRepository noticeFileRepositorsy;
-	
+
 	@Autowired
 	private AwsS3Util awsS3Util;
-	
+
 	@Value("#{aws['aws.s3.file.notice.url']}")
 	private String NOTICE_FILE_URL;
 
@@ -49,10 +51,10 @@ public class NoticeServiceImpl implements NoticeService {
 		if (isNotification) {
 			notice.setType(NoticeFlag.NOTIFICATION_TYPE);
 		}
-		
+
 		NoticeCategory noticeCategory = new NoticeCategory();
 		noticeCategory.setId(noticeCategoryId);
-		
+
 		notice.setNoticeCategory(noticeCategory);
 
 		noticeRepository.saveAndFlush(notice);
@@ -85,5 +87,11 @@ public class NoticeServiceImpl implements NoticeService {
 
 		}
 	}
-	
+
+	@Override
+	public Page<Notice> getNoticesByNoticeCategoryIdAndSearchAndPageable(long noticeCategoryId, String search,
+			Pageable pageable) throws Exception {
+		return noticeRepository.findAllByNoticeCategoryIdAndSearchAndPageable(noticeCategoryId, search, pageable);
+	}
+
 }

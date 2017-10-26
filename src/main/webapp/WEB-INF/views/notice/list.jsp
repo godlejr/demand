@@ -6,7 +6,13 @@
 
 <c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
 <c:set var="sessionUser" value="${sessionScope.user}"></c:set>
+<c:set var="notices" value="${noticePage.getContent()}"></c:set>
+<c:set var="noticeCurrentPage" value="${noticePage.getNumber() + 1}"></c:set>
+<c:set var="noticeTotalPageNumber" value="${noticePage.getTotalPages()}"></c:set>
 
+<c:if test="${chosenNoticeCategory ne null }">
+	<c:set var="chosenNoticeCategoryId" value="${chosenNoticeCategory.id}"></c:set>
+</c:if>
 
 <div class="container-content" style="background: #f5f5f5;">
 	<jsp:include page="../main/customerCenterNavigator.jsp" flush="true" />
@@ -45,7 +51,7 @@
 
 						<c:forEach var="noticeCategory" items="${noticeCategories }">
 							<c:choose>
-								<c:when test="${noticeCategory.id eq chosenNoticeCategory.id }">
+								<c:when test="${noticeCategory.id eq chosenNoticeCategoryId}">
 									<li><a class="current" href="${contextPath}/notices?noticeCategoryId=${noticeCategory.id}">${noticeCategory.name} </a></li>
 								</c:when>
 								<c:otherwise>
@@ -97,15 +103,92 @@
 				</div>
 			</div>
 
-			<div class="notice-list-content"></div>
+			<div class="notice-list-content">
+				<table summary="번호, 제목, 작성일, 작성자, 조회수 ">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Category</th>
+							<th>Title</th>
+							<th>Date</th>
+						</tr>
+					</thead>
 
-			<div class="notice-list-bottom"></div>
+					<tbody>
+						<c:forEach var="notice" items="${notices}">
+							<tr>
+								<td>${notice.id }</td>
+								<td>${notice.noticeCategory.name }</td>
+								<c:choose>
+					                <c:when test="${report.type eq 1}">
+				                		<td class="notification" >
+				                			<span onclick="javascript:navigateToNoticeDetail(${notice.id})">[공지] ${notice.title }</span>
+				                		</td>
+					                </c:when>
+					                <c:otherwise>
+					                	<td>
+					                		<span onclick="javascript:navigateToNoticeDetail(${notice.id})">${notice.title}</span>
+					                	</td>
+					                </c:otherwise>
+					            </c:choose>
+								<td>${notice.getCustomCreatedAt() }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="notice-list-bottom">
+				<div class="section-pagination">
+ 
+				    <c:if test="${noticeCurrentPage ne 1}">
+				        <a href="javascript:paginate(${noticeCurrentPage - 1})" class="prev">이전</a>
+				    </c:if>
+				    
+				    <span>
+				        <c:forEach var="i" begin="${startPageNo}" end="${endPageNo}" step="1">
+				            <c:choose>
+				                <c:when test="${i eq noticeCurrentPage}">
+				                    <b><font size=+2>
+				                            <a href="javascript:paginate(${i})" class="choice">${i}</a>
+				                        </font>
+				                    </b>
+				                </c:when>
+				                <c:otherwise>
+				                    <a href="javascript:paginate(${i})">${i}</a>
+				                </c:otherwise>
+				            </c:choose>
+				        </c:forEach>
+				    </span>
+				    
+				    <c:if test="${noticeCurrentPage ne noticeTotalPageNumber}">
+				        <a href="javascript:paginate( ${noticeCurrentPage + 1})" class="next">다음</a>
+				    </c:if>
+				 
+				</div>	
+			</div>
 		</div>
 	</div>
 </div>
 
 
 <script>
+	var chosenNoticeCategoryId = "${chosenNoticeCategoryId}";
+
+	function paginate(pageNo){    
+		var page = pageNo -1;
+		var url = "${contextPath}/notices?page=" + page;
+		if(chosenNoticeCategoryId != ""){
+			url = "${contextPath}/notices?page=" + page + "&noticeCategoryId=" + chosenNoticeCategoryId;
+		}
+		
+	    location.href = url;    
+	}
+	
+	$('.search-submit').click(function(){
+		search();
+	});
+	
 	$('.selector-button').click(function() {
 		var self = this;
 		$('.selector-filter').slideToggle();
@@ -116,11 +199,19 @@
 		var url = "${contextPath}/notices/new" ;
 	 	location.href = url; 
 	}
+	
+	function navigateToNoticeDetail(id){
+		var url = "${contextPath}/notices/" +id;
+	 	location.href = url; 
+	}
 
 	function search() {
 		var search = $(document.getElementById('search-text')).val();
-
 		var url = "${contextPath}/notices?search=" + search;
+
+		if(chosenNoticeCategoryId != ""){
+			url = "${contextPath}/notices?search=" + search + "&noticeCategoryId=" + chosenNoticeCategoryId;
+		}
 		location.href = url;
 	}
 </script>

@@ -27,11 +27,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.demand.site.common.annotation.EmployeeRequired;
 import com.demand.site.common.dto.ErrorMessage;
+import com.demand.site.common.entity.Notice;
 import com.demand.site.common.entity.NoticeCategory;
 import com.demand.site.common.entity.Report;
 import com.demand.site.common.entity.User;
 import com.demand.site.common.flag.PaginationFlag;
 import com.demand.site.service.NoticeCategoryService;
+import com.demand.site.service.NoticeService;
 import com.demand.site.service.ReportService;
 import com.demand.site.service.UserService;
 
@@ -43,6 +45,9 @@ public class MainController {
 
 	@Autowired
 	private ReportService reportService;
+	
+	@Autowired
+	private NoticeService noticeService;
 
 	@Autowired
 	private NoticeCategoryService noticeCategoryService;
@@ -76,21 +81,21 @@ public class MainController {
 		List<NoticeCategory> noticeCategories = noticeCategoryService.getNoticeCategories();
 		NoticeCategory  noticeCategory = noticeCategoryService.getNoticeCategoryById(noticeCategoryId);
 		
-//		Page<Report> reportPage = reportService.getReportsBySearchAndPageable(search, pageable);
-//		int currentPageNo = reportPage.getNumber();
-//		int totalPageNo = reportPage.getTotalPages();
-//		int startPageNo = ((currentPageNo) / PaginationFlag.PAGE_VIEW_SIZE) * PaginationFlag.PAGE_VIEW_SIZE + 1;
-//
-//		int endPageNo = startPageNo + PaginationFlag.PAGE_VIEW_SIZE - 1;
-//
-//		if (endPageNo > totalPageNo) {
-//			endPageNo = totalPageNo;
-//		}
+		Page<Notice> noticePage = noticeService.getNoticesByNoticeCategoryIdAndSearchAndPageable(noticeCategoryId,search, pageable);
+		int currentPageNo = noticePage.getNumber();
+		int totalPageNo = noticePage.getTotalPages();
+		int startPageNo = ((currentPageNo) / PaginationFlag.PAGE_VIEW_SIZE) * PaginationFlag.PAGE_VIEW_SIZE + 1;
+
+		int endPageNo = startPageNo + PaginationFlag.PAGE_VIEW_SIZE - 1;
+
+		if (endPageNo > totalPageNo) {
+			endPageNo = totalPageNo;
+		}
 
 		model.addAttribute("noticeCategories", noticeCategories);
-//		model.addAttribute("reportPage", reportPage);
-//		model.addAttribute("startPageNo", startPageNo);
-//		model.addAttribute("endPageNo", endPageNo);
+		model.addAttribute("noticePage", noticePage);
+		model.addAttribute("startPageNo", startPageNo);
+		model.addAttribute("endPageNo", endPageNo);
 		model.addAttribute("search", search);
 		model.addAttribute("chosenNoticeCategory", noticeCategory);
 

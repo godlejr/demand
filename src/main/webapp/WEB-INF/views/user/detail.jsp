@@ -54,6 +54,13 @@
 									</div>
 									<span>홍보 / IR 작성</span>
 								</div>
+								
+								<div class="content-notice" onclick="javascript:navigateToNewNotice()">
+									<div class="notice-image">
+										<i class="fa fa-file-text-o" aria-hidden="true"></i>
+									</div>
+									<span>공지사항 작성</span>
+								</div>
 							</div>
 						</div>
 					</c:if>
@@ -187,6 +194,10 @@ function paginate(pageNo){
     location.href = url;    
 }
 
+function navigateToNewNotice(){
+	var url = "${contextPath}/notices/new";
+    location.href = url; 
+}
 
 function navigateToNewReport(){
 	var url = "${contextPath}/reports/new";
