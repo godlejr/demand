@@ -6,5 +6,7 @@ public class FileFlag {
 	
 	public static final int USER_AVATAR_TYPE = 1;
 	public static final int REPORT_FILE_TYPE =4;
+	public static final int NOTICE_FILE_TYPE =5;
+
 	
 }

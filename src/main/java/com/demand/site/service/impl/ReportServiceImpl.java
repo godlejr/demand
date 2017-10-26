@@ -43,9 +43,6 @@ public class ReportServiceImpl implements ReportService {
 	@Autowired
 	AwsS3Util awsS3Util;
 
-	@Value("#{aws['aws.s3.domain']}")
-	private String S3_DOMAIN_URL;
-
 	@Value("#{aws['aws.s3.file.report.url']}")
 	private String REPORT_FILE_URL;
 

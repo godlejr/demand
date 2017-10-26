@@ -52,6 +52,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath name = createString("name");
 
+    public final ListPath<Notice, QNotice> notices = this.<Notice, QNotice>createList("notices", Notice.class, QNotice.class, PathInits.DIRECT2);
+
     public final StringPath ntisRegistrationNo = createString("ntisRegistrationNo");
 
     public final StringPath password = createString("password");

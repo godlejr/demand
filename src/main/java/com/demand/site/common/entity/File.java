@@ -28,6 +28,10 @@ public class File extends Base {
 	@JsonBackReference
 	private List<User> users = new ArrayList<User>();
 
+	@OneToMany(mappedBy = "file", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private List<NoticeFile> noticeFiles = new ArrayList<NoticeFile>();
+
 	public File() {
 		super();
 	}
@@ -86,6 +90,14 @@ public class File extends Base {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public List<NoticeFile> getNoticeFiles() {
+		return noticeFiles;
+	}
+
+	public void setNoticeFiles(List<NoticeFile> noticeFiles) {
+		this.noticeFiles = noticeFiles;
 	}
 
 	@Override

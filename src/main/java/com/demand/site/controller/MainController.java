@@ -27,9 +27,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.demand.site.common.annotation.EmployeeRequired;
 import com.demand.site.common.dto.ErrorMessage;
+import com.demand.site.common.entity.NoticeCategory;
 import com.demand.site.common.entity.Report;
 import com.demand.site.common.entity.User;
 import com.demand.site.common.flag.PaginationFlag;
+import com.demand.site.service.NoticeCategoryService;
 import com.demand.site.service.ReportService;
 import com.demand.site.service.UserService;
 
@@ -41,7 +43,10 @@ public class MainController {
 
 	@Autowired
 	private ReportService reportService;
-	
+
+	@Autowired
+	private NoticeCategoryService noticeCategoryService;
+
 	@Value("#{google['google.map.key']}")
 	private String GOOGLE_MAP_API_KEY;
 
@@ -50,22 +55,46 @@ public class MainController {
 
 		return "main/index";
 	}
-	
+
 	@RequestMapping(value = "/company", method = RequestMethod.GET)
 	public String company(Model model) throws Exception {
-		
+
 		model.addAttribute("googleMapApiKey", GOOGLE_MAP_API_KEY);
 		return "main/company";
 	}
-	
+
 	@RequestMapping(value = "/serviceDesign", method = RequestMethod.GET)
 	public String serviceDesign(Model model) throws Exception {
 		return "main/serviceDesign";
 	}
-	
-	@RequestMapping(value = "/notice", method = RequestMethod.GET)
-	public String customerCenter(Model model) throws Exception {
-		return "main/notice";
+
+	@RequestMapping(value = "/notices", method = RequestMethod.GET)
+	public String customerCenter(@RequestParam(name = "search", required = false) String search,
+			@PageableDefault(size = 15, sort = "sort", direction = Direction.DESC) Pageable pageable,
+			@RequestParam(name = "noticeCategoryId", required = false, defaultValue = "0") long noticeCategoryId, Model model)
+			throws Exception {
+		List<NoticeCategory> noticeCategories = noticeCategoryService.getNoticeCategories();
+		NoticeCategory  noticeCategory = noticeCategoryService.getNoticeCategoryById(noticeCategoryId);
+		
+//		Page<Report> reportPage = reportService.getReportsBySearchAndPageable(search, pageable);
+//		int currentPageNo = reportPage.getNumber();
+//		int totalPageNo = reportPage.getTotalPages();
+//		int startPageNo = ((currentPageNo) / PaginationFlag.PAGE_VIEW_SIZE) * PaginationFlag.PAGE_VIEW_SIZE + 1;
+//
+//		int endPageNo = startPageNo + PaginationFlag.PAGE_VIEW_SIZE - 1;
+//
+//		if (endPageNo > totalPageNo) {
+//			endPageNo = totalPageNo;
+//		}
+
+		model.addAttribute("noticeCategories", noticeCategories);
+//		model.addAttribute("reportPage", reportPage);
+//		model.addAttribute("startPageNo", startPageNo);
+//		model.addAttribute("endPageNo", endPageNo);
+		model.addAttribute("search", search);
+		model.addAttribute("chosenNoticeCategory", noticeCategory);
+
+		return "notice/list";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -95,10 +124,10 @@ public class MainController {
 			model.addAttribute("message", "아이디와 비밀번호를 확인하세요");
 		} else {
 			int checked = user.getChecked();
-			if(checked == 2 ){
+			if (checked == 2) {
 				session.setAttribute("user", user);
 				page = "redirect:/";
-			}else{
+			} else {
 				model.addAttribute("message", "관리자의 승인이 필요합니다");
 			}
 		}
@@ -162,6 +191,7 @@ public class MainController {
 
 		int endPageNo = startPageNo + PaginationFlag.PAGE_VIEW_SIZE - 1;
 
+		
 		if (endPageNo > totalPageNo) {
 			endPageNo = totalPageNo;
 		}
@@ -170,6 +200,6 @@ public class MainController {
 		model.addAttribute("startPageNo", startPageNo);
 		model.addAttribute("endPageNo", endPageNo);
 		model.addAttribute("search", search);
-		return "reports/list";
+		return "report/list";
 	}
 }

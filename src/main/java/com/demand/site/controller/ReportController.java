@@ -29,7 +29,7 @@ public class ReportController {
 	@EmployeeRequired
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String report(Model model) throws Exception {
-		return "reports/new";
+		return "report/new";
 	}
 
 	@EmployeeRequired
@@ -54,7 +54,7 @@ public class ReportController {
 		model.addAttribute("prevReport", reportMap.get("prevReport"));
 		model.addAttribute("nextReport", reportMap.get("nextReport"));
 
-		return "reports/detail";
+		return "report/detail";
 	}
 
 	@EmployeeRequired
@@ -74,7 +74,7 @@ public class ReportController {
 
 		model.addAttribute("report", report);
 
-		return "reports/edit";
+		return "report/edit";
 	}
 
 	@EmployeeRequired

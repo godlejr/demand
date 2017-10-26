@@ -30,6 +30,8 @@ public class QFile extends EntityPathBase<File> {
     //inherited
     public final NumberPath<Long> id = _super.id;
 
+    public final ListPath<NoticeFile, QNoticeFile> noticeFiles = this.<NoticeFile, QNoticeFile>createList("noticeFiles", NoticeFile.class, QNoticeFile.class, PathInits.DIRECT2);
+
     public final StringPath originalName = createString("originalName");
 
     public final ListPath<ReportFile, QReportFile> reportFiles = this.<ReportFile, QReportFile>createList("reportFiles", ReportFile.class, QReportFile.class, PathInits.DIRECT2);

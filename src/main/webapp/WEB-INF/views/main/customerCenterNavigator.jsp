@@ -22,10 +22,10 @@
 <div class="section-customercenter-navi">
 	<ul>
 		<li>
-			<a href="${contextPath}/notice">공지사항</a>
+			<a href="${contextPath}/notices">공지사항</a>
 		</li>
 		<li>
-			<a href="${contextPath}/question">서비스 Q&A</a>
+			<a href="${contextPath}/questions">서비스 Q&A</a>
 		</li>
 	</ul>
 </div>
@@ -34,7 +34,7 @@
 <script>
 	var currentPathName = window.location.pathname;
 	
-	if(currentPathName == "${contextPath}/notice"){
+	if(currentPathName == "${contextPath}/notices"){
 		$( ".section-customercenter-navi ul li:first-child" ).addClass( "current" );
 	}else{
 		$( ".section-customercenter-navi ul li:nth-child(2)" ).addClass( "current" );

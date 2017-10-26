@@ -38,30 +38,36 @@
 		<put-attribute name="content" value="/WEB-INF/views/main/serviceDesign.jsp" />
 	</definition>
 	
-	<definition name="main/notice" extends="Base">
+	<!-- 공지사항 관련 -->
+	<definition name="notice/list" extends="Base">
 		<put-attribute name="title" value="고객센터 - 디맨드" />
-		<put-attribute name="content" value="/WEB-INF/views/main/notice.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/notice/list.jsp" />
+	</definition>
+	
+	<definition name="notice/new" extends="Base">
+		<put-attribute name="title" value="보고자료 생성" />
+		<put-attribute name="content" value="/WEB-INF/views/notice/new.jsp" />
 	</definition>
 
 	<!-- 리포트 관련 -->
-	<definition name="reports/list" extends="Base">
+	<definition name="report/list" extends="Base">
 		<put-attribute name="title" value="보고자료 리스트" />
-		<put-attribute name="content" value="/WEB-INF/views/reports/list.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/report/list.jsp" />
 	</definition>
 
-	<definition name="reports/new" extends="Base">
+	<definition name="report/new" extends="Base">
 		<put-attribute name="title" value="보고자료 생성" />
-		<put-attribute name="content" value="/WEB-INF/views/reports/new.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/report/new.jsp" />
 	</definition>
 
-	<definition name="reports/detail" extends="Base">
+	<definition name="report/detail" extends="Base">
 		<put-attribute name="title" value="보고자료 상세" />
-		<put-attribute name="content" value="/WEB-INF/views/reports/detail.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/report/detail.jsp" />
 	</definition>
 
-	<definition name="reports/edit" extends="Base">
+	<definition name="report/edit" extends="Base">
 		<put-attribute name="title" value="보고자료  편집" />
-		<put-attribute name="content" value="/WEB-INF/views/reports/edit.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/report/edit.jsp" />
 	</definition>
 
 	<!-- 유저 관련 -->

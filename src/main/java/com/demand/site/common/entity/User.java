@@ -90,6 +90,10 @@ public class User extends Base {
 	@JsonBackReference
 	private List<Report> reports = new ArrayList<Report>();
 
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private List<Notice> notices = new ArrayList<Notice>();
+
 	public User() {
 		super();
 	}
@@ -287,6 +291,16 @@ public class User extends Base {
 
 	public void setReports(List<Report> reports) {
 		this.reports = reports;
+	}
+	
+	
+
+	public List<Notice> getNotices() {
+		return notices;
+	}
+
+	public void setNotices(List<Notice> notices) {
+		this.notices = notices;
 	}
 
 	@Override
