@@ -173,6 +173,12 @@
 
 
 <script>
+	$("#arrow").click(function() {
+		$('html, body').animate({
+			scrollTop : $(".section-notice-intro").offset().top
+		}, 600);
+	});
+
 	var chosenNoticeCategoryId = "${chosenNoticeCategoryId}";
 
 	function paginate(pageNo){    
