@@ -120,7 +120,7 @@
 								<td>${notice.id }</td>
 								<td>${notice.noticeCategory.name }</td>
 								<c:choose>
-					                <c:when test="${report.type eq 1}">
+					                <c:when test="${notice.type eq 1}">
 				                		<td class="notification" >
 				                			<span onclick="javascript:navigateToNoticeDetail(${notice.id})">[공지] ${notice.title }</span>
 				                		</td>
