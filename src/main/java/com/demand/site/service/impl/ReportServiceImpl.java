@@ -102,7 +102,7 @@ public class ReportServiceImpl implements ReportService {
 
 		Map<String, Report> reportMap = new HashMap<String, Report>();
 
-		Report report = reportRepository.findById(id);
+		Report report = reportRepository.findOne(id);
 		int hits = report.getHits();
 		report.setHits(hits + 1);
 
@@ -119,7 +119,7 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public void deleteReport(User user, long id) throws Exception {
 
-		Report report = reportRepository.findById(id);
+		Report report = reportRepository.findOne(id);
 		User reportUser = report.getUser();
 		long reportUserId = reportUser.getId();
 		long userId = user.getId();
@@ -143,13 +143,13 @@ public class ReportServiceImpl implements ReportService {
 
 	@Override
 	public Report getReportById(long id) throws Exception {
-		return reportRepository.findById(id);
+		return reportRepository.findOne(id);
 	}
 
 	@Override
 	public void editReport(User user, long id, boolean isNotification, String title, String content,
 			String[] deletedFileStorageNames, MultipartFile[] files) throws Exception {
-		Report report = reportRepository.findById(id);
+		Report report = reportRepository.findOne(id);
 		report.setTitle(title);
 		report.setContent(content);
 		if (isNotification) {

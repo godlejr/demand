@@ -5,6 +5,7 @@
 
 <c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
 <c:set var="sessionUser" value="${sessionScope.user}"></c:set>
+<c:set var="chosenNoticeCategory" value="${notice.noticeCategory}"></c:set>
 
 <script type="text/javascript"
 	src="<c:url value="/resources/static/smarteditor/js/service/HuskyEZCreator.js"/>"
@@ -12,30 +13,54 @@
 	
 <div class="container-content" style="margin-top: 120px" >
 	<div class="content-body">
-		<div class="section-report">
-			<div class="report-header">
-				<h1>업무 보고</h1>
-				<p>한 주간의 업무한 내용을 보고해주세요</p>
+		<div class="section-notice">
+			<div class="notice-header">
+				<h1>공지 사항</h1>
+				<p>Demand 서비스의 공지사항을 작성해주세요</p>
 			</div>
 			
-			<div class="report-content" style="padding: 20px; margin-top: 50px;">
+			<div class="notice-content" style="padding: 20px; margin-top: 50px;">
 				<div id="form-loading-view"></div>
-				<form id="report-form" class="report-form" enctype="multipart/form-data" acceptcharset="UTF-8">
+				<form id="notice-form" class="notice-form" enctype="multipart/form-data" acceptcharset="UTF-8">
 					<table>
 						<tbody>
 							<tr>
 								<td class="form-menu">옵션</td>
-								<td class="form-menu-content"><input type="checkbox" id="notification" ${report.type eq 1 ? 'checked': ''} >공지</td>
+								<td class="form-menu-content"><input type="checkbox" id="notification" ${notice.type eq 1 ? 'checked': ''} >공지</td>
 							</tr>
 							<tr>
-								<td class="form-menu">보고자</td>
+								<td class="form-menu">카테고리</td>
+								<td class="form-menu-content">
+									<div class="section-category-selector">
+										<div class="selector-button">
+											<div class="button-content">
+												<span id="selector-view" data-id="${chosenNoticeCategory.id }">${chosenNoticeCategory.name}</span>
+											</div>
+					
+											<div class="button-icon">
+												<i class="fa fa-chevron-down" aria-hidden="true"></i>
+											</div>
+										</div>
+										<div class="selector-filter">
+											<ul>
+												<li class="filter-item" data-id="0">전체보기</li>
+												<c:forEach var="noticeCategory" items="${noticeCategories}">
+													<li class="filter-item" data-id="${noticeCategory.id}">${noticeCategory.name}</li>
+												</c:forEach>
+											</ul>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="form-menu">작성자</td>
 								<td class="form-menu-content">${sessionUser.name}
 									${sessionUser.positionCategory.name}님</td>
 							</tr>
 							<tr>
 								<td class="form-menu">제목</td>
 								<td class="form-menu-content"><input type="text" id="title"
-									name="title" class="title-input" value="${report.title }" placeholder="제목을 입력하세요"></td>
+									name="title" class="title-input" value="${notice.title }" placeholder="제목을 입력하세요"></td>
 							</tr>
 							<tr>
 								<td class="form-menu">내용</td>
@@ -73,13 +98,13 @@
 										
 									</div>
 									
-									<div class="file-content-zone" ${fn:length(report.reportFiles) gt 0? '':'hidden'} >
+									<div class="file-content-zone" ${fn:length(notice.noticeFiles) gt 0? '':'hidden'} >
 										<ul id="file-list">
-											<c:forEach var="reportFile" items="${report.reportFiles}">
+											<c:forEach var="noticeFile" items="${notice.noticeFiles}">
 												<li class="list-item">
 													<i class="fa fa-file-code-o" aria-hidden="true"></i>
-													<span class="item-name">${reportFile.file.originalName}</span>
-													<i class="fa fa-times" aria-hidden="true" style="cursor:pointer;" onClick="javascript:deleteOriginalFileList(this,'${reportFile.file.storageName}')"></i>
+													<span class="item-name">${noticeFile.file.originalName}</span>
+													<i class="fa fa-times" aria-hidden="true" style="cursor:pointer;" onClick="javascript:deleteOriginalFileList(this,'${noticeFile.file.storageName}')"></i>
 												</li>
 											</c:forEach>
 										</ul>
@@ -114,12 +139,12 @@
 	var $fileUploadingView = $('#file-loading-view'),
 		$formUploadingView = $('#form-loading-view');
 	
-	var fileSize = ${fn:length(report.reportFiles)},
+	var fileSize = ${fn:length(notice.noticeFiles)},
 		isFileListShown = fileSize > 0 ? true:false,
 		autoFileCount = 0;
 
-	var reportFileTempForm = new FormData();
-	var reportFileDeleteForm = new FormData();
+	var noticeFileTempForm = new FormData();
+	var noticeFileDeleteForm = new FormData();
 	
 	var $submit=$('#submit');
 	
@@ -127,6 +152,27 @@
 		event.preventDefault();
 		$videoFile.click();
 	});
+	
+	$('.selector-button').click(function() {
+		var self = this;
+		$('.selector-filter').slideToggle();
+
+	});
+	
+	$('.filter-item').click(function(){
+		var self = this;
+		var noticeCategoryId = $(self).attr("data-id");
+		var noticeCategoryName = $(self).text();
+		updateSelectorView(noticeCategoryId, noticeCategoryName);
+	})
+	
+	function updateSelectorView(noticeCategoryId, noticeCategoryName){
+		var selectorView = $('#selector-view');
+		
+		selectorView.attr("data-id",noticeCategoryId);
+		selectorView.text(noticeCategoryName);
+		$('.selector-filter').slideToggle();
+	}
 	
 	
 	$videoFile.change(function(event){
@@ -222,7 +268,7 @@
 				isFileListShown = true;
 				
 			}
-			reportFileTempForm.append('files' + autoFileCount , file);
+			noticeFileTempForm.append('files' + autoFileCount , file);
 			
 			var fileIndex = fileSize - 1;
 			
@@ -246,8 +292,8 @@
 	
 	function deleteFileList(self, fileIndex){
 		--fileSize;
-		console.log(reportFileTempForm.get("files"+ fileIndex).name);
-		reportFileTempForm.delete("files"+ fileIndex);
+		console.log(noticeFileTempForm.get("files"+ fileIndex).name);
+		noticeFileTempForm.delete("files"+ fileIndex);
 		$(self).parent().remove();
 		
 		if(fileSize == 0){
@@ -260,7 +306,7 @@
 	
 	function deleteOriginalFileList(self, originalName){
 		--fileSize;
-		reportFileDeleteForm.append("deletedFiles",originalName);
+		noticeFileDeleteForm.append("deletedFiles",originalName);
 		$(self).parent().remove();
 		
 		if(fileSize == 0){
@@ -338,7 +384,7 @@
 	
 			}
 		},fOnAppLoad : function(){
-			var content = '${report.content}';
+			var content = '${notice.content}';
 			editor_object.getById["smarteditor"].exec("PASTE_HTML", [content]);
 		}
 	});
@@ -350,6 +396,7 @@
 		var content =  $("#smarteditor").val();
 		var title = $("#title").val();
 		var isNotification = $('input:checkbox[id="notification"]').is(":checked");
+		var noticeCategoryId = $('#selector-view').attr('data-id');
 		
 		if(title == '' || title == null){
 			alert('제목을 입력하세요.');
@@ -366,43 +413,48 @@
 			alert('내용을 입력하세요.');
 			return;
 		}
+		if(noticeCategoryId == '0'){
+			alert('카테고리를 선택하세요.');
+			return;
+		}
 		
 		
-		var reportForm = new FormData();
-		reportForm.append("title",title);
-		reportForm.append("content",content);
-		reportForm.append("isNotification",isNotification);
-		
+		var noticeForm = new FormData();
+		noticeForm.append("title",title);
+		noticeForm.append("content",content);
+		noticeForm.append("isNotification",isNotification);
+		noticeForm.append("noticeCategoryId",noticeCategoryId);
+
 		
 		for(var i =0 ; i < autoFileCount ; i++ ){
-			if(reportFileTempForm.has('files'+ i)){
-				reportForm.append("files", reportFileTempForm.get('files'+ i));
+			if(noticeFileTempForm.has('files'+ i)){
+				noticeForm.append("files", noticeFileTempForm.get('files'+ i));
 			}
 		}
 		
-		var deletedFiles = reportFileDeleteForm.getAll("deletedFiles");
+		var deletedFiles = noticeFileDeleteForm.getAll("deletedFiles");
 		
 		for(var i =0 ; i < deletedFiles.length ; i++ ){
-			reportForm.append("deletedFileStorageNames", deletedFiles[i]);
+			noticeForm.append("deletedFileStorageNames", deletedFiles[i]);
 		}
 		
-		sendReport(reportForm);
+		sendNotice(noticeForm);
 	});
 	
-	function navigateToReportListPage(){
-		 document.location.href = "${contextPath}/reports";
+	function navigateToNoticeListPage(){
+		 document.location.href = "${contextPath}/notices";
 	}
 	
-	function sendReport(reportForm){
+	function sendNotice(noticeForm){
 		$.ajax({
 			type: "POST",
-			url: "${contextPath}/reports/" + ${report.id}+ "/edit" ,
+			url: "${contextPath}/notices/" + ${notice.id}+ "/edit" ,
 			processData: false,  
 			contentType: false,
 			enctype: 'multipart/form-data',
-			data: reportForm,
+			data: noticeForm,
             success: function(data) {
-            	navigateToReportListPage();
+            	navigateToNoticeListPage();
             },
             beforeSend: function(){
             	$formUploadingView.show();

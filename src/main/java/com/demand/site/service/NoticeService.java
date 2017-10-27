@@ -15,4 +15,9 @@ public interface NoticeService {
 	Page<Notice> getNoticesByNoticeCategoryIdAndSearchAndPageable(long noticeCategoryId, String search,
 			Pageable pageable) throws Exception;
 
+	Notice getNoticeById(long id) throws Exception;
+
+	void editNotice(User user, long id, boolean isNotification, long noticeCategoryId, String title, String content,
+			String[] deletedFileStorageNames, MultipartFile[] files) throws Exception;
+
 }

@@ -122,12 +122,12 @@
 								<c:choose>
 					                <c:when test="${notice.type eq 1}">
 				                		<td class="notification" >
-				                			<span onclick="javascript:navigateToNoticeDetail(${notice.id})">[공지] ${notice.title }</span>
+				                			<span>[공지] ${notice.title }</span>
 				                		</td>
 					                </c:when>
 					                <c:otherwise>
 					                	<td>
-					                		<span onclick="javascript:navigateToNoticeDetail(${notice.id})">${notice.title}</span>
+					                		<span>${notice.title}</span>
 					                	</td>
 					                </c:otherwise>
 					            </c:choose>
@@ -206,11 +206,6 @@
 	 	location.href = url; 
 	}
 	
-	function navigateToNoticeDetail(id){
-		var url = "${contextPath}/notices/" +id;
-	 	location.href = url; 
-	}
-
 	function search() {
 		var search = $(document.getElementById('search-text')).val();
 		var url = "${contextPath}/notices?search=" + search;

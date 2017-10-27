@@ -48,6 +48,11 @@
 		<put-attribute name="title" value="공지사항 생성" />
 		<put-attribute name="content" value="/WEB-INF/views/notice/new.jsp" />
 	</definition>
+	
+	<definition name="notice/edit" extends="Base">
+		<put-attribute name="title" value="공지사항  편집" />
+		<put-attribute name="content" value="/WEB-INF/views/notice/edit.jsp" />
+	</definition>
 
 	<!-- 리포트 관련 -->
 	<definition name="report/list" extends="Base">

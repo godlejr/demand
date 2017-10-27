@@ -1022,9 +1022,9 @@ ol, ul, li {
 }
 
 .content-body .section-notice-list .notice-list-header .section-category-selector .selector-filter ul li{
-    border-bottom: 1px solid #aaaaaa;
-    border-left: 1px solid #aaaaaa;
-    border-right: 1px solid #aaaaaa;
+    border-bottom: 1px solid #eaeaea;
+    border-left: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
     align-items: center;
     text-align: center;
     padding: 5px 10px;
@@ -1074,22 +1074,18 @@ ol, ul, li {
 }
 
 
-.content-body .section-notice-list .notice-list-content table tbody td:NTH-CHILD(3) span
-	{
-	cursor: pointer;
-}
+
 .content-body .section-notice-list .notice-list-content  table thead th:NTH-CHILD(3)
 	{
 	width: 60%;
 }
 
-.content-body .section-notice-list .notice-list-content table tbody tr:NTH-CHILD(2n){
-	background-color: #fbfbfb;
+.content-body .section-notice-list .notice-list-content table tbody tr{
+	cursor: pointer;
 }
 
-.content-body .section-notice-list .notice-list-content table tbody td:NTH-CHILD(3) span:hover
-	{
-	text-decoration: underline;
+.content-body .section-notice-list .notice-list-content table tbody tr:NTH-CHILD(2n){
+	background-color: #fbfbfb;
 }
 
 
@@ -1236,9 +1232,9 @@ ol, ul, li {
 }
 
 .content-body .section-notice .notice-content .notice-form .form-menu-content .section-category-selector .selector-filter ul li{
-    border-bottom: 1px solid #aaaaaa;
-    border-left: 1px solid #aaaaaa;
-    border-right: 1px solid #aaaaaa;
+   	border-bottom: 1px solid #eaeaea;
+    border-left: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
     align-items: center;
     text-align: center;
     padding: 5px 10px;
