@@ -20,4 +20,6 @@ public interface NoticeService {
 	void editNotice(User user, long id, boolean isNotification, long noticeCategoryId, String title, String content,
 			String[] deletedFileStorageNames, MultipartFile[] files) throws Exception;
 
+	void deleteNotice(User user, long id) throws Exception;
+
 }

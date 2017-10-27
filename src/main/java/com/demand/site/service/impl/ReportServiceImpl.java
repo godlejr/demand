@@ -138,7 +138,6 @@ public class ReportServiceImpl implements ReportService {
 			reportRepository.delete(report);
 
 		}
-
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.demand.site.service.impl;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,7 @@ import com.demand.site.common.entity.User;
 import com.demand.site.common.flag.FileFlag;
 import com.demand.site.common.flag.NoticeFlag;
 import com.demand.site.common.flag.ReportFlag;
+import com.demand.site.common.flag.UserFlag;
 import com.demand.site.common.util.AwsS3Util;
 import com.demand.site.repository.file.FileRepository;
 import com.demand.site.repository.notice.NoticeRepository;
@@ -156,6 +158,25 @@ public class NoticeServiceImpl implements NoticeService {
 				awsS3Util.deleteFileByLocationAndStorageFileName(NOTICE_FILE_URL, storageName);
 				fileRepository.deleteByStorageNameAndType(storageName, FileFlag.NOTICE_FILE_TYPE);
 			}
+		}
+	}
+
+	@Override
+	public void deleteNotice(User user, long id) throws Exception {
+		Notice notice = noticeRepository.findOne(id);
+		int userLevel = user.getLevel();
+
+		if (userLevel == UserFlag.EMPLOYEE_LEVEL || userLevel == UserFlag.ADMIN_LEVEL) {
+
+			List<NoticeFile> noticeFiles = notice.getNoticeFiles();
+			for (NoticeFile noticeFile : noticeFiles) {
+				File file = noticeFile.getFile();
+				String storageName = file.getStorageName();
+				fileRepository.delete(file);
+				awsS3Util.deleteFileByLocationAndStorageFileName(NOTICE_FILE_URL, storageName);
+			}
+			noticeRepository.delete(notice);
+
 		}
 	}
 

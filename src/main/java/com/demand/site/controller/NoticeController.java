@@ -86,5 +86,15 @@ public class NoticeController {
 					deletedFileStorageNames, files);
 		}
 	}
+	
+	@EmployeeRequired
+	@RequestMapping(value = "/{id}/delete", method = { RequestMethod.GET, RequestMethod.POST })
+	public String delete(@PathVariable long id, Model model, HttpSession httpSession) throws Exception {
+		User user = (User) httpSession.getAttribute("user");
+		if (user != null) {
+			noticeService.deleteNotice(user, id);
+		}
+		return "redirect:/notices";
+	}
 
 }
