@@ -1,5 +1,6 @@
 package com.demand.site.common.entity;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -128,6 +129,28 @@ public class File extends Base {
 	@Override
 	public void setUpdatedAt(String updatedAt) {
 		super.setUpdatedAt(updatedAt);
+	}
+
+	public String getFileSizeFormatted() {
+		return byteCalculation(String.valueOf(this.size));
+	}
+
+	public String byteCalculation(String bytes) {
+		String retFormat = "0";
+		Double size = Double.parseDouble(bytes);
+
+		String[] sizeFormats = { "bytes", "KB", "MB", "GB", "TB", "PB" };
+
+		if (bytes != "0") {
+			int indext = (int) Math.floor(Math.log(size) / Math.log(1024));
+			DecimalFormat decimalFormat = new DecimalFormat("#,###.##");
+			double ret = ((size / Math.pow(1024, Math.floor(indext))));
+			retFormat = decimalFormat.format(ret) + " " + sizeFormats[indext];
+		} else {
+			retFormat += " " + sizeFormats[0];
+		}
+
+		return retFormat;
 	}
 
 }

@@ -1060,7 +1060,7 @@ ol, ul, li {
 	background-color: #fff;
 }
 
-.content-body .section-notice-list .notice-list-content table tbody td{
+.content-body .section-notice-list .notice-list-content table tbody .item-column{
 	height: 35px;
 	color: #444;
 	padding: 10px;
@@ -1092,12 +1092,81 @@ ol, ul, li {
 	width: 60%;
 }
 
-.content-body .section-notice-list .notice-list-content table tbody tr{
+.content-body .section-notice-list .notice-list-content table tbody .notice-item{
 	cursor: pointer;
 }
 
-.content-body .section-notice-list .notice-list-content table tbody tr:NTH-CHILD(2n){
+.content-body .section-notice-list .notice-list-content table tbody tr:NTH-CHILD(4n-1){
 	background-color: #fbfbfb;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail{
+    border-top: 1px solid #e2e2e2;
+	background-color: #fafafa;
+	display: none;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-content{
+    padding: 30px;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-content .content-attachment{
+	padding-top: 20px;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-content .content-attachment table
+	{
+	display: flex;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-content .content-attachment table tbody
+	{
+	width: 100%;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-content .content-attachment table tbody tr
+	{
+	display: flex;
+	align-items: center;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-content .content-attachment table tbody tr:first-child td:first-child
+	{
+	padding: 20px;
+	text-align: center;
+	width: 20%;
+	color: #444;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-content .content-attachment table tbody tr:first-child td:nth-child(2)
+	{
+	padding: 10px;
+	width: 75%;
+	border-left: 1px solid #eaeaea;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-content .content-attachment table tbody tr:first-child td:nth-child(2) li
+	{
+	margin: 10px;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-content .content-attachment table tbody tr:first-child td:nth-child(2) li a
+	{
+	cursor: pointer;
+	width: 100%;
+	word-break: break-all;
+	color: #444;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-content .content-attachment table tbody tr:first-child td:nth-child(2) li a:hover
+	{
+	text-decoration: underline;
+	color: #666;
+}
+
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-bottom{
+    padding: 30px;
 }
 
 

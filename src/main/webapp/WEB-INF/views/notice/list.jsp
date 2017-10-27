@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 
 <c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
 <c:set var="sessionUser" value="${sessionScope.user}"></c:set>
@@ -116,22 +118,58 @@
 
 					<tbody>
 						<c:forEach var="notice" items="${notices}">
-							<tr>
-								<td>${notice.id }</td>
-								<td>${notice.noticeCategory.name }</td>
+							<tr class="notice-item">
+								<td class="item-column">${notice.id }</td>
+								<td class="item-column">${notice.noticeCategory.name }</td>
 								<c:choose>
 					                <c:when test="${notice.type eq 1}">
-				                		<td class="notification" >
+				                		<td class="item-column notification" >
 				                			<span>[공지] ${notice.title }</span>
 				                		</td>
 					                </c:when>
 					                <c:otherwise>
-					                	<td>
+					                	<td class="item-column">
 					                		<span>${notice.title}</span>
 					                	</td>
 					                </c:otherwise>
 					            </c:choose>
-								<td>${notice.getCustomCreatedAt() }</td>
+								<td class="item-column">${notice.getCustomCreatedAt() }</td>
+							</tr>
+							<tr class="notice-detail">
+							 	<td colspan="4">
+							 		<div class="detail-content">
+							 			${notice.content}
+							 			
+							 			<c:if test="${fn:length(notice.noticeFiles)gt 0}">
+								 			<div class="content-attachment">
+												<table>
+													<tbody>
+														<tr>
+															<td>
+																<span>첨부 파일</span>
+															</td>
+															<td>
+																<ul>
+																	<c:forEach var="noticeFile" items="${notice.noticeFiles}">
+																		<li><a href="http://static.demand.co.kr/homepage/files/notices/${noticeFile.file.storageName}" target="_blank">${noticeFile.file.originalName} (${noticeFile.file.getFileSizeFormatted()})</a></li>
+																	</c:forEach>	
+																</ul>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</c:if>
+							 		</div>
+							 		<c:if test="${sessionUser ne null}">
+								 		<div class="detail-bottom">
+								 			<ul>
+								 				<a><li>수정</li></a>
+								 				<a><li>삭제</li></a>
+								 			</ul>
+								 		</div>
+							 		</c:if>
+							 	</td> 
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -173,6 +211,14 @@
 
 
 <script>
+	$(".notice-item").click(function(){
+		var self = this;
+		var selfDetail = $(self).next();
+		selfDetail.toggle();
+		$(".notice-detail").not(selfDetail).hide();
+		self.focus();
+	});
+
 	$("#arrow").click(function() {
 		$('html, body').animate({
 			scrollTop : $(".section-notice-intro").offset().top
