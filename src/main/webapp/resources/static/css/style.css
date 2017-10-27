@@ -298,13 +298,14 @@ ol, ul, li {
 }
 
 .container-content .section-company-object .object-right img{
+	width: 450px;
 }
 
 .container-content .section-company-ceo-intro {
-   background-color: #3a3a3a;
-   display: inline-block;
+  	 background-color: #3a3a3a;
+   	display: inline-block;
     width: 100%;
-    padding:10% 15%;
+    padding:10% 5%;
     position: relative;
 }
 
@@ -459,13 +460,23 @@ ol, ul, li {
    color: #444;
 }
 
+.container-content .section-servicedesign-experience{
+	background: #fff;
+}
+
+.container-content .section-servicedesign-tenworkshop{
+	background-color: #cccccc;
+}
+
 .container-content .section-servicedesign-factory ,
 .container-content .section-servicedesign-fiveworkshop,
-.container-content .section-servicedesign-tenworkshop
+.container-content .section-servicedesign-tenworkshop,
+.container-content .section-servicedesign-experience
 {
    padding: 10% 5%;
 }
 
+.container-content .section-servicedesign-experience .experience-header .header-title,
 .container-content .section-servicedesign-factory .factory-header .header-title,
 .container-content .section-servicedesign-tenworkshop .tenworkshop-header .header-title{
    text-align: center;
@@ -509,7 +520,8 @@ ol, ul, li {
 
 .container-content .section-servicedesign-factory .factory-content img,
 .container-content .section-servicedesign-fiveworkshop .fiveworkshop-content img,
-.container-content .section-servicedesign-tenworkshop .tenworkshop-content img{
+.container-content .section-servicedesign-tenworkshop .tenworkshop-content img,
+.container-content .section-servicedesign-experience .experience-content img{
      	margin: 30px auto;
     width: 100%;
 }
@@ -2502,6 +2514,12 @@ ol, ul, li {
 	    padding: 0 10%;
 	}
 	
+	.container-content .section-company-business-intro,
+	.container-content .section-company-ceo-intro,
+	.container-content .section-company-contact{
+		padding: 10% 10%;
+	}
+	
 	.container-content .section-image-banner{
 		height: 500px
 	}
@@ -2588,10 +2606,15 @@ ol, ul, li {
 	.container-content .section-servicedesign-intro,
 	.container-content .section-servicedesign-factory,
 	.container-content .section-servicedesign-fiveworkshop,
-	.container-content .section-servicedesign-tenworkshop ,
+	.container-content .section-servicedesign-tenworkshop,
+	.container-content .section-servicedesign-experience,
 	  .container-content .section-company-ceo-intro
 	{
 	   padding: 7% 15%;
+	}
+	
+	.container-content .section-company-ceo-intro{
+		padding: 10% 15%;
 	}
 
 	.container-content .section-notice-intro .intro-content p,
@@ -2676,9 +2699,7 @@ ol, ul, li {
 	
 	.container-content .section-company-object .object-right{
 		display: block;
-	 	position: absolute;
     	right: 0;
-		
 	}
 	
 	

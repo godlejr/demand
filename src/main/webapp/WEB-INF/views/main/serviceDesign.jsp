@@ -141,6 +141,19 @@
 				src="<c:url value='/resources/static/img/main/servicedesign-10workshop.png'/>" />
 		</div>
 	</div>
+	
+	<div class="section-servicedesign-experience">
+		<div class="experience-header">
+			<div class="header-title">
+				<h1>EXPERIENCE</h1>
+			</div>
+		</div>
+
+		<div class="experience-content">
+			<img
+				src="<c:url value='/resources/static/img/main/servicedesign_experience.png'/>" />
+		</div>
+	</div>
 
 </div>
 
