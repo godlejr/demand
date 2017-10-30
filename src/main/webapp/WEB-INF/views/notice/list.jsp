@@ -163,10 +163,12 @@
 							 		</div>
 							 		<c:if test="${sessionUser ne null}">
 								 		<div class="detail-bottom">
-								 			<ul>
-								 				<a><li>수정</li></a>
-								 				<a><li>삭제</li></a>
-								 			</ul>
+								 			<div class="bottom-function">
+									 			<ul>
+									 				<a href="${contextPath}/notices/${notice.id}/edit"><li>수정</li></a>
+									 				<a href="${contextPath}/notices/${notice.id}/delete"><li>삭제</li></a>
+									 			</ul>
+								 			</div>
 								 		</div>
 							 		</c:if>
 							 	</td> 

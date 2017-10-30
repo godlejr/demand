@@ -51,6 +51,7 @@ public class MainController {
 
 	@Autowired
 	private NoticeCategoryService noticeCategoryService;
+	
 
 	@Value("#{google['google.map.key']}")
 	private String GOOGLE_MAP_API_KEY;
@@ -131,6 +132,7 @@ public class MainController {
 			int checked = user.getChecked();
 			if (checked == 2) {
 				session.setAttribute("user", user);
+
 				page = "redirect:/";
 			} else {
 				model.addAttribute("message", "관리자의 승인이 필요합니다");

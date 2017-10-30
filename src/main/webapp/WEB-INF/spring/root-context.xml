@@ -23,13 +23,13 @@
 	<!-- 프로퍼티 설정 -->
 	<util:properties id="google"
 		location="/WEB-INF/properties/google.properties" />
-	
+
 	<util:properties id="db"
 		location="/WEB-INF/properties/database.properties" />
 
 	<util:properties id="redis"
 		location="/WEB-INF/properties/redis.properties" />
-		
+
 	<util:properties id="aws"
 		location="/WEB-INF/properties/aws.properties" />
 
@@ -39,13 +39,17 @@
 		<beans:property name="maxInactiveIntervalInSeconds"
 			value="#{redis['redis.maxInactiveIntervalInSeconds']}" />
 	</beans:bean>
-	
+
 
 	<beans:bean id='jedisConnectionFactory'
 		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
 		<beans:property name="port" value="#{redis['redis.port']}" />
 		<beans:property name="hostName" value="#{redis['redis.hostName']}" />
 		<beans:property name="usePool" value="true" />
+	</beans:bean>
+
+	<beans:bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+		<beans:property name="connectionFactory" ref="jedisConnectionFactory" />
 	</beans:bean>
 
 
@@ -117,7 +121,7 @@
 		<beans:property name="maxUploadSize" value="104857600" />
 		<beans:property name="defaultEncoding" value="UTF-8" />
 	</beans:bean>
-	
+
 
 
 </beans:beans>

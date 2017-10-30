@@ -27,7 +27,7 @@ public class LoginCheckByUserLevelInterceptor extends HandlerInterceptorAdapter 
 
 		if (loginRequired != null) {
 			HttpSession session = request.getSession(false);
-			if (session == null) {
+			if (session == null || session.getAttribute("user") == null) {
 				response.sendRedirect(loginPageUrl);
 				return false;
 			}
@@ -36,8 +36,7 @@ public class LoginCheckByUserLevelInterceptor extends HandlerInterceptorAdapter 
 		if (adminRequired != null) {
 			HttpSession session = request.getSession(false);
 
-
-			if (session != null) {
+			if (session != null && session.getAttribute("user") != null) {
 				User user = (User) session.getAttribute("user");
 
 				int level = user.getLevel();
@@ -55,7 +54,7 @@ public class LoginCheckByUserLevelInterceptor extends HandlerInterceptorAdapter 
 		if (employeeRequired != null) {
 			HttpSession session = request.getSession(false);
 
-			if (session != null) {
+			if (session != null && session.getAttribute("user") != null) {
 				User user = (User) session.getAttribute("user");
 				int level = user.getLevel();
 

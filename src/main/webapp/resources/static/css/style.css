@@ -1167,6 +1167,32 @@ ol, ul, li {
 
 .content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-bottom{
     padding: 30px;
+    display: flex;    
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-bottom .bottom-function{
+    width: 100%;
+    border-top: 1px solid #cccccc;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-bottom .bottom-function ul{
+    float: right;
+    margin-top: 20px;    
+    display: flex;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-bottom .bottom-function ul a{
+ 	border-radius: 2px;
+  	background-color: #ffffff;
+  	border: solid 1px #aaaaaa;
+  	padding: 10px 20px;
+	margin-left:15px;
+	color: #444;
+}
+
+.content-body .section-notice-list .notice-list-content table tbody .notice-detail .detail-bottom .bottom-function ul a:hover{
+ 	background-color: #c1a077;
+	color:#fff;
 }
 
 
