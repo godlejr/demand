@@ -21,12 +21,8 @@
 
 <div class="section-customercenter-navi">
 	<ul>
-		<li>
-			<a href="${contextPath}/notices">공지사항</a>
-		</li>
-		<li>
-			<a href="${contextPath}/questions">서비스 Q&A</a>
-		</li>
+		<li onclick="javascript:navigateToNoticeList()"><span>공지사항</span></li>
+		<li onclick="javascript:navigateToQuestionList()"><span>서비스 Q&A</span></li>
 	</ul>
 </div>
 
@@ -38,6 +34,17 @@
 		$( ".section-customercenter-navi ul li:first-child" ).addClass( "current" );
 	}else{
 		$( ".section-customercenter-navi ul li:nth-child(2)" ).addClass( "current" );
+	}
+	
+	
+	function navigateToQuestionList(){
+		var url = "${contextPath}/questions";
+	    location.href = url; 
+	}
+	
+	function navigateToNoticeList(){
+		var url = "${contextPath}/notices";
+	    location.href = url; 
 	}
 
 </script>

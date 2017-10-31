@@ -29,11 +29,15 @@ import com.demand.site.common.annotation.EmployeeRequired;
 import com.demand.site.common.dto.ErrorMessage;
 import com.demand.site.common.entity.Notice;
 import com.demand.site.common.entity.NoticeCategory;
+import com.demand.site.common.entity.Question;
+import com.demand.site.common.entity.QuestionCategory;
 import com.demand.site.common.entity.Report;
 import com.demand.site.common.entity.User;
 import com.demand.site.common.flag.PaginationFlag;
 import com.demand.site.service.NoticeCategoryService;
 import com.demand.site.service.NoticeService;
+import com.demand.site.service.QuestionCategoryService;
+import com.demand.site.service.QuestionService;
 import com.demand.site.service.ReportService;
 import com.demand.site.service.UserService;
 
@@ -45,13 +49,18 @@ public class MainController {
 
 	@Autowired
 	private ReportService reportService;
-	
+
 	@Autowired
 	private NoticeService noticeService;
 
 	@Autowired
 	private NoticeCategoryService noticeCategoryService;
-	
+
+	@Autowired
+	private QuestionCategoryService questionCategoryService;
+
+	@Autowired
+	private QuestionService questionService;
 
 	@Value("#{google['google.map.key']}")
 	private String GOOGLE_MAP_API_KEY;
@@ -77,12 +86,13 @@ public class MainController {
 	@RequestMapping(value = "/notices", method = RequestMethod.GET)
 	public String customerCenter(@RequestParam(name = "search", required = false) String search,
 			@PageableDefault(size = 15, sort = "sort", direction = Direction.DESC) Pageable pageable,
-			@RequestParam(name = "noticeCategoryId", required = false, defaultValue = "0") long noticeCategoryId, Model model)
-			throws Exception {
+			@RequestParam(name = "noticeCategoryId", required = false, defaultValue = "0") long noticeCategoryId,
+			Model model) throws Exception {
 		List<NoticeCategory> noticeCategories = noticeCategoryService.getNoticeCategories();
-		NoticeCategory  noticeCategory = noticeCategoryService.getNoticeCategoryById(noticeCategoryId);
-		
-		Page<Notice> noticePage = noticeService.getNoticesByNoticeCategoryIdAndSearchAndPageable(noticeCategoryId,search, pageable);
+		NoticeCategory noticeCategory = noticeCategoryService.getNoticeCategoryById(noticeCategoryId);
+
+		Page<Notice> noticePage = noticeService.getNoticesByNoticeCategoryIdAndSearchAndPageable(noticeCategoryId,
+				search, pageable);
 		int currentPageNo = noticePage.getNumber();
 		int totalPageNo = noticePage.getTotalPages();
 		int startPageNo = ((currentPageNo) / PaginationFlag.PAGE_VIEW_SIZE) * PaginationFlag.PAGE_VIEW_SIZE + 1;
@@ -101,6 +111,38 @@ public class MainController {
 		model.addAttribute("chosenNoticeCategory", noticeCategory);
 
 		return "notice/list";
+	}
+
+	@RequestMapping(value = "/questions", method = RequestMethod.GET)
+	public String question(
+			@RequestParam(name = "questionCategoryId", required = false, defaultValue = "0") long questionCategoryId,
+			@RequestParam(name = "search", required = false) String search,
+			@PageableDefault(size = 15, sort = "sort", direction = Direction.DESC) Pageable pageable, Model model)
+			throws Exception {
+
+		List<QuestionCategory> questionCategories = questionCategoryService.getQuestionCategories();
+		QuestionCategory questionCategory = questionCategoryService.getQuestionCategoryById(questionCategoryId);
+
+		Page<Question> questionPage = questionService.getQuestionsBySearchAndQuestionCategoryIdAndPageable(search,
+				questionCategoryId, pageable);
+
+		int currentPageNo = questionPage.getNumber();
+		int totalPageNo = questionPage.getTotalPages();
+		int startPageNo = ((currentPageNo) / PaginationFlag.PAGE_VIEW_SIZE) * PaginationFlag.PAGE_VIEW_SIZE + 1;
+		int endPageNo = startPageNo + PaginationFlag.PAGE_VIEW_SIZE - 1;
+
+		if (endPageNo > totalPageNo) {
+			endPageNo = totalPageNo;
+		}
+
+		model.addAttribute("search", search);
+		model.addAttribute("questionPage", questionPage);
+		model.addAttribute("questionCategories", questionCategories);
+		model.addAttribute("startPageNo", startPageNo);
+		model.addAttribute("endPageNo", endPageNo);
+		model.addAttribute("chosenQuestionCategory", questionCategory);
+
+		return "question/list";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -198,7 +240,6 @@ public class MainController {
 
 		int endPageNo = startPageNo + PaginationFlag.PAGE_VIEW_SIZE - 1;
 
-		
 		if (endPageNo > totalPageNo) {
 			endPageNo = totalPageNo;
 		}

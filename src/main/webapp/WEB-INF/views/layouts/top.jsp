@@ -126,8 +126,10 @@
 		$( ".section-gnb ul li:nth-child(6) a" ).addClass( "current" );
 	}else if(currentPathName == "${contextPath}/notices"){
 		$( ".section-gnb ul li:nth-child(5) a" ).addClass( "current" );
-	}else{
-		//
+	}else if(currentPathName == "${contextPath}/questions"){
+		$( ".section-gnb ul li:nth-child(5) a" ).addClass( "current" );
+	}else if(currentPathName == "${contextPath}/questions/new"){
+		$( ".section-gnb ul li:nth-child(5) a" ).addClass( "current" );
 	}
 		
 </script>
