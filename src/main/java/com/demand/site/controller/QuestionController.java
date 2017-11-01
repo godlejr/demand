@@ -21,12 +21,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.demand.site.common.annotation.EmployeeRequired;
 import com.demand.site.common.dto.ErrorMessage;
 import com.demand.site.common.entity.Answer;
 import com.demand.site.common.entity.Question;
 import com.demand.site.common.entity.QuestionCategory;
 import com.demand.site.common.entity.User;
 import com.demand.site.common.flag.PaginationFlag;
+import com.demand.site.service.AnswerService;
 import com.demand.site.service.QuestionCategoryService;
 import com.demand.site.service.QuestionService;
 
@@ -74,10 +76,19 @@ public class QuestionController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String detail(@PathVariable long id,
+	public String detail(@PathVariable long id, @RequestParam(required = false) String password,
 			@PageableDefault(size = 15, sort = "sort", direction = Direction.DESC) Pageable pageable,
 			HttpSession httpSession, Model model) throws Exception {
 		Question question = questionService.getQuestionById(id);
+
+		int type = question.getType();
+
+		if (type == 1) {
+			if (password == null || !password.equals(question.getPassword())) {
+				return "redirect:/questions";
+			}
+		}
+
 		long questionCategoryId = question.getQuestionCategory().getId();
 
 		Page<Question> questionPage = questionService.getQuestionsByQuestionCategoryIdAndPageable(questionCategoryId,
@@ -106,4 +117,5 @@ public class QuestionController {
 	public Question unlockQuestion(@PathVariable long id, @RequestParam("password") String password) throws Exception {
 		return questionService.getCheckedQuestionByIdAndPassword(id, password);
 	}
+
 }

@@ -129,7 +129,7 @@
 	$submit.click(function() {
 	   	var questionCategoryId = $('#questionCategoryId').val();
 	   	if(questionCategoryId != "0"){
-	   		var questionForm = $("#question-form").serialize();
+	    		var questionForm = $("#question-form").serialize();
 	   		sendQuestion(questionForm);
 	   	}else{
 	   		alert("카테고리를 선택하세요.");

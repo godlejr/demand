@@ -10,6 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -23,13 +27,19 @@ public class Answer extends Base {
 	@JsonManagedReference
 	private User user;
 
+	@NotEmpty(message = "제목을 입력해주세요.")
 	private String title;
+
+	@NotEmpty(message = "내용을 입력해주세요.")
 	private String content;
 	private int type;
 
 	@OneToOne(mappedBy = "answer", fetch = FetchType.LAZY)
 	@JsonBackReference
 	private QuestionAnswer questionAnswer;
+
+	@Transient
+	private long questionId;
 
 	public Answer() {
 		super();
@@ -77,6 +87,14 @@ public class Answer extends Base {
 
 	public String getCustomCreatedAt() {
 		return calculateDate(this.getCreatedAt());
+	}
+
+	public long getQuestionId() {
+		return questionId;
+	}
+
+	public void setQuestionId(long questionId) {
+		this.questionId = questionId;
 	}
 
 	public String calculateDate(String dateTime) {

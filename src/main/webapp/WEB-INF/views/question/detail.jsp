@@ -124,6 +124,7 @@
 					<div class="section-answer">
 						<form:form id="answer-form" class="answer-form"
 							modelAttribute="answer" method="post">
+							<form:input type="text" hidden="hidden" path="questionId" value="${question.id}"  />
 							<table>
 								<tbody>
 									<tr>
@@ -151,7 +152,7 @@
 										<td class="form-menu"></td>
 										<td class="form-menu-content">
 											<div class="content-submit">
-												<input type="submit" value="답변등록" />
+												<input type="button" id="submit" value="답변등록" />
 											</div>
 										</td>
 									</tr>
@@ -166,5 +167,30 @@
 </div>
 
 <script>
+	var $submit = $("#submit");
 	
+	$submit.click(function() {
+   		var answerForm = $("#answer-form").serialize();
+   		sendAnswer(answerForm);
+	});
+	
+	function sendAnswer(answerForm) {
+	   $.ajax({
+	      type : "POST",
+	      url : "${contextPath}/answers/",
+	      data : answerForm ,
+	      success : function(data) {
+	         var message = data.message;
+	         if (message != null) {
+	            alert(message);
+	         } else {
+	            navigateToQuestionListPage();
+	         }
+	      }
+	   })
+	}
+	
+	function navigateToQuestionListPage() {
+	   document.location.href = "${contextPath}/questions";
+	}
 </script>

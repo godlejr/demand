@@ -1696,7 +1696,7 @@ ol, ul, li {
    display:inline-block;
    cursor:pointer;
 }
-.container-content .section-question-list .question-list-content ul li .content-item .item-right .question-content .content-detail a{
+.container-content .section-question-list .question-list-content ul li .content-item .item-right .question-content .content-detail span{
    font-size:14px;
    color:#aaa;
 }

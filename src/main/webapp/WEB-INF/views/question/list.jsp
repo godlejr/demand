@@ -8,6 +8,7 @@
 <c:set var="questions" value="${questionPage.getContent()}"></c:set>
 <c:set var="questionCurrentPage" value="${questionPage.getNumber() +1}"></c:set>
 <c:set var="questionTotalPage" value="${questionPage.getTotalPages()}"></c:set>
+<c:set var="sessionUser" value="${sessionScope.user}"></c:set>
 
 <c:if test="${chosenQuestionCategory ne null}">
 	<c:set var="chosenQuestionCategoryId"
@@ -145,7 +146,7 @@
 
 									<div class="question-content">
 										<c:choose>
-											<c:when test="${question.type eq 1 }">
+											<c:when test="${(question.type eq 1) and (sessionUser eq null) }">
 												<div class="content-lock">
 													<div class="lock-title">
 														<span>이 글은 비밀글입니다. 내용을 확인하시려면 비밀번호를 입력해 주세요.</span>
@@ -165,15 +166,21 @@
 												</div>
 
 												<div class="content-detail">
-													<a href="${contextPath}/questions/${question.id}">자세히
-														보기 ></a>
+													<c:choose>
+														<c:when test="${sessionUser ne null }">
+															<span onclick="javascript:navigateToQuestionDetail(${question.id},${question.password})">자세히
+																보기 ></span>
+														</c:when>
+														<c:otherwise>
+															<span onclick="javascript:navigateToQuestionDetail(${question.id})">자세히
+																보기 ></span>
+														</c:otherwise>
+													</c:choose>
 												</div>
 											</c:otherwise>
 
 										</c:choose>
-
 									</div>
-
 								</div>
 							</div>
 						</li>
@@ -205,7 +212,7 @@
 
 						</c:choose>
 					</c:forEach>
-
+					
 
 					<c:if test="${questionCurrentPage ne questionTotalPage}">
 						<a href="javascript:paginate(${questionCurrentPage + 1 })"
@@ -240,6 +247,15 @@
 		$('.selector-filter').slideToggle();
 	});
  	
+ 	function navigateToQuestionDetail(id){
+ 		var url = "${contextPath}/questions/" + id;
+	    location.href = url; 
+ 	}
+ 	
+	function navigateToQuestionDetail(id, password){
+		var url = "${contextPath}/questions/" + id + "?password=" + password;
+	    location.href = url; 
+ 	}
 
 	
 	function showQuestion(id, self){
@@ -263,8 +279,8 @@
 	 		   	alert("비밀번호가 일치하지 않습니다.");
 	    	}else{
 	    		var questionContentTemplate = "<div class='content-memo'><p>" + data.content+ 
-	    		"</p></div><div class='content-detail'><a href='" + "${contextPath}/questions/" + data.id + 
-	    		"'>자세히 보기 ></a></div>";
+	    		"</p></div><div class='content-detail'><span onclick='javascript:navigateToQuestionDetail(" + data.id + 
+	    		"," + data.password + ")'>자세히 보기 ></span></div>";
 	    			
 	    		lockedContainer.after(questionContentTemplate);
 	    		lockedContainer.hide();
