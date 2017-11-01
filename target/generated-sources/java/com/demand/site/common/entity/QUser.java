@@ -26,6 +26,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final com.demand.site.common.embeddable.QAddress address;
 
+    public final ListPath<Answer, QAnswer> answers = this.<Answer, QAnswer>createList("answers", Answer.class, QAnswer.class, PathInits.DIRECT2);
+
     public final QFile avatarFile;
 
     public final NumberPath<Integer> checked = createNumber("checked", Integer.class);

@@ -2,9 +2,14 @@ package com.demand.site.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,8 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.demand.site.common.dto.ErrorMessage;
+import com.demand.site.common.entity.Answer;
 import com.demand.site.common.entity.Question;
 import com.demand.site.common.entity.QuestionCategory;
+import com.demand.site.common.entity.User;
+import com.demand.site.common.flag.PaginationFlag;
 import com.demand.site.service.QuestionCategoryService;
 import com.demand.site.service.QuestionService;
 
@@ -28,7 +36,7 @@ public class QuestionController {
 
 	@Autowired
 	private QuestionService questionService;
-	
+
 	@Autowired
 	private QuestionCategoryService questionCategoryService;
 
@@ -63,6 +71,34 @@ public class QuestionController {
 		questionService.saveQuestion(question, questionCategoryId);
 
 		return true;
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String detail(@PathVariable long id,
+			@PageableDefault(size = 15, sort = "sort", direction = Direction.DESC) Pageable pageable,
+			HttpSession httpSession, Model model) throws Exception {
+		Question question = questionService.getQuestionById(id);
+		long questionCategoryId = question.getQuestionCategory().getId();
+
+		Page<Question> questionPage = questionService.getQuestionsByQuestionCategoryIdAndPageable(questionCategoryId,
+				pageable);
+		int currentPageNo = questionPage.getNumber();
+		int totalPageNo = questionPage.getTotalPages();
+		int startPageNo = ((currentPageNo) / PaginationFlag.PAGE_VIEW_SIZE) * PaginationFlag.PAGE_VIEW_SIZE + 1;
+
+		int endPageNo = startPageNo + PaginationFlag.PAGE_VIEW_SIZE - 1;
+
+		if (endPageNo > totalPageNo) {
+			endPageNo = totalPageNo;
+		}
+
+		Answer answer = new Answer();
+		model.addAttribute("answer", answer);
+		model.addAttribute("question", question);
+		model.addAttribute("questionPage", questionPage);
+		model.addAttribute("startPageNo", startPageNo);
+		model.addAttribute("endPageNo", endPageNo);
+		return "question/detail";
 	}
 
 	@RequestMapping(value = "/{id}/unlock", method = RequestMethod.POST)

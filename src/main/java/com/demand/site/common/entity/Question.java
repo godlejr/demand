@@ -5,8 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -16,6 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.demand.site.common.annotation.QuestionPassword;
 import com.demand.site.common.annotation.QuestionWriter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -53,6 +56,10 @@ public class Question extends Base {
 
 	@Formula("(select CASE WHEN count(qa.id) > 0 THEN true ELSE false END  from question_answers qa where qa.question_id = id)")
 	private boolean answerCheck;
+
+	@OneToOne(mappedBy = "question", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private QuestionAnswer questionAnswer;
 
 	public Question() {
 		super();
@@ -157,6 +164,14 @@ public class Question extends Base {
 		this.answerCheck = answerCheck;
 	}
 
+	public QuestionAnswer getQuestionAnswer() {
+		return questionAnswer;
+	}
+
+	public void setQuestionAnswer(QuestionAnswer questionAnswer) {
+		this.questionAnswer = questionAnswer;
+	}
+
 	public String getCustomCreatedAt() {
 		return calculateDate(this.getCreatedAt());
 	}
@@ -220,7 +235,5 @@ public class Question extends Base {
 	public void setUpdatedAt(String updatedAt) {
 		super.setUpdatedAt(updatedAt);
 	}
-	
-	
 
 }

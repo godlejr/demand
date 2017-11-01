@@ -11,36 +11,28 @@ import com.mysema.query.types.path.PathInits;
 
 
 /**
- * QQuestion is a Querydsl query type for Question
+ * QAnswer is a Querydsl query type for Answer
  */
 @Generated("com.mysema.query.codegen.EntitySerializer")
-public class QQuestion extends EntityPathBase<Question> {
+public class QAnswer extends EntityPathBase<Answer> {
 
-    private static final long serialVersionUID = -1798142817L;
+    private static final long serialVersionUID = -1797823817L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QQuestion question = new QQuestion("question");
+    public static final QAnswer answer = new QAnswer("answer");
 
     public final QBase _super = new QBase(this);
-
-    public final BooleanPath answerCheck = createBoolean("answerCheck");
 
     public final StringPath content = createString("content");
 
     //inherited
     public final StringPath createdAt = _super.createdAt;
 
-    public final NumberPath<Integer> hits = createNumber("hits", Integer.class);
-
     //inherited
     public final NumberPath<Long> id = _super.id;
 
-    public final StringPath password = createString("password");
-
     public final QQuestionAnswer questionAnswer;
-
-    public final QQuestionCategory questionCategory;
 
     public final StringPath title = createString("title");
 
@@ -49,28 +41,28 @@ public class QQuestion extends EntityPathBase<Question> {
     //inherited
     public final StringPath updatedAt = _super.updatedAt;
 
-    public final StringPath writer = createString("writer");
+    public final QUser user;
 
-    public QQuestion(String variable) {
-        this(Question.class, forVariable(variable), INITS);
+    public QAnswer(String variable) {
+        this(Answer.class, forVariable(variable), INITS);
     }
 
-    public QQuestion(Path<? extends Question> path) {
+    public QAnswer(Path<? extends Answer> path) {
         this(path.getType(), path.getMetadata(), path.getMetadata().isRoot() ? INITS : PathInits.DEFAULT);
     }
 
-    public QQuestion(PathMetadata<?> metadata) {
+    public QAnswer(PathMetadata<?> metadata) {
         this(metadata, metadata.isRoot() ? INITS : PathInits.DEFAULT);
     }
 
-    public QQuestion(PathMetadata<?> metadata, PathInits inits) {
-        this(Question.class, metadata, inits);
+    public QAnswer(PathMetadata<?> metadata, PathInits inits) {
+        this(Answer.class, metadata, inits);
     }
 
-    public QQuestion(Class<? extends Question> type, PathMetadata<?> metadata, PathInits inits) {
+    public QAnswer(Class<? extends Answer> type, PathMetadata<?> metadata, PathInits inits) {
         super(type, metadata, inits);
         this.questionAnswer = inits.isInitialized("questionAnswer") ? new QQuestionAnswer(forProperty("questionAnswer"), inits.get("questionAnswer")) : null;
-        this.questionCategory = inits.isInitialized("questionCategory") ? new QQuestionCategory(forProperty("questionCategory")) : null;
+        this.user = inits.isInitialized("user") ? new QUser(forProperty("user"), inits.get("user")) : null;
     }
 
 }

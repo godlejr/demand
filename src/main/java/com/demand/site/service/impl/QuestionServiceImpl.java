@@ -41,4 +41,15 @@ public class QuestionServiceImpl implements QuestionService {
 		questionRepository.saveAndFlush(question);
 	}
 
+	@Override
+	public Question getQuestionById(long id) throws Exception {
+		return questionRepository.findOne(id);
+	}
+
+	@Override
+	public Page<Question> getQuestionsByQuestionCategoryIdAndPageable(long questionCategoryId, Pageable pageable)
+			throws Exception {
+		return questionRepository.findAllByQuestionCategoryIdAndPageable(questionCategoryId, pageable);
+	}
+
 }

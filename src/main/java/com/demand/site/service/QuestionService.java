@@ -9,10 +9,13 @@ public interface QuestionService {
 
 	void saveQuestion(Question question, long questionCategoryId) throws Exception;
 
-
 	Question getCheckedQuestionByIdAndPassword(long id, String password) throws Exception;
-
 
 	Page<Question> getQuestionsBySearchAndQuestionCategoryIdAndPageable(String search, long questionCategoryId,
 			Pageable pageable) throws Exception;
+
+	Question getQuestionById(long id) throws Exception;
+
+	Page<Question> getQuestionsByQuestionCategoryIdAndPageable(long questionCategoryId, Pageable pageable)
+			throws Exception;
 }

@@ -47,7 +47,7 @@ public class ReportController {
 
 	@EmployeeRequired
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String reports(@PathVariable long id, Model model) throws Exception {
+	public String detail(@PathVariable long id, Model model) throws Exception {
 		Map<String, Report> reportMap = reportService.getPrevPresentNextReportMapsById(id);
 
 		model.addAttribute("report", reportMap.get("report"));

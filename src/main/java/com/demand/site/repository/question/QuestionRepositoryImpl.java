@@ -48,4 +48,23 @@ public class QuestionRepositoryImpl extends QueryDslRepositorySupport implements
 		return new PageImpl<Question>(questions, pageable, total);
 	}
 
+	@Override
+	public Page<Question> findAllByQuestionCategoryIdAndPageable(long questionCategoryId, Pageable pageable)
+			throws Exception {
+		QQuestion question = QQuestion.question;
+
+		int offset = pageable.getOffset();
+		int size = pageable.getPageSize();
+
+		SearchResults<Question> searchResults = from(question)
+				.where(question.questionCategory.id.eq(questionCategoryId)).orderBy(question.updatedAt.desc())
+				.offset(offset).limit(size).listResults(question);
+
+		long total = searchResults.getTotal();
+
+		List<Question> questions = total > offset ? searchResults.getResults() : Collections.<Question>emptyList();
+
+		return new PageImpl<Question>(questions, pageable, total);
+	}
+
 }

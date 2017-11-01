@@ -1604,6 +1604,13 @@ ol, ul, li {
    margin-bottom: 15px;
    width: 100%;
 }
+.container-content .section-answer .answer-form table tbody .form-menu,
+.container-content .section-question-list .question-list-content ul li .content-item .item-left,
+.container-content .section-question .question-content .content-left,
+.container-content .section-answer .answer-content .content-left{
+		width:40px;
+	}
+
 
 .container-content .section-question-list .question-list-content ul li .content-item .item-left
    {
@@ -1630,7 +1637,6 @@ ol, ul, li {
 
 .container-content .section-question-list .question-list-content ul li .content-item .item-right
    {
-   float: right;
    width: 100%;
 }
 
@@ -1881,6 +1887,9 @@ ol, ul, li {
    color:#fff;
 }
 /*qna new*/
+
+
+
 .container-content .section-question {
    border: 1px solid #ccc;
    padding: 30px;
@@ -1890,6 +1899,321 @@ ol, ul, li {
 .container-content .section-question .question-header h3 {
    color: #d02b29;
 }
+
+
+
+.container-content .section-question .question-content .content-left{
+	float: left;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.container-content .section-question .question-content .content-left span{
+	color: #d02b29;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.container-content .section-question .question-content .content-left .question-check{
+    margin-top: 8px;
+}
+
+.container-content .section-question .question-content .content-left .question-check span{
+	font-size: 12px;
+    word-break: keep-all;
+}
+
+.container-content .section-question .question-content .content-right{
+    width: 100%;
+}
+
+.container-content .section-question .question-content .content-right .question-title{
+	
+}
+
+.container-content .section-question .question-content .content-right .question-description{
+    display: inline-block;
+}
+
+.container-content .section-question .question-content .content-right .question-description .question-category,
+.container-content .section-question .question-content .content-right .question-description .question-date,
+.container-content .section-question .question-content .content-right .question-description .question-writer{
+	float: left;
+}
+
+.container-content .section-question .question-content .content-right .question-description .question-date,
+.container-content .section-question .question-content .content-right .question-description .question-writer{
+	background: url(../img/common/bg_th.gif) no-repeat right;
+    padding-right: 10px;
+    margin-right: 5px;
+}
+
+.container-content .section-question .question-content .content-right .question-description .question-category span,
+.container-content .section-question .question-content .content-right .question-description .question-date span,
+.container-content .section-question .question-content .content-right .question-description .question-writer span{
+	font-size: 14px;
+    color: #444;
+}
+	
+
+.container-content .section-question .question-content .content-right .question-memo{
+    display: flex;
+}
+
+.container-content .section-question .question-content .content-right .question-memo .memo-content{
+	
+}
+
+.container-content .section-question .question-content .content-right .question-memo .memo-content p{
+    float: left;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.8;
+    width: 100%;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 5.6em;
+}
+
+.container-content .section-question .question-content .content-right .question-bottom{
+    display: flex;    
+    margin-top: 20px;
+}
+
+.container-content .section-question .question-content .content-right .question-bottom .bottom-function{
+    width: 100%;
+    border-top: 1px solid #cccccc;
+}
+
+.container-content .section-question .question-content .content-right .question-bottom  .bottom-function ul{
+    float: right;
+    margin-top: 20px;    
+    display: flex;
+}
+
+.container-content .section-question .question-content .content-right .question-bottom .bottom-function ul li{
+ 	border-radius: 2px;
+  	background-color: #ffffff;
+  	border: solid 1px #aaaaaa;
+  	padding: 10px 20px;
+	margin-left:15px;
+	color: #444;
+	cursor: pointer;
+}
+
+.container-content .section-question .question-content .content-right .question-bottom .bottom-function ul li:hover{
+ 	background-color: #c1a077;
+	color:#fff;
+}
+
+.container-content .section-answer {
+   border: 1px solid #ccc;
+   padding: 30px;
+   margin:10px;
+}
+
+.container-content .section-answer .answer-form{
+	display:flex;
+}
+
+.container-content .section-answer .answer-form table{
+	    display: inline-block;
+    width: 100%;
+}
+.container-content .section-answer .answer-form table tbody{
+	    display: inline-block;
+    width: 100%;
+}
+
+.container-content .section-answer .answer-form table tbody tr{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.container-content .section-answer .answer-form table tbody .form-menu{
+    padding-right: 15px;
+    text-align: center;
+    min-width:40px
+}
+
+.container-content .section-answer .answer-form table tbody .form-menu .mark{
+	color: #c1a077;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.container-content .section-answer .answer-form table tbody .form-menu span{
+	font-size: 14px;
+ 	font-weight: bold;	
+ 	color: #444;
+}
+
+.container-content .section-answer .answer-form table tbody .form-menu-content{
+	width: 100%;
+	color: #444;
+}
+
+.container-content .section-answer .answer-form table tbody .form-menu-content input[type=text]{
+	width: 100%;
+	border: solid 1px #cccccc;
+	font-size:14px;
+    padding: 10px;
+    outline: none;
+}
+
+
+.container-content .section-answer .answer-form table tbody .form-menu-content .content-textarea{
+	width: 100%;
+	min-height:300px;
+	border: solid 1px #cccccc;
+	color: #444;
+	font-size:14px;
+    padding: 10px;
+    outline: none;
+}
+
+.container-content .section-answer .answer-form table tbody .form-menu-content .profile-check{
+  font-size: 14px;
+  font-weight: bold;
+  color: #444;
+  padding-right: 20px;
+      float: left;
+     margin-top: 10px;
+}
+
+.container-content .section-answer .answer-form table tbody .form-menu-content input[type=radio]{
+	
+}
+
+.container-content .section-answer .answer-form table tbody .form-menu-content .profile-check-option{
+    float: left;
+    margin-top: 10px;
+}
+
+.container-content .section-answer .answer-form table tbody .form-menu-content .profile-check-option span{
+	padding-right: 10px;
+	padding-left: 5px;
+	word-break: keep-all;
+}
+.container-content .section-answer .answer-form table tbody .form-menu-content .content-submit{
+	text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding: 20px 20px 0 20px;
+}
+
+.container-content .section-answer .answer-form table tbody .form-menu-content .content-submit input{
+	border-radius: 2px;
+  	background-color: #00aeef;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 24px;
+	text-align: center;
+	color: #ffffff;
+	padding: 5 20px;
+	outline:none;
+	border:none;
+    cursor: pointer;
+}
+.container-content .section-answer .answer-content .content-left{
+	float: left;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.container-content .section-answer .answer-content .content-left span{
+	color: #c1a077;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.container-content .section-answer .answer-content .content-right{
+    width: 100%;
+}
+
+.container-content .section-answer .answer-content .content-right .answer-title{
+	
+}
+
+.container-content .section-answer .answer-content .content-right .answer-description{
+    display: inline-block;
+}
+
+.container-content .section-answer .answer-content .content-right .answer-description .answer-category,
+.container-content .section-answer .answer-content .content-right .answer-description .answer-date,
+.container-content .section-answer .answer-content .content-right .answer-description .answer-writer{
+	float: left;
+}
+
+.container-content .section-answer .answer-content .content-right .answer-description .answer-date,
+.container-content .section-answer .answer-content .content-right .answer-description .answer-writer{
+	background: url(../img/common/bg_th.gif) no-repeat right;
+    padding-right: 10px;
+    margin-right: 5px;
+}
+
+.container-content .section-answer .answer-content .content-right .answer-description .answer-category span,
+.container-content .section-answer .answer-content .content-right .answer-description .answer-date span,
+.container-content .section-answer .answer-content .content-right .answer-description .answer-writer span{
+	font-size: 14px;
+    color: #444;
+}
+	
+
+.container-content .section-answer .answer-content .content-right .answer-memo{
+    display: flex;
+}
+
+.container-content .section-answer .answer-content .content-right .answer-memo .memo-content{
+	
+}
+
+.container-content .section-answer .answer-content .content-right .answer-memo .memo-content p{
+    float: left;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.8;
+    width: 100%;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 5.6em;
+}
+
+.container-content .section-answer .answer-content .content-right .answer-bottom{
+    display: flex;    
+    margin-top: 20px;
+}
+
+.container-content .section-answer .answer-content .content-right .answer-bottom .bottom-function{
+    width: 100%;
+    border-top: 1px solid #cccccc;
+}
+
+.container-content .section-answer .answer-content .content-right .answer-bottom  .bottom-function ul{
+    float: right;
+    margin-top: 20px;    
+    display: flex;
+}
+
+.container-content .section-answer .answer-content .content-right .answer-bottom .bottom-function ul li{
+ 	border-radius: 2px;
+  	background-color: #ffffff;
+  	border: solid 1px #aaaaaa;
+  	padding: 10px 20px;
+	margin-left:15px;
+	color: #444;
+	cursor: pointer;
+}
+
+.container-content .section-answer .answer-content .content-right .answer-bottom .bottom-function ul li:hover{
+ 	background-color: #c1a077;
+	color:#fff;
+}
+
+/**/
 
 .container-content .section-question .question-content .question-form table
    {
@@ -1909,6 +2233,7 @@ ol, ul, li {
 
 .container-content .section-question .question-content .question-form table tbody tr td input
    {
+   font-size:14px;
    padding: 5px;
    border: 1px solid #ccc;
    outline: none;
@@ -1926,6 +2251,7 @@ ol, ul, li {
    border: 1px solid #ccc;
    outline: none;
    padding:5px;
+   font-size:14px;
 }
 
 .container-content .section-question .question-content .question-form table tbody tr .form-menu
@@ -1933,6 +2259,7 @@ ol, ul, li {
    display: table-cell;
    font-size: 14px;
    color: #444;
+   font-weight: bold;
 }
 
 .container-content .section-question .question-content .question-form table tbody tr .form-menu-content
@@ -1940,6 +2267,7 @@ ol, ul, li {
    display: table-cell;
    font-size: 14px;
    color: #444;
+   width: 80%;
 }
 
 .container-content .section-question .question-content .question-form .form-submit{
@@ -3105,10 +3433,14 @@ ol, ul, li {
 		padding:20px;
 	}
 	
+	.container-content .section-answer .answer-form table tbody .form-menu .mark,
+	.container-content .section-answer .answer-content .content-left span,
+	.container-content .section-question .question-content .content-left span,
 	.container-content .section-question-list .question-list-content ul li .content-item .item-left span{
 		font-size: 32px;
 	}
 	
+	.container-content .section-question .question-content .content-left .question-check span,
 	.container-content .section-question-list .question-list-content ul li .content-item .item-left .question-check span{
 		font-size: 14px;
 	}
@@ -3116,6 +3448,38 @@ ol, ul, li {
 	.content-body .section-question-list .question-list-header .section-category-list ul li a,
 	.container-content .section-question-list-intro .intro-header  p{
 		font-size: 16px;
+	}
+	
+	.container-content .section-answer .answer-content .content-right .answer-memo .memo-content p,
+	.container-content .section-question .question-content .content-right .question-memo .memo-content p,
+	.container-content .section-question-list .question-list-content ul li .content-item .item-right .question-content .content-lock .lock-content span,
+ 	.container-content .section-question-list .question-list-content ul li .content-item .item-right .question-content .content-lock .lock-title span,	
+	.container-content .section-question-list .question-list-content ul li .content-item .item-right .question-content .content-memo p{
+		font-size: 16px;
+	}
+	
+	.container-content .section-answer .answer-form table tbody .form-menu span,
+	.container-content .section-question .question-content .question-form table tbody tr .form-menu{
+		font-size: 15px;
+	}
+	
+	.container-content .section-question .question-content .question-form table tbody tr .form-menu-content{
+		width:85%
+	}
+	
+	.container-content .section-answer .answer-form table tbody .form-menu-content .profile-check,
+	.container-content .section-answer .answer-form table tbody .form-menu-content input[type=text],
+	.container-content .section-answer .answer-form table tbody .form-menu-content .content-textarea,
+	.container-content .section-question .question-content .question-form table tbody tr td .content-input,
+	.container-content .section-question .question-content .question-form table tbody tr td input{
+		font-size: 15px;
+	}
+	
+	.container-content .section-answer .answer-form table tbody .form-menu,
+	.container-content .section-question-list .question-list-content ul li .content-item .item-left,
+	.container-content .section-question .question-content .content-left,
+	.container-content .section-answer .answer-content .content-left{
+		width:50px;
 	}
 	
 	
@@ -3334,6 +3698,7 @@ ol, ul, li {
 		padding: 10px;
 	}
 	
+	
 	/*question*/
 	.container-content .section-question-list .question-list-content ul li .content-item{
 		padding:25px;
@@ -3348,10 +3713,14 @@ ol, ul, li {
 	   display: block;
 	}
 	
+	.container-content .section-answer .answer-form table tbody .form-menu .mark,
+	.container-content .section-answer .answer-content .content-left span,
+	.container-content .section-question .question-content .content-left span,
 	.container-content .section-question-list .question-list-content ul li .content-item .item-left span{
 		font-size: 36px;
 	}
 	
+	.container-content .section-question .question-content .content-left .question-check span,
 	.container-content .section-question-list .question-list-content ul li .content-item .item-left .question-check span{
 		font-size: 16px;
 	}
@@ -3359,6 +3728,39 @@ ol, ul, li {
 	.content-body .section-question-list .question-list-header .section-category-list ul li a,
 	.container-content .section-question-list-intro .intro-header  p{
 		font-size: 18px;
+	}
+	
+	.container-content .section-answer .answer-content .content-right .answer-memo .memo-content p,
+	.container-content .section-question .question-content .content-right .question-memo .memo-content p,
+	.container-content .section-question-list .question-list-content ul li .content-item .item-right .question-content .content-lock .lock-content span,
+   	.container-content .section-question-list .question-list-content ul li .content-item .item-right .question-content .content-lock .lock-title span,
+	.container-content .section-question-list .question-list-content ul li .content-item .item-right .question-content .content-memo p{
+		font-size: 18px;
+	}
+	
+	.container-content .section-answer .answer-form table tbody .form-menu span,
+	.container-content .section-question .question-content .question-form table tbody tr .form-menu{
+		font-size: 16px;
+	}
+	
+	.container-content .section-answer .answer-form table tbody .form-menu-content .profile-check,
+	.container-content .section-answer .answer-form table tbody .form-menu-content input[type=text],
+	.container-content .section-answer .answer-form table tbody .form-menu-content .content-textarea,
+	.container-content .section-question .question-content .question-form table tbody tr td .content-input,
+	.container-content .section-question .question-content .question-form table tbody tr td input{
+		font-size: 16px;
+	}
+	
+	
+	.container-content .section-question .question-content .question-form table tbody tr .form-menu-content{
+		width:90%
+	}
+	
+	.container-content .section-answer .answer-form table tbody .form-menu,
+	.container-content .section-question-list .question-list-content ul li .content-item .item-left,
+	.container-content .section-question .question-content .content-left,
+	.container-content .section-answer .answer-content .content-left{
+		width:60px;
 	}
 	
 	/*report*/

@@ -85,6 +85,11 @@
 		<put-attribute name="title" value="질문 생성" />
 		<put-attribute name="content" value="/WEB-INF/views/question/new.jsp" />
 	</definition>
+	
+	<definition name="question/detail" extends="Base">
+		<put-attribute name="title" value="질문 상세" />
+		<put-attribute name="content" value="/WEB-INF/views/question/detail.jsp" />
+	</definition>
 
 	<!-- 유저 관련 -->
 	<definition name="user/detail" extends="Base">

@@ -72,7 +72,7 @@
 								<td class="form-menu-content"><form:textarea id="content"
 										path="content" class="content-input"
 										placeholder="* 본 게시판에 질문 작성 시 실명이 아닌 닉네임으로도 작성이 가능합니다.
-* 질문 제목 및 내용 작성 시에 비방 글, 비속어, 개인정보 노출, 음란, 광고글은 경고 없이 삭제될수  있습니다." />
+* 질문 제목 및 내용 작성 시 비방 글, 비속어, 개인정보 노출, 음란, 광고글은 경고 없이 삭제될 수 있습니다." />
 								</td>
 							</tr>
 							<tr>
