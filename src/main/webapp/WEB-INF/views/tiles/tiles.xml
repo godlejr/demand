@@ -90,6 +90,17 @@
 		<put-attribute name="title" value="질문 상세" />
 		<put-attribute name="content" value="/WEB-INF/views/question/detail.jsp" />
 	</definition>
+	
+	<definition name="question/edit" extends="Base">
+		<put-attribute name="title" value="질문 수정" />
+		<put-attribute name="content" value="/WEB-INF/views/question/edit.jsp" />
+	</definition>
+	
+	<definition name="question/passwordPopup" extends="Base">
+		<put-attribute name="title" value="비밀번호 체크" />
+		<put-attribute name="top" value="" />
+		<put-attribute name="content" value="/WEB-INF/views/question/passwordPopup.jsp" />
+	</definition>
 
 	<!-- 유저 관련 -->
 	<definition name="user/detail" extends="Base">

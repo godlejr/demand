@@ -21,14 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.demand.site.common.annotation.EmployeeRequired;
 import com.demand.site.common.dto.ErrorMessage;
 import com.demand.site.common.entity.Answer;
 import com.demand.site.common.entity.Question;
 import com.demand.site.common.entity.QuestionCategory;
-import com.demand.site.common.entity.User;
 import com.demand.site.common.flag.PaginationFlag;
-import com.demand.site.service.AnswerService;
 import com.demand.site.service.QuestionCategoryService;
 import com.demand.site.service.QuestionService;
 
@@ -91,8 +88,8 @@ public class QuestionController {
 
 		long questionCategoryId = question.getQuestionCategory().getId();
 
-		Page<Question> questionPage = questionService.getQuestionsByQuestionCategoryIdAndPageableAndIdNot(id,questionCategoryId,
-				pageable);
+		Page<Question> questionPage = questionService.getQuestionsByQuestionCategoryIdAndPageableAndIdNot(id,
+				questionCategoryId, pageable);
 		int currentPageNo = questionPage.getNumber();
 		int totalPageNo = questionPage.getTotalPages();
 		int startPageNo = ((currentPageNo) / PaginationFlag.PAGE_VIEW_SIZE) * PaginationFlag.PAGE_VIEW_SIZE + 1;
@@ -112,10 +109,87 @@ public class QuestionController {
 		return "question/detail";
 	}
 
+	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+	public String edit(@PathVariable("id") long id, @RequestParam(name = "password") String password,
+			Model model) throws Exception {
+		Question question = questionService.getQuestionById(id);
+		String questionPassword = question.getPassword();
+
+		if (!questionPassword.equals(password)) {
+			return "redirect:/questions";
+		}
+
+		model.addAttribute("question", question);
+		return "question/edit";
+	}
+
+	@RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
+	@ResponseBody
+	public Object edit(@PathVariable("id") long id, @Valid @ModelAttribute Question question,
+			BindingResult bindingResult, Model model) throws Exception {
+		if (bindingResult.hasErrors()) {
+			FieldError fieldError = bindingResult.getFieldError();
+			String message = fieldError.getDefaultMessage();
+
+			ErrorMessage errorMessage = new ErrorMessage();
+			errorMessage.setMessage(message);
+
+			return errorMessage;
+		}
+
+		questionService.updateQuestion(question);
+		return true;
+	}
+
+	@RequestMapping(value = "/{id}/delete", method = { RequestMethod.GET, RequestMethod.POST })
+	public String delete(@PathVariable("id") long id,
+			@RequestParam(name = "password", required = false) String password, Model model) throws Exception {
+		Question question = questionService.getQuestionById(id);
+		int type = question.getType();
+		String questionPassword = question.getPassword();
+
+		if (type == 1) {
+			if (!questionPassword.equals(password)) {
+				return "redirect:/questions/";
+			}
+		}
+
+		questionService.deleteQuestionById(id);
+		return "redirect:/questions";
+	}
+
 	@RequestMapping(value = "/{id}/unlock", method = RequestMethod.POST)
 	@ResponseBody
 	public Question unlockQuestion(@PathVariable long id, @RequestParam("password") String password) throws Exception {
 		return questionService.getCheckedQuestionByIdAndPassword(id, password);
+	}
+
+	@RequestMapping(value = "/{id}/passwordCheck", method = RequestMethod.GET)
+	public String passwordCheck(@PathVariable long id, @RequestParam("flag") int flag, Model model) throws Exception {
+		Question question = questionService.getQuestionById(id);
+
+		model.addAttribute("flag", flag);
+		model.addAttribute("question", question);
+
+		return "question/passwordPopup";
+	}
+
+	@RequestMapping(value = "/{id}/passwordCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public Object passwordCheckValidation(@PathVariable long id, @RequestParam("password") String password, Model model)
+			throws Exception {
+		Question question = questionService.getQuestionById(id);
+
+		String questionPassword = question.getPassword();
+		if (questionPassword.equals(password)) {
+			return true;
+		} else {
+			ErrorMessage errorMessage = new ErrorMessage();
+			errorMessage.setMessage("비밀번호가 일치하지 않습니다.");
+
+			return errorMessage;
+		}
+
 	}
 
 }

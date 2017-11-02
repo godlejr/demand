@@ -94,6 +94,7 @@
                var self = this;
                if($('.section-join').has(e.target).length === 0){
                   $(self).hide();
+                  $('html').css({'overflow-y':'auto'});
                }
             });
             

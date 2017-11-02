@@ -17,10 +17,10 @@ public abstract class Base implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(insertable = false)
+	@Column(insertable = false, updatable = false)
 	private String createdAt;
 
-	@Column(insertable = false)
+	@Column(insertable = false, updatable = false)
 	private String updatedAt;
 
 	public long getId() {

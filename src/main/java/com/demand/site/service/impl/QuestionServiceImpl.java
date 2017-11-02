@@ -7,9 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demand.site.common.entity.Answer;
 import com.demand.site.common.entity.Question;
+import com.demand.site.common.entity.QuestionAnswer;
 import com.demand.site.common.entity.QuestionCategory;
+import com.demand.site.repository.answer.AnswerRepository;
 import com.demand.site.repository.question.QuestionRepository;
+import com.demand.site.repository.questionanswer.QuestionAnswerRepository;
 import com.demand.site.repository.questioncategory.QuestionCategoryRepository;
 import com.demand.site.service.QuestionService;
 
@@ -22,6 +26,12 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Autowired
 	private QuestionCategoryRepository questionCategoryRepository;
+
+	@Autowired
+	private QuestionAnswerRepository questionAnswerRepository;
+
+	@Autowired
+	private AnswerRepository answerRepository;
 
 	@Override
 	public Page<Question> getQuestionsBySearchAndQuestionCategoryIdAndPageable(String search, long questionCategoryId,
@@ -47,9 +57,30 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public Page<Question> getQuestionsByQuestionCategoryIdAndPageableAndIdNot(long id, long questionCategoryId, Pageable pageable)
-			throws Exception {
-		return questionRepository.findAllByQuestionCategoryIdAndPageableAndIdNot(id,questionCategoryId, pageable);
+	public Page<Question> getQuestionsByQuestionCategoryIdAndPageableAndIdNot(long id, long questionCategoryId,
+			Pageable pageable) throws Exception {
+		return questionRepository.findAllByQuestionCategoryIdAndPageableAndIdNot(id, questionCategoryId, pageable);
+	}
+
+	@Override
+	public void deleteQuestionById(long questionId) throws Exception {
+		QuestionAnswer questionAnswer = questionAnswerRepository.findByQuestionId(questionId);
+		if (questionAnswer != null) {
+			Answer answer = questionAnswer.getAnswer();
+			long answerId = answer.getId();
+
+			answerRepository.delete(answerId);
+
+		}
+		questionRepository.delete(questionId);
+	}
+
+	@Override
+	public void updateQuestion(Question question) throws Exception {
+		long questionCategoryId = question.getQuestionCategoryId();
+		QuestionCategory questionCategory = questionCategoryRepository.findOne(questionCategoryId);
+		question.setQuestionCategory(questionCategory);
+		questionRepository.saveAndFlush(question);
 	}
 
 }

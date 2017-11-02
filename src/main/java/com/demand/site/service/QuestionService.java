@@ -16,6 +16,10 @@ public interface QuestionService {
 
 	Question getQuestionById(long id) throws Exception;
 
-	Page<Question> getQuestionsByQuestionCategoryIdAndPageableAndIdNot(long id, long questionCategoryId, Pageable pageable)
-			throws Exception;
+	Page<Question> getQuestionsByQuestionCategoryIdAndPageableAndIdNot(long id, long questionCategoryId,
+			Pageable pageable) throws Exception;
+
+	void deleteQuestionById(long id) throws Exception;
+
+	void updateQuestion(Question question) throws Exception;
 }

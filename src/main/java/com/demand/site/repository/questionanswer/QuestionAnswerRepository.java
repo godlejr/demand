@@ -6,4 +6,6 @@ import com.demand.site.common.entity.QuestionAnswer;
 
 public interface QuestionAnswerRepository  extends JpaRepository<QuestionAnswer, Long>{
 
+	QuestionAnswer findByQuestionId(long questionId);
+
 }

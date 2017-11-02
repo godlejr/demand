@@ -56,8 +56,8 @@
 					<div class="question-bottom">
 						<div class="bottom-function">
 							<ul>
-								<li>수정</li>
-								<li>삭제</li>
+								<li onclick="javascript:onClickQuestionFunction(${question.id},1)">수정</li>
+								<li onclick="javascript:onClickQuestionFunction(${question.id},2)">삭제</li>
 							</ul>
 						</div>
 					</div>
@@ -230,6 +230,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<div id="popup-container" class="popup-container"></div>
 	</div>
 </div>
 
@@ -272,4 +274,43 @@
 	function navigateToQuestionListPage() {
 	   document.location.href = "${contextPath}/questions";
 	}
+	
+	function onClickQuestionFunction(id, flag){
+		showQuestionPasswordCheckPopup(id, flag);
+	}
+	
+	
+	function showQuestionPasswordCheckPopup(id, flag){
+		
+		var documentHtml =$('html');
+		
+		$.ajax({
+	         type : "GET",
+	         url : "${contextPath}/questions/" + id + "/passwordCheck",
+	         cache: false,
+	   		 async: true,	
+	         data:{
+	        	 flag: flag
+	         },
+	         success : function(response) {
+	            var template = $(response).find('#popup-container').html();
+	            var popupContainer = $('#popup-container');
+	            
+	            popupContainer.html(template).fadeIn(300, 'easeOutQuad');
+	            documentHtml.css({'overflow-y':'hidden'});
+	            popupContainer.css({'display':'flex'});
+	            popupContainer.show();
+
+	            popupContainer.click(function(e){
+	               var self = this;
+	               if($('.section-password-popup').has(e.target).length === 0){
+	                  $(self).hide();
+	                  $('html').css({'overflow-y':'auto'});
+	               }
+	            });
+	            
+	         }
+	      });
+	}
+	
 </script>
