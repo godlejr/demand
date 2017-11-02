@@ -288,7 +288,7 @@
 	         type : "GET",
 	         url : "${contextPath}/questions/" + id + "/passwordCheck",
 	         cache: false,
-	   		 async: true,	
+	   		 async: false,	
 	         data:{
 	        	 flag: flag
 	         },

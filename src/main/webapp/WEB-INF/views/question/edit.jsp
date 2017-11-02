@@ -73,7 +73,7 @@
 
 					<div class="form-submit">
 						<div class="submit-content">
-							<input type="submit" id="submit" value="수정" class="submit-button">
+							<input type="button" id="submit" value="수정" class="submit-button">
 							<input type="button" id="cancel" value="취소" class="cancel-button">
 						</div>
 					</div>
@@ -100,6 +100,7 @@
 	       type: "POST",
 	       data: questionForm,
 	       url: "${contextPath}/questions/${question.id}/edit",
+	       async: false,
 	       success: function(data){
 	          var message = data.message;
 	          if(message != null){
