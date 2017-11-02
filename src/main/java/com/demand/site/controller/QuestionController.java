@@ -91,7 +91,7 @@ public class QuestionController {
 
 		long questionCategoryId = question.getQuestionCategory().getId();
 
-		Page<Question> questionPage = questionService.getQuestionsByQuestionCategoryIdAndPageable(questionCategoryId,
+		Page<Question> questionPage = questionService.getQuestionsByQuestionCategoryIdAndPageableAndIdNot(id,questionCategoryId,
 				pageable);
 		int currentPageNo = questionPage.getNumber();
 		int totalPageNo = questionPage.getTotalPages();

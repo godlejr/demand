@@ -6,7 +6,9 @@
 
 <c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
 <c:set var="sessionUser" value="${sessionScope.user}"></c:set>
-
+<c:set var="otherQuestions" value="${questionPage.getContent()}"></c:set>
+<c:set var="otherQuestionCurrentPage" value="${questionPage.getNumber() + 1}"></c:set>
+<c:set var="otherQuestionTotalPageNumber" value="${questionPage.getTotalPages()}"></c:set>
 
 <div class="container-content">
 	<jsp:include page="./banner.jsp" flush="false">
@@ -163,6 +165,71 @@
 				</c:if>
 			</c:otherwise>
 		</c:choose>
+		
+		<div class="section-questions-button">
+			<div  class="button-function"  onclick="javascript:navigateToQuestionListPage()">
+				<span>목록</span>
+			</div>
+		</div>
+		
+		<div class="section-other-questions">
+			<div class="other-questions-content">
+				<div class="content-header">
+					<span class="question-category">'${question.questionCategory.name}'</span><span>의 다른 질문들</span>
+				</div>
+				
+				<div class="content-list">
+					<table summary="번호, 카테고리, 제목, 작성일 ">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Category</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+	
+						<tbody>
+							<c:forEach var="otherQuestion" items="${otherQuestions}">
+								<tr class="other-question-item">
+									<td class="item-column" onclick="javascript:navigateToQuestionDetail(${otherQuestion.id})">${otherQuestion.title }</td>
+									<td class="item-column">${otherQuestion.questionCategory.name }</td>
+									<td class="item-column">${otherQuestion.getCustomCreatedAt()  }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+						
+					</table>
+				</div>
+				<div class="content-bottom">
+					<div class="section-pagination">
+					    <c:if test="${otherQuestionCurrentPage ne 1}">
+					        <a href="javascript:paginate(${otherQuestionCurrentPage - 1})" class="prev">이전</a>
+					    </c:if>
+					    
+					    <span>
+					        <c:forEach var="i" begin="${startPageNo}" end="${endPageNo}" step="1">
+					            <c:choose>
+					                <c:when test="${i eq otherQuestionCurrentPage}">
+					                    <b><font size=+2>
+					                            <a href="javascript:paginate(${i})" class="choice">${i}</a>
+					                        </font>
+					                    </b>
+					                </c:when>
+					                <c:otherwise>
+					                    <a href="javascript:paginate(${i})">${i}</a>
+					                </c:otherwise>
+					            </c:choose>
+					        </c:forEach>
+					    </span>
+					    
+					    <c:if test="${otherQuestionCurrentPage ne otherQuestionTotalPageNumber}">
+					        <a href="javascript:paginate( ${otherQuestionCurrentPage + 1})" class="next">다음</a>
+					    </c:if>
+					 
+					</div>	
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -189,6 +256,18 @@
 	      }
 	   })
 	}
+	
+	function paginate(pageNo){    
+		var page = pageNo -1;
+		var url = "${contextPath}/questions/${question.id}/?page=" + page;		
+		location.href = url;
+	}
+	
+	function navigateToQuestionDetail(id){
+ 		var url = "${contextPath}/questions/" + id;
+	    location.href = url; 
+ 	}
+	
 	
 	function navigateToQuestionListPage() {
 	   document.location.href = "${contextPath}/questions";

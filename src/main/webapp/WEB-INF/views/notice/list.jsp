@@ -106,7 +106,7 @@
 			</div>
 
 			<div class="notice-list-content">
-				<table summary="번호, 제목, 작성일, 작성자, 조회수 ">
+				<table summary="번호, 카테고리, 제목, 작성일 ">
 					<thead>
 						<tr>
 							<th>No</th>

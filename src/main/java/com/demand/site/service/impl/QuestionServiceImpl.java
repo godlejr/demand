@@ -47,9 +47,9 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public Page<Question> getQuestionsByQuestionCategoryIdAndPageable(long questionCategoryId, Pageable pageable)
+	public Page<Question> getQuestionsByQuestionCategoryIdAndPageableAndIdNot(long id, long questionCategoryId, Pageable pageable)
 			throws Exception {
-		return questionRepository.findAllByQuestionCategoryIdAndPageable(questionCategoryId, pageable);
+		return questionRepository.findAllByQuestionCategoryIdAndPageableAndIdNot(id,questionCategoryId, pageable);
 	}
 
 }

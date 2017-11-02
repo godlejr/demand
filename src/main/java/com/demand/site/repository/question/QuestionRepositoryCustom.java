@@ -10,6 +10,6 @@ public interface QuestionRepositoryCustom {
 	Page<Question> findAllByQuestionCategoryIdAndPageable(String search, long questionCategoryId, Pageable pageable)
 			throws Exception;
 
-	Page<Question> findAllByQuestionCategoryIdAndPageable(long questionCategoryId, Pageable pageable) throws Exception;
+	Page<Question> findAllByQuestionCategoryIdAndPageableAndIdNot(long id, long questionCategoryId, Pageable pageable) throws Exception;
 
 }
