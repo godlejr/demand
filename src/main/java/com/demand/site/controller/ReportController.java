@@ -88,7 +88,7 @@ public class ReportController {
 
 		User user = (User) httpSession.getAttribute("user");
 		if (user != null) {
-			reportService.editReport(user, id, isNotification, title, content, deletedFileStorageNames, files);
+			reportService.updateReport(user, id, isNotification, title, content, deletedFileStorageNames, files);
 		}
 	}
 }

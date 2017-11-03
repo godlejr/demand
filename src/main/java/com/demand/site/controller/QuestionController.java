@@ -74,13 +74,13 @@ public class QuestionController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String detail(@PathVariable long id, @RequestParam(required = false) String password,
-			@PageableDefault(size = 15, sort = "sort", direction = Direction.DESC) Pageable pageable,
+			@PageableDefault(size = 15, sort = "sort", direction = Direction.DESC) Pageable pageable, HttpSession session,
 			HttpSession httpSession, Model model) throws Exception {
 		Question question = questionService.getQuestionById(id);
 
 		int type = question.getType();
 
-		if (type == 1) {
+		if (type == 1 && session.getAttribute("user")== null) {
 			if (password == null || !password.equals(question.getPassword())) {
 				return "redirect:/questions";
 			}

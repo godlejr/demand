@@ -146,14 +146,14 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public void editReport(User user, long id, boolean isNotification, String title, String content,
+	public void updateReport(User user, long id, boolean isNotification, String title, String content,
 			String[] deletedFileStorageNames, MultipartFile[] files) throws Exception {
 		Report report = reportRepository.findOne(id);
 		report.setTitle(title);
 		report.setContent(content);
 		if (isNotification) {
 			report.setType(ReportFlag.NOTIFICATION_TYPE);
-		}else{
+		} else {
 			report.setType(ReportFlag.NORMAL_TYPE);
 		}
 

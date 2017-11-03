@@ -82,7 +82,7 @@ public class NoticeController {
 
 		User user = (User) httpSession.getAttribute("user");
 		if (user != null) {
-			noticeService.editNotice(user, id, isNotification, noticeCategoryId, title, content,
+			noticeService.updateNotice(user, id, isNotification, noticeCategoryId, title, content,
 					deletedFileStorageNames, files);
 		}
 	}

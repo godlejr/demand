@@ -22,7 +22,7 @@ public interface ReportService {
 
 	Report getReportById(long id) throws Exception;
 
-	void editReport(User user, long id, boolean isNotification, String title, String content,
+	void updateReport(User user, long id, boolean isNotification, String title, String content,
 			String[] deletedFileStorageNames, MultipartFile[] files) throws Exception;
 
 	Page<Report> getReportsByUserIdAndPageable(long userId, Pageable pageable) throws Exception;

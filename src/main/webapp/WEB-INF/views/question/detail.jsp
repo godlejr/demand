@@ -111,8 +111,8 @@
 								<div class="answer-bottom">
 									<div class="bottom-function">
 										<ul>
-											<li>수정</li>
-											<li>삭제</li>
+											<li onclick="javascript:navigateToAnswerEdit(${answer.id})">수정</li>
+											<li onclick="javascript:navigateToAnswerDelete(${answer.id})">삭제</li>
 										</ul>
 									</div>
 								</div>
@@ -270,15 +270,23 @@
 	    location.href = url; 
  	}
 	
+	function navigateToAnswerDelete(id){
+		var url = "${contextPath}/answers/" + id + "/delete?questionId=" + ${question.id};
+	    location.href = url; 
+	}
+	
 	
 	function navigateToQuestionListPage() {
 	   document.location.href = "${contextPath}/questions";
 	}
 	
+	function navigateToAnswerEdit(id) {
+		document.location.href = "${contextPath}/answers/"+id+"/edit";
+	}
+	
 	function onClickQuestionFunction(id, flag){
 		showQuestionPasswordCheckPopup(id, flag);
 	}
-	
 	
 	function showQuestionPasswordCheckPopup(id, flag){
 		

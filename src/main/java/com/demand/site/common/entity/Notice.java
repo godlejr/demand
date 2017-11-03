@@ -133,7 +133,7 @@ public class Notice extends Base {
 			} else if ((differentOfTime /= 24) < 7) {
 				message = (differentOfTime) + "일전";
 			} else {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 M월 d일");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.M.d");
 				message = dateFormat.format(date);
 			}
 		} catch (ParseException e) {

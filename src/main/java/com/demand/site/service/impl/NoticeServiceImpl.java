@@ -105,7 +105,7 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public void editNotice(User user, long id, boolean isNotification, long noticeCategoryId, String title,
+	public void updateNotice(User user, long id, boolean isNotification, long noticeCategoryId, String title,
 			String content, String[] deletedFileStorageNames, MultipartFile[] files) throws Exception {
 		Notice notice = noticeRepository.findOne(id);
 		notice.setTitle(title);

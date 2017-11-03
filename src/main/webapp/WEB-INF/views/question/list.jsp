@@ -164,21 +164,11 @@
 												<div class="content-memo">
 													<p>${question.content}</p>
 												</div>
-
-												<div class="content-detail">
-													<c:choose>
-														<c:when test="${sessionUser ne null }">
-															<span onclick="javascript:navigateToQuestionDetail(${question.id},${question.password})">자세히
-																보기 ></span>
-														</c:when>
-														<c:otherwise>
-															<span onclick="javascript:navigateToQuestionDetail(${question.id})">자세히
-																보기 ></span>
-														</c:otherwise>
-													</c:choose>
+												
+												<div class="content-detail">	
+													<span onclick="javascript:navigateToQuestionDetail(${question.id})">자세히 보기 </span>
 												</div>
 											</c:otherwise>
-
 										</c:choose>
 									</div>
 								</div>

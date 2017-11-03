@@ -8,4 +8,10 @@ public interface AnswerService {
 
 	void saveAnswer(Answer answer, User user) throws Exception;
 
+	void deleteAnswerById(long id) throws Exception;
+
+	void updateAnswer(Answer answer, User user) throws Exception;
+
+	Answer getAnswerById(long id) throws Exception;
+
 }
