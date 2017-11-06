@@ -19,7 +19,7 @@
 						<p>Demand의 목표는 인간 친화적인 디자인을 통해, <br> 사람들의 삶을 풍요롭게 만드는 것입니다</p>
 					</div>
 					<div class="content-button" onclick="javascript:navigateToCompany()">
-		               <span >MORE</span>
+		               <span >더보기</span>
 		            </div>
 		           
 	            </div>
@@ -32,60 +32,11 @@
 		
 		<div class="video-banner-alternative"></div>
 	</div>
-	<div class="section-design-intro">
-         <div class="intro-header">
-            <div class="header-title">
-               <h1>Service Design</h1>
-            </div>
-
-            <div class="header-title-sub">
-               <p>
-                  제조업, 서비스업, 공공서비스업을 망라하는 다양한 현장에 적용 가능한 서비스 디자인 프로세스를 통해,<br>
-                  Demand는 여러분의 비즈니스 파트너로서 최적의 솔루션을 제공합니다
-               </p>
-            </div>
-
-            <div class="header-button" onclick="javascript:navigateToServiceDesign()">
-               <span>MORE</span>
-            </div>
-         </div>
-
-         <div class="intro-content">
-            <ul>
-               <li>
-                  <div class="content-item">
-                     <h1 class="item-title">1</h1>
-                     <h2 class="item-title-sub">
-                        Opportunity<br>Discovering
-                     </h2>
-                  </div>
-               </li>
-
-               <li>
-                  <div class="content-item">
-                     <h1 class="item-title">2</h1>
-                     <h2 class="item-title-sub">
-                        Service<br>Developing&nbsp;
-                     </h2>
-                  </div>
-               </li>
-
-               <li>
-                  <div class="content-item">
-                     <h1 class="item-title">3</h1>
-                     <h2 class="item-title-sub">
-                        Business<br>Modeling&nbsp; &nbsp;
-                     </h2>
-                  </div>
-               </li>
-            </ul>
-         </div>
-      </div>
 
       <div class="section-healthcare-intro">
          <div class="intro-header">
             <div class="header-title">
-               <h1>Healthcare Service</h1>
+               <h1>모바일 App</h1>
             </div>
 
             <div class="header-title-sub">
@@ -95,8 +46,8 @@
                </p>
             </div>
 
-            <div class="header-button">
-               <span>MORE</span>
+            <div class="header-button" onclick="javascript:navigateToMobileApp()">
+               <span>더보기</span>
             </div>
          </div>
 
@@ -135,6 +86,56 @@
          </div>
 
      </div>
+     
+     <div class="section-design-intro">
+         <div class="intro-header">
+            <div class="header-title">
+               <h1>서비스 디자인</h1>
+            </div>
+
+            <div class="header-title-sub">
+               <p>
+                  제조업, 서비스업, 공공서비스업을 망라하는 다양한 현장에 적용 가능한 서비스 디자인 프로세스를 통해,<br>
+                  Demand는 여러분의 비즈니스 파트너로서 최적의 솔루션을 제공합니다
+               </p>
+            </div>
+
+            <div class="header-button" onclick="javascript:navigateToServiceDesign()">
+               <span>더보기</span>
+            </div>
+         </div>
+
+         <div class="intro-content">
+            <ul>
+               <li>
+                  <div class="content-item">
+                     <h1 class="item-title">1</h1>
+                     <h2 class="item-title-sub">
+                        Opportunity<br>Discovering
+                     </h2>
+                  </div>
+               </li>
+
+               <li>
+                  <div class="content-item">
+                     <h1 class="item-title">2</h1>
+                     <h2 class="item-title-sub">
+                        Service<br>Developing&nbsp;
+                     </h2>
+                  </div>
+               </li>
+
+               <li>
+                  <div class="content-item">
+                     <h1 class="item-title">3</h1>
+                     <h2 class="item-title-sub">
+                        Business<br>Modeling&nbsp; &nbsp;
+                     </h2>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
 	
 	 <div class="section-promote-question-intro">
    		<div class="intro-header">
@@ -144,7 +145,7 @@
 
           <div class="header-title-sub">
              <p>
-		               디맨드 관련 대내외 홍보와, 보도 및 최근 자료 등을 확인해보세요. 
+		        Demand 관련 홍보, 보도자료와 서비스 관련 소식 등을 알려드립니다.
              </p>
           </div>
        	</div>
@@ -172,6 +173,13 @@ function navigateToServiceDesign(){
 	var url = "${contextPath}/serviceDesign";
     location.href = url;
 }
+
+
+function navigateToMobileApp(){
+	var url = "${contextPath}/mobileApps";
+    location.href = url;
+}
+
 
 $('#video').on('loadedmetadata', function() {
     var $width, $height,
@@ -218,7 +226,7 @@ if(!isMobile()) {
 
 $("#arrow").click(function(){
     $('html, body').animate({
-       scrollTop: $(".section-design-intro").offset().top
+       scrollTop: $(".section-healthcare-intro").offset().top
     }, 600);
  });
  

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.demand.site.common.annotation.EmployeeRequired;
 import com.demand.site.common.dto.ErrorMessage;
+import com.demand.site.common.entity.MobileApp;
 import com.demand.site.common.entity.Notice;
 import com.demand.site.common.entity.NoticeCategory;
 import com.demand.site.common.entity.Question;
@@ -34,12 +37,14 @@ import com.demand.site.common.entity.QuestionCategory;
 import com.demand.site.common.entity.Report;
 import com.demand.site.common.entity.User;
 import com.demand.site.common.flag.PaginationFlag;
+import com.demand.site.service.MobileAppService;
 import com.demand.site.service.NoticeCategoryService;
 import com.demand.site.service.NoticeService;
 import com.demand.site.service.QuestionCategoryService;
 import com.demand.site.service.QuestionService;
 import com.demand.site.service.ReportService;
 import com.demand.site.service.UserService;
+
 
 @Controller
 public class MainController {
@@ -58,6 +63,9 @@ public class MainController {
 
 	@Autowired
 	private QuestionCategoryService questionCategoryService;
+	
+	@Autowired
+	private MobileAppService mobileAppService;	
 
 	@Autowired
 	private QuestionService questionService;
@@ -81,6 +89,23 @@ public class MainController {
 	@RequestMapping(value = "/serviceDesign", method = RequestMethod.GET)
 	public String serviceDesign(Model model) throws Exception {
 		return "main/serviceDesign";
+	}
+
+	@RequestMapping(value = { "/mobileApps", "/mobileApps/{id}" }, method = RequestMethod.GET)
+	public Object edit(@PathVariable Optional<Long> id, Model model, HttpSession httpSession) throws Exception {
+
+		MobileApp mobileApp = null;
+		if (id.isPresent()) {
+			mobileApp = mobileAppService.getMobileAppById(id.get());
+		} else {
+			mobileApp = mobileAppService.getMobileAppById(1);
+		}
+
+		List<MobileApp> mobileApps = mobileAppService.getMobileApps();
+		model.addAttribute("chosenMobileApp", mobileApp);
+		model.addAttribute("mobileApps", mobileApps);
+
+		return "main/mobileApp";
 	}
 
 	@RequestMapping(value = "/notices", method = RequestMethod.GET)

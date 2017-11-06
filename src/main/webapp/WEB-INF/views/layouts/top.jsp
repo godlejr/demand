@@ -36,8 +36,8 @@
 	<div class="section-gnb">
 		<ul>
 			<li><a href="${contextPath}/company">회사소개</a></li>
+			<li><a href="${contextPath}/mobileApps">모바일 APP</a></li>
 			<li><a href="${contextPath}/serviceDesign">서비스 디자인</a></li>
-			<li><a>모바일 APP</a></li>
 			<li><a>보도자료</a></li>
 			<li><a href="${contextPath}/notices">고객센터</a></li>
 			<c:if test="${sessionScope.user ne null}">
@@ -70,8 +70,8 @@
 			</c:if>
 
 			<a href="${contextPath}/company"><li>회사소개</li></a>
+			<a href="${contextPath}/mobileApps"><li>모바일 APP</li></a>
 			<a href="${contextPath}/serviceDesign"><li>서비스 디자인</li></a>
-			<a><li>모바일 APP</li></a>
 			<a><li>보도자료</li></a>
 			<a href="${contextPath}/notices"><li>고객센터</li></a>
 			<c:choose>
@@ -120,8 +120,10 @@
 	
 	if(currentPathName == "${contextPath}/company"){
 		$( ".section-gnb ul li:first-child a" ).addClass( "current" );
-	}else if(currentPathName == "${contextPath}/serviceDesign"){
+	}else if(currentPathName.includes("${contextPath}/mobileApps")){
 		$( ".section-gnb ul li:nth-child(2) a" ).addClass( "current" );
+	}else if(currentPathName == "${contextPath}/serviceDesign"){
+		$( ".section-gnb ul li:nth-child(3) a" ).addClass( "current" );
 	}else if(currentPathName == "${contextPath}/reports"){
 		$( ".section-gnb ul li:nth-child(6) a" ).addClass( "current" );
 	}else if(currentPathName == "${contextPath}/notices"){

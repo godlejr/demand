@@ -35,20 +35,26 @@
 
 	<definition name="main/serviceDesign" extends="Base">
 		<put-attribute name="title" value="서비스디자인 - 디맨드" />
-		<put-attribute name="content" value="/WEB-INF/views/main/serviceDesign.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/views/main/serviceDesign.jsp" />
 	</definition>
-	
+
+	<definition name="main/mobileApp" extends="Base">
+		<put-attribute name="title" value="모바일 APP - 디맨드" />
+		<put-attribute name="content" value="/WEB-INF/views/main/mobileApp.jsp" />
+	</definition>
+
 	<!-- 공지사항 관련 -->
 	<definition name="notice/list" extends="Base">
 		<put-attribute name="title" value="고객센터 - 디맨드" />
 		<put-attribute name="content" value="/WEB-INF/views/notice/list.jsp" />
 	</definition>
-	
+
 	<definition name="notice/new" extends="Base">
 		<put-attribute name="title" value="공지사항 생성" />
 		<put-attribute name="content" value="/WEB-INF/views/notice/new.jsp" />
 	</definition>
-	
+
 	<definition name="notice/edit" extends="Base">
 		<put-attribute name="title" value="공지사항  편집" />
 		<put-attribute name="content" value="/WEB-INF/views/notice/edit.jsp" />
@@ -74,38 +80,39 @@
 		<put-attribute name="title" value="보고자료  편집" />
 		<put-attribute name="content" value="/WEB-INF/views/report/edit.jsp" />
 	</definition>
-	
+
 	<!-- 답변 관련 -->
 	<definition name="answer/edit" extends="Base">
 		<put-attribute name="title" value="보고자료  편집" />
 		<put-attribute name="content" value="/WEB-INF/views/answer/edit.jsp" />
 	</definition>
-	
+
 	<!-- 질문 관련 -->
 	<definition name="question/list" extends="Base">
 		<put-attribute name="title" value="질문 리스트" />
 		<put-attribute name="content" value="/WEB-INF/views/question/list.jsp" />
 	</definition>
-	
+
 	<definition name="question/new" extends="Base">
 		<put-attribute name="title" value="질문 생성" />
 		<put-attribute name="content" value="/WEB-INF/views/question/new.jsp" />
 	</definition>
-	
+
 	<definition name="question/detail" extends="Base">
 		<put-attribute name="title" value="질문 상세" />
 		<put-attribute name="content" value="/WEB-INF/views/question/detail.jsp" />
 	</definition>
-	
+
 	<definition name="question/edit" extends="Base">
 		<put-attribute name="title" value="질문 수정" />
 		<put-attribute name="content" value="/WEB-INF/views/question/edit.jsp" />
 	</definition>
-	
+
 	<definition name="question/passwordPopup" extends="Base">
 		<put-attribute name="title" value="비밀번호 체크" />
 		<put-attribute name="top" value="" />
-		<put-attribute name="content" value="/WEB-INF/views/question/passwordPopup.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/views/question/passwordPopup.jsp" />
 	</definition>
 
 	<!-- 유저 관련 -->
