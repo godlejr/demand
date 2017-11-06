@@ -10,7 +10,7 @@ public interface AnswerService {
 
 	void deleteAnswerById(long id) throws Exception;
 
-	void updateAnswer(Answer answer, User user) throws Exception;
+	void updateAnswer(Answer prevAnswer, User user) throws Exception;
 
 	Answer getAnswerById(long id) throws Exception;
 

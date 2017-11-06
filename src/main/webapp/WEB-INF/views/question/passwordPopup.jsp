@@ -89,9 +89,9 @@
 							            alert(message);
 							         } else {
 							        	 if(flag == 1){
-							        		 navigateToQuestionEditPage(id, password);
+							        		 navigateToQuestionEditPage(id, data);
 							        	 }else{
-							        		 navigateToQuestionDeletePage(id, password);
+							        		 navigateToQuestionDeletePage(id, data);
 							        	 }
 							            
 							         }

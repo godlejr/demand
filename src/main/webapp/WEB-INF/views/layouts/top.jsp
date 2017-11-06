@@ -37,8 +37,8 @@
 		<ul>
 			<li><a href="${contextPath}/company">회사소개</a></li>
 			<li><a href="${contextPath}/serviceDesign">서비스 디자인</a></li>
-			<li><a>Health Care</a></li>
-			<li><a>뉴스 / IR</a></li>
+			<li><a>모바일 APP</a></li>
+			<li><a>보도자료</a></li>
 			<li><a href="${contextPath}/notices">고객센터</a></li>
 			<c:if test="${sessionScope.user ne null}">
 				<li><a href="${contextPath}/reports">업무보고</a></li>
@@ -71,8 +71,8 @@
 
 			<a href="${contextPath}/company"><li>회사소개</li></a>
 			<a href="${contextPath}/serviceDesign"><li>서비스 디자인</li></a>
-			<a><li>Health Care</li></a>
-			<a><li>뉴스 / IR</li></a>
+			<a><li>모바일 APP</li></a>
+			<a><li>보도자료</li></a>
 			<a href="${contextPath}/notices"><li>고객센터</li></a>
 			<c:choose>
 				<c:when test="${sessionScope.user ne null}">

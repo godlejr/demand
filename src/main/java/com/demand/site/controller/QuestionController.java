@@ -1,5 +1,6 @@
 package com.demand.site.controller;
 
+import java.security.MessageDigest;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -65,22 +66,21 @@ public class QuestionController {
 
 			return errorMessage;
 		}
-
-		long questionCategoryId = question.getQuestionCategoryId();
-		questionService.saveQuestion(question, questionCategoryId);
+		questionService.saveQuestion(question);
 
 		return true;
+
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String detail(@PathVariable long id, @RequestParam(required = false) String password,
-			@PageableDefault(size = 15, sort = "sort", direction = Direction.DESC) Pageable pageable, HttpSession session,
-			HttpSession httpSession, Model model) throws Exception {
+			@PageableDefault(size = 15, sort = "sort", direction = Direction.DESC) Pageable pageable,
+			HttpSession session, HttpSession httpSession, Model model) throws Exception {
 		Question question = questionService.getQuestionById(id);
 
 		int type = question.getType();
 
-		if (type == 1 && session.getAttribute("user")== null) {
+		if (type == 1 && session.getAttribute("user") == null) {
 			if (password == null || !password.equals(question.getPassword())) {
 				return "redirect:/questions";
 			}
@@ -110,8 +110,8 @@ public class QuestionController {
 	}
 
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-	public String edit(@PathVariable("id") long id, @RequestParam(name = "password") String password,
-			Model model) throws Exception {
+	public String edit(@PathVariable("id") long id, @RequestParam(name = "password") String password, Model model)
+			throws Exception {
 		Question question = questionService.getQuestionById(id);
 		String questionPassword = question.getPassword();
 
@@ -125,8 +125,11 @@ public class QuestionController {
 
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
 	@ResponseBody
-	public Object edit(@PathVariable("id") long id, @Valid @ModelAttribute Question question,
+	public Object edit(@PathVariable("id") long id, @ModelAttribute @Valid Question question,
 			BindingResult bindingResult, Model model) throws Exception {
+		System.out.println(question.getPasswordNotEncrypted());
+		System.out.println(question.getPassword());
+		
 		if (bindingResult.hasErrors()) {
 			FieldError fieldError = bindingResult.getFieldError();
 			String message = fieldError.getDefaultMessage();
@@ -136,9 +139,10 @@ public class QuestionController {
 
 			return errorMessage;
 		}
-
+		
 		questionService.updateQuestion(question);
 		return true;
+
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = { RequestMethod.GET, RequestMethod.POST })
@@ -161,7 +165,7 @@ public class QuestionController {
 	@RequestMapping(value = "/{id}/unlock", method = RequestMethod.POST)
 	@ResponseBody
 	public Question unlockQuestion(@PathVariable long id, @RequestParam("password") String password) throws Exception {
-		return questionService.getCheckedQuestionByIdAndPassword(id, password);
+		return questionService.getCheckedQuestionByIdAndPassword(id, getEncryptPasswordWithSHA1(password));
 	}
 
 	@RequestMapping(value = "/{id}/passwordCheck", method = RequestMethod.GET)
@@ -181,8 +185,9 @@ public class QuestionController {
 		Question question = questionService.getQuestionById(id);
 
 		String questionPassword = question.getPassword();
-		if (questionPassword.equals(password)) {
-			return true;
+		String encryptedPassword = getEncryptPasswordWithSHA1(password);
+		if (questionPassword.equals(encryptedPassword)) {
+			return encryptedPassword;
 		} else {
 			ErrorMessage errorMessage = new ErrorMessage();
 			errorMessage.setMessage("비밀번호가 일치하지 않습니다.");
@@ -190,6 +195,12 @@ public class QuestionController {
 			return errorMessage;
 		}
 
+	}
+
+	public String getEncryptPasswordWithSHA1(String password) throws Exception {
+		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+		messageDigest.update(password.getBytes(), 0, password.length());
+		return String.format("%064x", new java.math.BigInteger(1, messageDigest.digest()));
 	}
 
 }

@@ -32,8 +32,7 @@
 							<tr>
 								<td class="form-menu">비밀번호</td>
 								<td class="form-menu-content"><form:input type="password"
-										path="password" id="password" placeholder="특수문자 제외, 18자 이내"
-										value="${question.password}" /></td>
+										path="passwordNotEncrypted" id="password" placeholder="특수문자 제외, 18자 이내" /></td>
 							</tr>
 							<tr>
 								<td class="form-menu">카테고리</td>

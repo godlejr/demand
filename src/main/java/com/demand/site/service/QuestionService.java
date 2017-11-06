@@ -7,7 +7,7 @@ import com.demand.site.common.entity.Question;
 
 public interface QuestionService {
 
-	void saveQuestion(Question question, long questionCategoryId) throws Exception;
+	void saveQuestion(Question question) throws Exception;
 
 	Question getCheckedQuestionByIdAndPassword(long id, String password) throws Exception;
 
@@ -21,5 +21,5 @@ public interface QuestionService {
 
 	void deleteQuestionById(long id) throws Exception;
 
-	void updateQuestion(Question question) throws Exception;
+	void updateQuestion(Question prevQuestion) throws Exception;
 }

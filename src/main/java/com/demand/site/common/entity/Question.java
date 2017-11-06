@@ -1,5 +1,6 @@
 package com.demand.site.common.entity;
 
+import java.security.MessageDigest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,9 +35,12 @@ public class Question extends Base {
 	@QuestionWriter
 	private String writer;
 
+	private String password;
+
 	@NotEmpty(message = "비밀번호을 입력해주세요.")
 	@QuestionPassword
-	private String password;
+	@Transient
+	private String passwordNotEncrypted;
 
 	@NotEmpty(message = "제목을 입력해주세요.")
 	private String title;
@@ -176,6 +180,14 @@ public class Question extends Base {
 		return calculateDate(this.getCreatedAt());
 	}
 
+	public String getPasswordNotEncrypted() {
+		return passwordNotEncrypted;
+	}
+
+	public void setPasswordNotEncrypted(String passwordNotEncrypted) {
+		this.passwordNotEncrypted = passwordNotEncrypted;
+	}
+
 	public String calculateDate(String dateTime) {
 		String message = null;
 
@@ -234,6 +246,12 @@ public class Question extends Base {
 	@Override
 	public void setUpdatedAt(String updatedAt) {
 		super.setUpdatedAt(updatedAt);
+	}
+
+	public void buildEncryptPasswordWithSHA1() throws Exception {
+		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+		messageDigest.update(this.passwordNotEncrypted.getBytes(), 0, this.passwordNotEncrypted.length());
+		this.password = String.format("%064x", new java.math.BigInteger(1, messageDigest.digest()));
 	}
 
 }

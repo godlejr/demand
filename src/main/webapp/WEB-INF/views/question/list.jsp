@@ -237,10 +237,6 @@
 		$('.selector-filter').slideToggle();
 	});
  	
- 	function navigateToQuestionDetail(id){
- 		var url = "${contextPath}/questions/" + id;
-	    location.href = url; 
- 	}
  	
 	function navigateToQuestionDetail(id, password){
 		var url = "${contextPath}/questions/" + id + "?password=" + password;
@@ -270,7 +266,7 @@
 	    	}else{
 	    		var questionContentTemplate = "<div class='content-memo'><p>" + data.content+ 
 	    		"</p></div><div class='content-detail'><span onclick='javascript:navigateToQuestionDetail(" + data.id + 
-	    		"," + data.password + ")'>자세히 보기 ></span></div>";
+	    		"," + JSON.stringify(data.password) + ")'>자세히 보기 ></span></div>";
 	    			
 	    		lockedContainer.after(questionContentTemplate);
 	    		lockedContainer.hide();

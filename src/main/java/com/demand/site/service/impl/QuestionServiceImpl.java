@@ -45,9 +45,11 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public void saveQuestion(Question question, long questionCategoryId) throws Exception {
+	public void saveQuestion(Question question) throws Exception {
+		long questionCategoryId = question.getQuestionCategoryId();
 		QuestionCategory questionCategory = questionCategoryRepository.findOne(questionCategoryId);
 		question.setQuestionCategory(questionCategory);
+		question.buildEncryptPasswordWithSHA1();
 		questionRepository.saveAndFlush(question);
 	}
 
@@ -76,11 +78,28 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public void updateQuestion(Question question) throws Exception {
-		long questionCategoryId = question.getQuestionCategoryId();
-		QuestionCategory questionCategory = questionCategoryRepository.findOne(questionCategoryId);
+	public void updateQuestion(Question prevQuestion) throws Exception {
+		long prevQuestionCategoryId = prevQuestion.getQuestionCategoryId();
+		QuestionCategory questionCategory = questionCategoryRepository.findOne(prevQuestionCategoryId);
+		
+		long prevQuestionId = prevQuestion.getId();
+		String prevTitle = prevQuestion.getTitle();
+		String prevContent = prevQuestion.getContent();
+		String prevWriter = prevQuestion.getWriter();
+		String prevPasswordNotEncrypted = prevQuestion.getPasswordNotEncrypted();
+		int prevType = prevQuestion.getType();
+		
+		Question question = questionRepository.findOne(prevQuestionId);
 		question.setQuestionCategory(questionCategory);
+		question.setPasswordNotEncrypted(prevPasswordNotEncrypted);
+		question.buildEncryptPasswordWithSHA1();
+		question.setWriter(prevWriter);
+		question.setTitle(prevTitle);
+		question.setContent(prevContent);
+		question.setType(prevType);
+		
 		questionRepository.saveAndFlush(question);
 	}
+	
 
 }

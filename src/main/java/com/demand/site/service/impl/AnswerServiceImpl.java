@@ -45,8 +45,20 @@ public class AnswerServiceImpl implements AnswerService {
 	}
 
 	@Override
-	public void updateAnswer(Answer answer, User user) throws Exception {
+	public void updateAnswer(Answer prevAnswer, User user) throws Exception {
+		long prevAnswerId = prevAnswer.getId();
+		String prevTitle = prevAnswer.getTitle();
+		String prevContent = prevAnswer.getContent();
+		int prevType = prevAnswer.getType();
+		
+		
+		Answer answer = answerRepository.findOne(prevAnswerId);
+		
 		answer.setUser(user);
+		answer.setTitle(prevTitle);
+		answer.setContent(prevContent);
+		answer.setType(prevType);
+		
 		answerRepository.saveAndFlush(answer);
 	}
 
