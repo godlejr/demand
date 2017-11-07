@@ -45,7 +45,6 @@ import com.demand.site.service.QuestionService;
 import com.demand.site.service.ReportService;
 import com.demand.site.service.UserService;
 
-
 @Controller
 public class MainController {
 
@@ -63,9 +62,9 @@ public class MainController {
 
 	@Autowired
 	private QuestionCategoryService questionCategoryService;
-	
+
 	@Autowired
-	private MobileAppService mobileAppService;	
+	private MobileAppService mobileAppService;
 
 	@Autowired
 	private QuestionService questionService;
@@ -87,7 +86,8 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/serviceDesign", method = RequestMethod.GET)
-	public String serviceDesign(Model model) throws Exception {
+	public String serviceDesign(@RequestParam(defaultValue = "0") int flag, Model model) throws Exception {
+		model.addAttribute("flag", flag);
 		return "main/serviceDesign";
 	}
 

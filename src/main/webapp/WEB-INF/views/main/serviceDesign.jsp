@@ -163,4 +163,15 @@
 			scrollTop : $(".section-servicedesign-intro").offset().top
 		}, 600);
 	});
+	
+	var flag = ${flag};
+	if( flag == 1){
+		$('html, body').animate({
+			scrollTop : $(".section-servicedesign-fiveworkshop").offset().top
+		}, 600);
+	}else if(flag == 2){
+		$('html, body').animate({
+			scrollTop : $(".section-servicedesign-tenworkshop").offset().top
+		}, 600);
+	}
 </script>

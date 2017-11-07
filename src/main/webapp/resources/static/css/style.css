@@ -870,13 +870,23 @@ ol, ul, li {
 	align-items: center;
 }
 
-#container .section-healthcare-intro, #container .section-design-intro {
+#container .section-healthcare-intro{
 	padding: 10% 5%;
 	background: #f5f5f5;
 }
 
+
 #container .section-healthcare-intro {
 	background: #fff;
+}
+ 
+#container .section-design-intro{
+	padding: 10% 0% 0% 0%;
+	background: #f5f5f5;
+} 
+
+.container-content .section-design-intro .intro-header{
+	padding: 0% 5%;
 }
 
 .container-content .section-promote-question-intro .intro-header {
@@ -928,8 +938,9 @@ ol, ul, li {
 }
 
 .container-content .section-design-intro .intro-content {
-	display: flex;
-	color: #3c3c3c;
+    width: 100%;
+    align-items: center;
+    position: relative;
 }
 
 .container-content .section-healthcare-intro .intro-content ul,
@@ -998,33 +1009,106 @@ ol, ul, li {
 	position: relative;
 }
 
+.container-content .section-design-intro .intro-content .content-left
+	{
+	width: 100%;
+	background: url(../img/main/servicedesign_five_day_bg.png);
+	background-size: cover;
+	cursor: pointer;
+	height: 300px;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: flex;
+	align-items: center;
+}
+
+
+
+.container-content .section-design-intro .intro-content .content-right
+	{
+	background: url(../img/main/servicedesign_ten_week_bg.png);
+	background-size: cover;
+	cursor: pointer;
+	height: 300px;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: flex;
+	align-items: center;
+}
+
+.container-content .section-design-intro .intro-content .content-left .left-detail,
+.container-content .section-design-intro .intro-content .content-right .right-detail,
+.container-content .section-promote-question-intro .intro-content .content-right  .right-detail,
+.container-content .section-promote-question-intro .intro-content .content-left .left-detail{
+	background-color: rgba(9, 9, 9, 0.5);
+	padding:5%;
+	display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.container-content .section-design-intro .intro-content .content-left .left-detail .section-five-day,
+.container-content .section-design-intro .intro-content .content-right .right-detail .section-ten-week,
+.container-content .section-promote-question-intro .intro-content .content-right  .section-news,
+.container-content .section-promote-question-intro .intro-content .content-left .section-customer-center{
+	margin: 0 auto;
+}
+
+.container-content .section-design-intro .intro-content .content-left .left-detail .section-five-day .five-day-header,
+.container-content .section-design-intro .intro-content .content-right .right-detail .section-ten-week .ten-week-header,
+.container-content .section-promote-question-intro .intro-content .content-right .section-news .news-header,
+.container-content .section-promote-question-intro .intro-content .content-left .section-customer-center .customer-center-header{
+	text-align: center;
+    color: #ffffff;
+    width: 100%;
+   	font-weight: bold;
+}
+
+.container-content .section-design-intro .intro-content .content-left .left-detail .section-five-day .five-day-header span,
+.container-content .section-design-intro .intro-content .content-right .right-detail .section-ten-week .ten-week-header span,
+.container-content .section-promote-question-intro .intro-content .content-right .section-news .news-header span,
+.container-content .section-promote-question-intro .intro-content .content-left .section-customer-center .customer-center-header span{
+ 	
+    font-size: 20px;
+}
+
+.container-content .section-design-intro .intro-content .content-left .left-detail .section-five-day .five-day-content,
+.container-content .section-design-intro .intro-content .content-right .right-detail .section-ten-week .ten-week-content,
+.container-content .section-promote-question-intro .intro-content .content-right .section-news .news-content,
+.container-content .section-promote-question-intro .intro-content .content-left .section-customer-center .customer-center-content{
+	text-align: center;
+    color: #ffffff;
+}
+
+.container-content .section-design-intro .intro-content .content-left .left-detail .section-five-day .five-day-content p,
+.container-content .section-design-intro .intro-content .content-right .right-detail .section-ten-week .ten-week-content p,
+.container-content .section-promote-question-intro .intro-content .content-right .section-news .news-content p,
+.container-content .section-promote-question-intro .intro-content .content-left .section-customer-center .customer-center-content p{
+	font-size: 14px;
+}
+
 .container-content .section-promote-question-intro .intro-content .content-left
 	{
 	width: 100%;
-	background: url(../img/main/promote_logo.jpg);
+	background: url(../img/main/customerCenter_item_bg.png);
 	background-size: cover;
 	cursor: pointer;
-	height: 400px;
+	height: 300px;
 	background-repeat: no-repeat;
 	background-position: center;
 	display: flex;
 	align-items: center;
 }
 
-.container-content .section-promote-question-intro .intro-content .content-left:hover,
-	.container-content .section-promote-question-intro .intro-content .content-right:hover
-	{
-	-webkit-transform: scale(1.03);
-	transform: scale(1.03);
-	transition: transform .36s;
-}
 
 .container-content .section-promote-question-intro .intro-content .content-right
 	{
-	background: url(../img/main/question_logo.jpg);
+	background: url(../img/main/news_item_bg.png);
 	background-size: cover;
 	cursor: pointer;
-	height: 400px;
+	height: 300px;
 	width: 100%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -1032,14 +1116,7 @@ ol, ul, li {
 	align-items: center;
 }
 
-.container-content .section-promote-question-intro .intro-content .content-left span,
-	.container-content .section-promote-question-intro .intro-content .content-right span
-	{
-	color: #666;
-	margin: 0 auto;
-	font-weight: 600;
-	font-size: 40px;
-}
+
 
 .container-content .section-customercenter-navi{
 	display: flex;
@@ -3875,6 +3952,28 @@ ol, ul, li {
    .container-content .section-mobileapp-intro img{
       width:225px;
    }
+   
+   .container-content .section-design-intro .intro-content .content-left .left-detail .section-five-day .five-day-content p,
+	.container-content .section-design-intro .intro-content .content-right .right-detail .section-ten-week .ten-week-content p,
+	.container-content .section-promote-question-intro .intro-content .content-right .section-news .news-content p,
+	.container-content .section-promote-question-intro .intro-content .content-left .section-customer-center .customer-center-content p{
+		font-size: 16px;
+	}
+	
+	.container-content .section-design-intro .intro-content .content-left .left-detail .section-five-day .five-day-header span,
+	.container-content .section-design-intro .intro-content .content-right .right-detail .section-ten-week .ten-week-header span,
+	.container-content .section-promote-question-intro .intro-content .content-right .section-news .news-header span,
+	.container-content .section-promote-question-intro .intro-content .content-left .section-customer-center .customer-center-header span{
+	 	
+	    font-size: 22px;
+	}
+	
+	.container-content .section-design-intro .intro-content .content-left,
+	.container-content .section-design-intro .intro-content .content-right
+	.container-content .section-promote-question-intro .intro-content .content-left,
+	.container-content .section-promote-question-intro .intro-content .content-right{
+		height: 350px;
+	}
 	
 	/*notice*/
 	.content-body .section-notice-list .notice-list-header .section-category-list ul li a{
@@ -3981,6 +4080,7 @@ ol, ul, li {
 @media screen and (min-width:1200px) {
 	/****** Header ******/
 	/*main*/
+	
 	.section-video-banner .video-banner-bottom {
 		bottom: 8%;
 	}
@@ -4026,6 +4126,12 @@ ol, ul, li {
 		font-size: 18px;
 	}
 	
+	#container .section-healthcare-intro{
+		padding: 7% 5%;
+	}
+	
+	
+	
 	.container-content .section-notice-intro,
 	.container-content .section-servicedesign-process, 
 	.container-content .section-servicedesign-intro,
@@ -4060,13 +4166,12 @@ ol, ul, li {
  		width:440px;
 	 }
 	  
+	 .container-content .section-company-ceo-intro .intro-content .content-right,
      .container-content .section-company-ceo-intro .intro-content .content-left{
-	     width:50%
+	     width:50%;
 	  }
 	  
-  	.container-content .section-company-ceo-intro .intro-content .content-right{
-	     width:50%
-	  }
+	
 	
 	.top-content .section-logo {
 		margin: 0 0 0 30px;
@@ -4095,21 +4200,32 @@ ol, ul, li {
 	.section-video-banner .video-banner-alternative {
 		display: none;
 	}
+	
+	 
 	.container-content .section-promote-question-intro .intro-content .content-left,
 		.container-content .section-promote-question-intro .intro-content .content-right
 		{
 		float: left;
 		width: 50%;
-		height: 500px;
+		height: 400px;
 	}
+	
+	
 	.container-content .section-promote-question-intro .intro-content {
 		display: flex;
 	}
-	.container-content .section-promote-question-intro .intro-content .content-left span,
-		.container-content .section-promote-question-intro .intro-content .content-right span
-		{
-		font-size: 50px;
+	
+	  .container-content .section-design-intro .intro-content .content-left,
+	.container-content .section-design-intro .intro-content .content-right{
+		float: left;
+		width: 50%;
+		height: 400px;
 	}
+	
+	 .container-content .section-design-intro .intro-content {
+	 	display: flex;
+	 }
+	
 	
 	.container-content .section-company-intro .intro-content p{
 		font-size: 18px;
@@ -4181,6 +4297,32 @@ ol, ul, li {
    .container-content .section-mobileapp-preview .preview-wrapper .wrapper-content{
       margin-top:7%;
    }
+   
+   	.container-content .section-design-intro .intro-content .content-left .left-detail .section-five-day .five-day-content p,
+	.container-content .section-design-intro .intro-content .content-right .right-detail .section-ten-week .ten-week-content p,
+	.container-content .section-promote-question-intro .intro-content .content-right .section-news .news-content p,
+	.container-content .section-promote-question-intro .intro-content .content-left .section-customer-center .customer-center-content p{
+		font-size: 18px;
+	}
+	
+	.container-content .section-design-intro .intro-content .content-left .left-detail .section-five-day .five-day-header span,
+	.container-content .section-design-intro .intro-content .content-right .right-detail .section-ten-week .ten-week-header span,
+	.container-content .section-promote-question-intro .intro-content .content-right .section-news .news-header span,
+	.container-content .section-promote-question-intro .intro-content .content-left .section-customer-center .customer-center-header span{
+	 	
+	    font-size: 24px;
+	}
+	
+	
+	.container-content .section-design-intro .intro-content .content-left .left-detail,
+	.container-content .section-design-intro .intro-content .content-right .right-detail,
+	.container-content .section-promote-question-intro .intro-content .content-right  .right-detail,
+	.container-content .section-promote-question-intro .intro-content .content-left .left-detail{
+		display: none;
+	}
+   
+   
+   
 	/*login*/
 	.container-content .section-login {
 		width: 370px;

@@ -124,13 +124,11 @@
 		$( ".section-gnb ul li:nth-child(2) a" ).addClass( "current" );
 	}else if(currentPathName == "${contextPath}/serviceDesign"){
 		$( ".section-gnb ul li:nth-child(3) a" ).addClass( "current" );
-	}else if(currentPathName == "${contextPath}/reports"){
+	}else if(currentPathName.includes("${contextPath}/reports")){
 		$( ".section-gnb ul li:nth-child(6) a" ).addClass( "current" );
-	}else if(currentPathName == "${contextPath}/notices"){
+	}else if(currentPathName.includes("${contextPath}/notices")){
 		$( ".section-gnb ul li:nth-child(5) a" ).addClass( "current" );
-	}else if(currentPathName == "${contextPath}/questions"){
-		$( ".section-gnb ul li:nth-child(5) a" ).addClass( "current" );
-	}else if(currentPathName == "${contextPath}/questions/new"){
+	}else if(currentPathName.includes("${contextPath}/questions")){
 		$( ".section-gnb ul li:nth-child(5) a" ).addClass( "current" );
 	}
 		

@@ -56,7 +56,7 @@
                <li>
                   <div class="content-item">
                      <img class="item-image" src="<c:url value='/resources/static/img/main/healthcare_wellfamilyhouse_logo.png' />">
-                     <h2 class="item-title">WellFamilyHouse</h2>
+                     <h2 class="item-title">웰패밀리하루스</h2>
                      <p class="item-title-sub">
                         현대 가족의 라이프 스타일에 맞춰 서로의 프라이버시를 존중하며 유대관계를 증진할 수 있는 스마트 디바이스 기반의 텔레케어 시스템입니다.
                      </p>
@@ -66,7 +66,7 @@
                <li>
                   <div class="content-item">
                      <img  class="item-image" src="<c:url value='/resources/static/img/main/healthcare_h2o_logo.png' />">
-                     <h2 class="item-title">H2O<br>(Happy Healthy One)</h2>
+                     <h2 class="item-title">H2O</h2>
                      <p class="item-title-sub">
                         통합 스트레스 관리 프로그램으로, 수면의 질 및 스트레스 수준에 대한 주관적인 평가를 기반으로 적절한 프로그램을 추천합니다.
                      </p>
@@ -76,7 +76,7 @@
                <li>
                   <div class="content-item">
                      <img  class="item-image" src="<c:url value='/resources/static/img/main/healthcare_goodbuddy_logo.png' />">
-                     <h2 class="item-title">Good buddy</h2>
+                     <h2 class="item-title">굿버디</h2>
                      <p class="item-title-sub">
                         통합 신체건강 관리 프로그램으로, 맞춤형 관리 방안을 제공하여 효과적으로 대사증후군을 예방/관리할 수 있는 서비스입니다.
                      </p>
@@ -106,34 +106,30 @@
          </div>
 
          <div class="intro-content">
-            <ul>
-               <li>
-                  <div class="content-item">
-                     <h1 class="item-title">1</h1>
-                     <h2 class="item-title-sub">
-                        Opportunity<br>Discovering
-                     </h2>
-                  </div>
-               </li>
-
-               <li>
-                  <div class="content-item">
-                     <h1 class="item-title">2</h1>
-                     <h2 class="item-title-sub">
-                        Service<br>Developing&nbsp;
-                     </h2>
-                  </div>
-               </li>
-
-               <li>
-                  <div class="content-item">
-                     <h1 class="item-title">3</h1>
-                     <h2 class="item-title-sub">
-                        Business<br>Modeling&nbsp; &nbsp;
-                     </h2>
-                  </div>
-               </li>
-            </ul>
+            <div class="content-left" onclick="javascript:navigateToServiceDesignWithFlag(1)">
+				<div class="left-detail">
+					<div class="section-five-day">
+		 				<div class="five-day-header">
+							<span>5DAYS WORKSHOP</span>
+						</div>
+						<div class="five-day-content">
+							<p>5일 동안 서비스디자인 프로세스를 경험하고<br>사용자 중심의 접근을 통해<br>사업 방향성 설정을 도와드립니다.</p>
+						</div>
+					</div>
+				</div>
+	   		</div>
+	   		<div class="content-right" onclick="javascript:navigateToServiceDesignWithFlag(2)">
+				<div class="right-detail">
+					<div class="section-ten-week">
+		 				<div class="ten-week-header">
+							<span>10WEEKS WORKSHOP</span>
+						</div>
+						<div class="ten-week-content">
+							<p>10주 동안 서비스디자인 방법론을 바탕으로<br>기업의 새로운 서비스 방향성을 발굴하고<br>세부적인 실행 전략을 개발합니다.</p>
+						</div>
+					</div>
+				</div>
+	   		</div>
          </div>
       </div>
 	
@@ -150,11 +146,29 @@
           </div>
        	</div>
    		<div class="intro-content">
-   			<div class="content-left">
-   				<span>뉴스 / IR</span>
+   			<div class="content-left"  onclick="javascript:navigateToCustomerCenter()">
+   				<div class="left-detail">
+					<div class="section-customer-center">
+		 				<div class="customer-center-header">
+							<span>고객센터</span>
+						</div>
+						<div class="customer-center-content">
+							<p>서비스 관련 공지사항과<br>궁금한 내용에 대해 답변해드립니다.</p>
+						</div>
+					</div>
+				</div>
 	   		</div>
-	   		<div class="content-right">
-	   			<span>고객센터</span>
+	   		<div class="content-right"  onclick="javascript:navigateToNews()">
+	   			<div class="right-detail">
+					<div class="section-news">
+		 				<div class="news-header">
+							<span>보도자료</span>
+						</div>
+						<div class="news-content">
+							<p>Demand의 새로운 소식을 전달해드립니다.</p>
+						</div>
+					</div>
+				</div>
 	   		</div>
    		</div>
    		
@@ -163,6 +177,77 @@
 </div>
 
 <script>
+
+(function (window, document, undefined) {
+
+	var mediaQuery = window.matchMedia( "(min-width: 1200px)" );  
+	mediaQuery.addListener(contentDetailHoverFunc);
+	  
+	var isFullSize = mediaQuery.matches;
+	
+	
+	function contentDetailHoverFunc(mediaQuery) { 
+		var detailLeftView = $(".content-left").find(".left-detail");
+		var detailRightView = $(".content-right").find(".right-detail");
+		
+		if(mediaQuery.matches){
+			isFullSize = true;
+			detailLeftView.css("display", "none");
+			detailRightView.css("display", "none");
+		}else{
+			isFullSize = false;
+			detailLeftView.css("display", "flex");
+			detailRightView.css("display", "flex");
+		}
+	}
+	
+	$(".content-left").hover(function() {
+		var detailView = $(this).find(".left-detail");
+		var childDisplay = $(this).find(".left-detail").css('display');
+		if(childDisplay == 'none' && isFullSize ){
+			detailView.css("display", "flex");
+		}
+		
+	}, function(){
+		var detailView = $(this).find(".left-detail");
+		var childDisplay = $(this).find(".left-detail").css('display');
+		if(childDisplay == 'flex' && isFullSize ){
+			detailView.css("display", "none");
+		}
+	});
+
+	$(".content-right").hover(function() {
+		var detailView = $(this).find(".right-detail");
+		var childDisplay = $(this).find(".right-detail").css('display');
+		if(childDisplay == 'none' && isFullSize ){
+			detailView.css("display", "flex");
+		}
+		
+	}, function(){
+		var detailView = $(this).find(".right-detail");
+		var childDisplay = $(this).find(".right-detail").css('display');
+		if(childDisplay == 'flex' && isFullSize ){
+			detailView.css("display", "none");
+		}
+	});
+	
+})(window, document);
+
+
+function navigateToServiceDesignWithFlag(flag){
+	var url = "${contextPath}/serviceDesign?flag=" + flag;
+    location.href = url; 
+}
+
+function navigateToCustomerCenter(){
+	var url = "${contextPath}/notices";
+    location.href = url; 
+}
+
+function navigateToNews(){
+	var url = "${contextPath}/news";
+    location.href = url; 
+}
 
 function navigateToCompany(){
 	var url = "${contextPath}/company";
