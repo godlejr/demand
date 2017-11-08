@@ -39,9 +39,20 @@
 			value="/WEB-INF/views/main/serviceDesign.jsp" />
 	</definition>
 
+	<!-- 모바일앱 관련 -->
 	<definition name="main/mobileApp" extends="Base">
 		<put-attribute name="title" value="모바일 APP - 디맨드" />
-		<put-attribute name="content" value="/WEB-INF/views/main/mobileApp.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/mobileapp/detail.jsp" />
+	</definition>
+	
+	<definition name="mobileApp/privacy" extends="Base">
+		<put-attribute name="title" value="개인정보 처리방침 - 디맨드" />
+		<put-attribute name="content" value="/WEB-INF/views/mobileapp/privacy.jsp" />
+	</definition>
+	
+	<definition name="mobileApp/agreement" extends="Base">
+		<put-attribute name="title" value="이용약관 - 디맨드" />
+		<put-attribute name="content" value="/WEB-INF/views/mobileapp/agreement.jsp" />
 	</definition>
 
 	<!-- 공지사항 관련 -->

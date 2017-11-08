@@ -10,6 +10,8 @@ public class MobileApp extends Base {
 	private String name;
 	private String intro;
 	private String downloadUrl;
+	private String agreement;
+	private String privacy;
 
 	public MobileApp() {
 		super();
@@ -44,6 +46,22 @@ public class MobileApp extends Base {
 
 	public void setDownloadUrl(String downloadUrl) {
 		this.downloadUrl = downloadUrl;
+	}
+
+	public String getAgreement() {
+		return agreement;
+	}
+
+	public void setAgreement(String agreement) {
+		this.agreement = agreement;
+	}
+
+	public String getPrivacy() {
+		return privacy;
+	}
+
+	public void setPrivacy(String privacy) {
+		this.privacy = privacy;
 	}
 
 }

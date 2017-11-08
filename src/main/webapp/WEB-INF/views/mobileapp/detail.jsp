@@ -8,7 +8,7 @@
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
 
 <div class="container-content">
-	<jsp:include page="./mobileAppNavigator.jsp" flush="false" />
+	<jsp:include page="../main/mobileAppNavigator.jsp" flush="false" />
 
 	<div class="section-mobileapp-intro">
 		<div class="intro-wrapper">
@@ -246,8 +246,8 @@
 			<div class="wrapper-bottom">
 				<ul>
 					<li><a href="${chosenMobileApp.downloadUrl}">구글플레이 다운로드</a></li>
-					<li><a href="">개인정보 처리방침</a></li>
-					<li><a href="">이용약관</a></li>
+					<li><a href="${contextPath}/mobileApps/${chosenMobileApp.id}/privacy">개인정보 처리방침</a></li>
+					<li><a href="${contextPath}/mobileApps/${chosenMobileApp.id}/agreement">이용약관</a></li>
 				</ul>
 			</div>
 		</div>

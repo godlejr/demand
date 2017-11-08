@@ -21,6 +21,8 @@ public class QMobileApp extends EntityPathBase<MobileApp> {
 
     public final QBase _super = new QBase(this);
 
+    public final StringPath agreement = createString("agreement");
+
     //inherited
     public final StringPath createdAt = _super.createdAt;
 
@@ -32,6 +34,8 @@ public class QMobileApp extends EntityPathBase<MobileApp> {
     public final StringPath intro = createString("intro");
 
     public final StringPath name = createString("name");
+
+    public final StringPath privacy = createString("privacy");
 
     //inherited
     public final StringPath updatedAt = _super.updatedAt;

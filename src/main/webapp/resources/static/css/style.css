@@ -561,6 +561,34 @@ ol, ul, li {
    float:right;
 }
 
+.container-content .section-mobileapp-agreement,
+.container-content .section-mobileapp-privacy{
+    margin: 15px;
+}
+
+.container-content .section-mobileapp-agreement .agreement-header,
+.container-content .section-mobileapp-privacy .privacy-header{
+    color: #525252;
+    margin-bottom: 50px;
+}
+
+.container-content .section-mobileapp-agreement .agreement-header p,
+.container-content .section-mobileapp-privacy .privacy-header p{
+	font-size: 14px;
+}
+.container-content .section-mobileapp-privacy .privacy-content,
+.container-content .section-mobileapp-agreement .agreement-content{
+	width: 100%;
+	border: 1px solid #e2e2e2;
+	padding:20px;
+}
+
+.container-content .section-mobileapp-privacy .agreement-privacy p,
+.container-content .section-mobileapp-agreement .agreement-content p{
+	
+}
+
+
 .container-content .section-mobileapp-navi{
    display: flex;
     background-color: #c1a077;
@@ -3719,6 +3747,8 @@ ol, ul, li {
 	font-size: 16px;
 }
 
+.container-content .privacy-agreement-container,
+.container-content .popup-container,
 .container-content .join-container {
 	display: none;
 	align-items: center;
@@ -3731,18 +3761,8 @@ ol, ul, li {
 	padding: 10px;
 }
 
-.container-content .popup-container{
-	display: none;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	background: rgba(0, 0, 0, 0.8);
-	padding: 10px;
-}
-
+.container-content .privacy-agreement-container .privacy-content,
+.container-content .privacy-agreement-container .agreement-content,
 .container-content .popup-container .section-password-popup {
 	background-color: #fff;
 	margin: 0 auto;

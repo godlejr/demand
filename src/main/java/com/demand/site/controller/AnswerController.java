@@ -33,7 +33,7 @@ public class AnswerController {
 	@EmployeeRequired
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseBody
-	public Object question(@ModelAttribute @Valid Answer answer, BindingResult bindingResult, Model model,
+	public Object answer(@ModelAttribute @Valid Answer answer, BindingResult bindingResult, Model model,
 			HttpSession httpSession) throws Exception {
 
 		if (bindingResult.hasErrors()) {

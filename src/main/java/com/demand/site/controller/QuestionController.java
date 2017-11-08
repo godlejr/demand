@@ -164,7 +164,7 @@ public class QuestionController {
 
 	@RequestMapping(value = "/{id}/unlock", method = RequestMethod.POST)
 	@ResponseBody
-	public Question unlockQuestion(@PathVariable long id, @RequestParam("password") String password) throws Exception {
+	public Question unlock(@PathVariable long id, @RequestParam("password") String password) throws Exception {
 		return questionService.getCheckedQuestionByIdAndPassword(id, getEncryptPasswordWithSHA1(password));
 	}
 

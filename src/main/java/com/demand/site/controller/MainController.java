@@ -92,7 +92,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = { "/mobileApps", "/mobileApps/{id}" }, method = RequestMethod.GET)
-	public Object edit(@PathVariable Optional<Long> id, Model model, HttpSession httpSession) throws Exception {
+	public Object mobileApps(@PathVariable Optional<Long> id, Model model, HttpSession httpSession) throws Exception {
 
 		MobileApp mobileApp = null;
 		if (id.isPresent()) {
@@ -139,7 +139,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/questions", method = RequestMethod.GET)
-	public String question(
+	public String questions(
 			@RequestParam(name = "questionCategoryId", required = false, defaultValue = "0") long questionCategoryId,
 			@RequestParam(name = "search", required = false) String search,
 			@PageableDefault(size = 15, sort = "sort", direction = Direction.DESC) Pageable pageable, Model model)
