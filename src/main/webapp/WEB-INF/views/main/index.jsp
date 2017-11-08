@@ -55,8 +55,8 @@
             <ul>
                <li>
                   <div class="content-item">
-                     <img class="item-image" src="<c:url value='/resources/static/img/main/healthcare_wellfamilyhouse_logo.png' />">
-                     <h2 class="item-title">웰패밀리하루스</h2>
+                     <img class="item-image" onclick="javascript:navigateToMobileAppWithId(1)" src="<c:url value='/resources/static/img/main/healthcare_wellfamilyhouse_logo.png' />">
+                     <h2 class="item-title">웰패밀리하우스</h2>
                      <p class="item-title-sub">
                         현대 가족의 라이프 스타일에 맞춰 서로의 프라이버시를 존중하며 유대관계를 증진할 수 있는 스마트 디바이스 기반의 텔레케어 시스템입니다.
                      </p>
@@ -65,7 +65,7 @@
 
                <li>
                   <div class="content-item">
-                     <img  class="item-image" src="<c:url value='/resources/static/img/main/healthcare_h2o_logo.png' />">
+                     <img  class="item-image" onclick="javascript:navigateToMobileAppWithId(2)" src="<c:url value='/resources/static/img/main/healthcare_h2o_logo.png' />">
                      <h2 class="item-title">H2O</h2>
                      <p class="item-title-sub">
                         통합 스트레스 관리 프로그램으로, 수면의 질 및 스트레스 수준에 대한 주관적인 평가를 기반으로 적절한 프로그램을 추천합니다.
@@ -75,7 +75,7 @@
 
                <li>
                   <div class="content-item">
-                     <img  class="item-image" src="<c:url value='/resources/static/img/main/healthcare_goodbuddy_logo.png' />">
+                     <img  class="item-image" onclick="javascript:navigateToMobileAppWithId(3)" src="<c:url value='/resources/static/img/main/healthcare_goodbuddy_logo.png' />">
                      <h2 class="item-title">굿버디</h2>
                      <p class="item-title-sub">
                         통합 신체건강 관리 프로그램으로, 맞춤형 관리 방안을 제공하여 효과적으로 대사증후군을 예방/관리할 수 있는 서비스입니다.
@@ -233,6 +233,11 @@
 	
 })(window, document);
 
+
+function navigateToMobileAppWithId(id){
+	var url = "${contextPath}/mobileApps/" + id;
+    location.href = url; 
+}
 
 function navigateToServiceDesignWithFlag(flag){
 	var url = "${contextPath}/serviceDesign?flag=" + flag;

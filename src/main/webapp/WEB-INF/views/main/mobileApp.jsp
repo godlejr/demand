@@ -220,7 +220,7 @@
 						<div class="content-item">
 							<img src="<c:url value='${firstPreviewImageUrl}'/>" />
 							<div class="item-content">
-								<span>${firstImageContent}</span>
+								<span>${firstPreviewImageContent}</span>
 							</div>
 						</div>
 					</li>
@@ -228,7 +228,7 @@
 						<div class="content-item">
 							<img src="<c:url value='${secondPreviewImageUrl}'/>" />
 							<div class="item-content">
-								<span>${secondImageContent}</span>
+								<span>${secondPreviewImageContent}</span>
 							</div>
 						</div>
 					</li>
@@ -236,7 +236,7 @@
 						<div class="content-item">
 							<img src="<c:url value='${lastPreviewImageUrl}'/>" />
 							<div class="item-content">
-								<span>${lastImageContent}</span>
+								<span>${lastPreviewImageContent}</span>
 							</div>
 						</div>
 					</li>

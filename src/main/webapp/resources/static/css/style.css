@@ -982,6 +982,7 @@ ol, ul, li {
 .container-content .section-healthcare-intro .intro-content .content-item .item-image
 	{
 	width: 130px;
+	cursor:pointer;
 }
 
 .container-content .section-healthcare-intro .intro-content .content-item .item-image:hover
