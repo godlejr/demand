@@ -6,7 +6,7 @@
 <div class="container-content">
 	<div class="section-video-banner">
 		<video id="video" muted="muted"  loop autoplay >
-			<source  src="<c:url value='/resources/static/video/main/main_banner.mp4' />">
+			<source  src="<c:url value='/resources/static/video/main/homepage_movie.mp4' />">
 		</video>
 		
 		<div class="video-banner-content">
