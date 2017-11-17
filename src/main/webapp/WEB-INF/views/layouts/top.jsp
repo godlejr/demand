@@ -38,7 +38,7 @@
 			<li><a href="${contextPath}/company">회사소개</a></li>
 			<li><a href="${contextPath}/mobileApps">모바일 APP</a></li>
 			<li><a href="${contextPath}/serviceDesign">서비스 디자인</a></li>
-			<li><a>보도자료</a></li>
+			<li><a href="${contextPath}/news">보도자료</a></li>
 			<li><a href="${contextPath}/notices">고객센터</a></li>
 			<c:if test="${sessionScope.user ne null}">
 				<li><a href="${contextPath}/reports">업무보고</a></li>
@@ -72,7 +72,7 @@
 			<a href="${contextPath}/company"><li>회사소개</li></a>
 			<a href="${contextPath}/mobileApps"><li>모바일 APP</li></a>
 			<a href="${contextPath}/serviceDesign"><li>서비스 디자인</li></a>
-			<a><li>보도자료</li></a>
+			<a href="${contextPath}/news"><li>보도자료</li></a>
 			<a href="${contextPath}/notices"><li>고객센터</li></a>
 			<c:choose>
 				<c:when test="${sessionScope.user ne null}">
@@ -130,6 +130,8 @@
 		$( ".section-gnb ul li:nth-child(5) a" ).addClass( "current" );
 	}else if(currentPathName.includes("${contextPath}/questions")){
 		$( ".section-gnb ul li:nth-child(5) a" ).addClass( "current" );
+	}else if(currentPathName.includes("${contextPath}/news")){
+		$( ".section-gnb ul li:nth-child(4) a" ).addClass( "current" );
 	}
 		
 </script>

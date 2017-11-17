@@ -11,16 +11,16 @@ import com.mysema.query.types.path.PathInits;
 
 
 /**
- * QReportFile is a Querydsl query type for ReportFile
+ * QNewsFile is a Querydsl query type for NewsFile
  */
 @Generated("com.mysema.query.codegen.EntitySerializer")
-public class QReportFile extends EntityPathBase<ReportFile> {
+public class QNewsFile extends EntityPathBase<NewsFile> {
 
-    private static final long serialVersionUID = -92732599L;
+    private static final long serialVersionUID = 762157992L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QReportFile reportFile = new QReportFile("reportFile");
+    public static final QNewsFile newsFile = new QNewsFile("newsFile");
 
     public final QBase _super = new QBase(this);
 
@@ -32,31 +32,31 @@ public class QReportFile extends EntityPathBase<ReportFile> {
     //inherited
     public final NumberPath<Long> id = _super.id;
 
-    public final QReport report;
+    public final QNews news;
 
     //inherited
     public final StringPath updatedAt = _super.updatedAt;
 
-    public QReportFile(String variable) {
-        this(ReportFile.class, forVariable(variable), INITS);
+    public QNewsFile(String variable) {
+        this(NewsFile.class, forVariable(variable), INITS);
     }
 
-    public QReportFile(Path<? extends ReportFile> path) {
+    public QNewsFile(Path<? extends NewsFile> path) {
         this(path.getType(), path.getMetadata(), path.getMetadata().isRoot() ? INITS : PathInits.DEFAULT);
     }
 
-    public QReportFile(PathMetadata<?> metadata) {
+    public QNewsFile(PathMetadata<?> metadata) {
         this(metadata, metadata.isRoot() ? INITS : PathInits.DEFAULT);
     }
 
-    public QReportFile(PathMetadata<?> metadata, PathInits inits) {
-        this(ReportFile.class, metadata, inits);
+    public QNewsFile(PathMetadata<?> metadata, PathInits inits) {
+        this(NewsFile.class, metadata, inits);
     }
 
-    public QReportFile(Class<? extends ReportFile> type, PathMetadata<?> metadata, PathInits inits) {
+    public QNewsFile(Class<? extends NewsFile> type, PathMetadata<?> metadata, PathInits inits) {
         super(type, metadata, inits);
         this.file = inits.isInitialized("file") ? new QFile(forProperty("file"), inits.get("file")) : null;
-        this.report = inits.isInitialized("report") ? new QReport(forProperty("report"), inits.get("report")) : null;
+        this.news = inits.isInitialized("news") ? new QNews(forProperty("news"), inits.get("news")) : null;
     }
 
 }

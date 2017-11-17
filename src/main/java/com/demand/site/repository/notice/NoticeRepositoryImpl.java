@@ -38,7 +38,7 @@ public class NoticeRepositoryImpl  extends QueryDslRepositorySupport implements 
 		}
 
 		SearchResults<Notice> searchResults = from(notice).where(booleanBuilder)
-				.orderBy(notice.type.desc(), notice.updatedAt.desc()).offset(offset).limit(size).listResults(notice);
+				.orderBy(notice.type.desc(), notice.createdAt.desc()).offset(offset).limit(size).listResults(notice);
 
 		long total = searchResults.getTotal();
 

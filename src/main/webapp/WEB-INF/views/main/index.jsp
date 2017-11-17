@@ -6,11 +6,12 @@
 <div class="container-content">
 	<div class="section-video-banner">
 		<video id="video" muted="muted"  loop autoplay >
-			<source  src="<c:url value='/resources/static/video/main/homepage_movie.mp4' />">
+			<source  src="<c:url value='/resources/static/video/main/main_movie.MOV' />">
 		</video>
 		
 		<div class="video-banner-content">
-			<div class ="section-demand-intro">
+			<div class ="section-demand-intro">.
+			
 				<div class="intro-content">
 					<div class="content-title">
 						<h1>DESIGN HUMAN LIFE</h1>
@@ -23,6 +24,8 @@
 		            </div>
 		           
 	            </div>
+	            
+	             
             </div>
 		</div>
 		

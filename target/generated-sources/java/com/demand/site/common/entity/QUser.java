@@ -54,6 +54,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath name = createString("name");
 
+    public final ListPath<News, QNews> news = this.<News, QNews>createList("news", News.class, QNews.class, PathInits.DIRECT2);
+
     public final ListPath<Notice, QNotice> notices = this.<Notice, QNotice>createList("notices", Notice.class, QNotice.class, PathInits.DIRECT2);
 
     public final StringPath ntisRegistrationNo = createString("ntisRegistrationNo");
@@ -94,7 +96,7 @@ public class QUser extends EntityPathBase<User> {
     public QUser(Class<? extends User> type, PathMetadata<?> metadata, PathInits inits) {
         super(type, metadata, inits);
         this.address = inits.isInitialized("address") ? new com.demand.site.common.embeddable.QAddress(forProperty("address")) : null;
-        this.avatarFile = inits.isInitialized("avatarFile") ? new QFile(forProperty("avatarFile")) : null;
+        this.avatarFile = inits.isInitialized("avatarFile") ? new QFile(forProperty("avatarFile"), inits.get("avatarFile")) : null;
         this.degreeCategory = inits.isInitialized("degreeCategory") ? new QDegreeCategory(forProperty("degreeCategory")) : null;
         this.educationStatusCategory = inits.isInitialized("educationStatusCategory") ? new QEducationStatusCategory(forProperty("educationStatusCategory")) : null;
         this.positionCategory = inits.isInitialized("positionCategory") ? new QPositionCategory(forProperty("positionCategory")) : null;

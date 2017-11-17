@@ -48,7 +48,7 @@
 									</c:choose>
 								</div>
 								
-								<div class="content-promotion">
+								<div class="content-promotion" onclick="javascript:navigateToNewNews()">
 									<div class="promotion-image">
 										<i class="fa fa-newspaper-o" aria-hidden="true"></i>
 									</div>
@@ -204,8 +204,14 @@ function navigateToNewReport(){
     location.href = url; 
 }
 
+function navigateToNewNews(){
+	var url = "${contextPath}/news/new";
+    location.href = url; 
+}
+
 function navigateToReportDetail(id){
 	var url = "${contextPath}/reports/" +id;
  	location.href = url; 
 }
+
 </script>

@@ -55,7 +55,7 @@ public class QNoticeFile extends EntityPathBase<NoticeFile> {
 
     public QNoticeFile(Class<? extends NoticeFile> type, PathMetadata<?> metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.file = inits.isInitialized("file") ? new QFile(forProperty("file")) : null;
+        this.file = inits.isInitialized("file") ? new QFile(forProperty("file"), inits.get("file")) : null;
         this.notice = inits.isInitialized("notice") ? new QNotice(forProperty("notice"), inits.get("notice")) : null;
     }
 

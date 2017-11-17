@@ -18,6 +18,8 @@ public class QFile extends EntityPathBase<File> {
 
     private static final long serialVersionUID = 1777042101L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QFile file = new QFile("file");
 
     public final QBase _super = new QBase(this);
@@ -29,6 +31,10 @@ public class QFile extends EntityPathBase<File> {
 
     //inherited
     public final NumberPath<Long> id = _super.id;
+
+    public final QNews news;
+
+    public final ListPath<NewsFile, QNewsFile> newsFiles = this.<NewsFile, QNewsFile>createList("newsFiles", NewsFile.class, QNewsFile.class, PathInits.DIRECT2);
 
     public final ListPath<NoticeFile, QNoticeFile> noticeFiles = this.<NoticeFile, QNoticeFile>createList("noticeFiles", NoticeFile.class, QNoticeFile.class, PathInits.DIRECT2);
 
@@ -48,15 +54,24 @@ public class QFile extends EntityPathBase<File> {
     public final ListPath<User, QUser> users = this.<User, QUser>createList("users", User.class, QUser.class, PathInits.DIRECT2);
 
     public QFile(String variable) {
-        super(File.class, forVariable(variable));
+        this(File.class, forVariable(variable), INITS);
     }
 
     public QFile(Path<? extends File> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), path.getMetadata().isRoot() ? INITS : PathInits.DEFAULT);
     }
 
     public QFile(PathMetadata<?> metadata) {
-        super(File.class, metadata);
+        this(metadata, metadata.isRoot() ? INITS : PathInits.DEFAULT);
+    }
+
+    public QFile(PathMetadata<?> metadata, PathInits inits) {
+        this(File.class, metadata, inits);
+    }
+
+    public QFile(Class<? extends File> type, PathMetadata<?> metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.news = inits.isInitialized("news") ? new QNews(forProperty("news"), inits.get("news")) : null;
     }
 
 }

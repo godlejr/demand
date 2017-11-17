@@ -54,6 +54,27 @@
 		<put-attribute name="title" value="이용약관 - 디맨드" />
 		<put-attribute name="content" value="/WEB-INF/views/mobileapp/agreement.jsp" />
 	</definition>
+	
+	<!-- 보도자료 관련 -->
+	<definition name="news/detail" extends="Base">
+		<put-attribute name="title" value="보도자료 상세" />
+		<put-attribute name="content" value="/WEB-INF/views/news/detail.jsp" />
+	</definition>
+	
+	<definition name="news/list" extends="Base">
+		<put-attribute name="title" value="보도자료 - 디맨드" />
+		<put-attribute name="content" value="/WEB-INF/views/news/list.jsp" />
+	</definition>
+	
+	<definition name="news/edit" extends="Base">
+		<put-attribute name="title" value="보도자료 편집" />
+		<put-attribute name="content" value="/WEB-INF/views/news/edit.jsp" />
+	</definition>
+	
+	<definition name="news/new" extends="Base">
+		<put-attribute name="title" value="보도자료 생성" />
+		<put-attribute name="content" value="/WEB-INF/views/news/new.jsp" />
+	</definition>
 
 	<!-- 공지사항 관련 -->
 	<definition name="notice/list" extends="Base">

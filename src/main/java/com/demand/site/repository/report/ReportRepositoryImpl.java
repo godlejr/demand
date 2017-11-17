@@ -34,7 +34,7 @@ public class ReportRepositoryImpl extends QueryDslRepositorySupport implements R
 		}
 
 		SearchResults<Report> searchResults = from(report).where(booleanBuilder)
-				.orderBy(report.type.desc(), report.updatedAt.desc()).offset(offset).limit(size).listResults(report);
+				.orderBy(report.type.desc(), report.createdAt.desc()).offset(offset).limit(size).listResults(report);
 
 		long total = searchResults.getTotal();
 
@@ -54,7 +54,7 @@ public class ReportRepositoryImpl extends QueryDslRepositorySupport implements R
 		booleanBuilder.and(report.user.id.eq(userId));
 		
 		SearchResults<Report> searchResults = from(report).where(booleanBuilder)
-				.orderBy(report.updatedAt.desc()).offset(offset).limit(size).listResults(report);
+				.orderBy(report.createdAt.desc()).offset(offset).limit(size).listResults(report);
 
 		long total = searchResults.getTotal();
 

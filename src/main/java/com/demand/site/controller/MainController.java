@@ -30,6 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.demand.site.common.annotation.EmployeeRequired;
 import com.demand.site.common.dto.ErrorMessage;
 import com.demand.site.common.entity.MobileApp;
+import com.demand.site.common.entity.News;
 import com.demand.site.common.entity.Notice;
 import com.demand.site.common.entity.NoticeCategory;
 import com.demand.site.common.entity.Question;
@@ -38,6 +39,7 @@ import com.demand.site.common.entity.Report;
 import com.demand.site.common.entity.User;
 import com.demand.site.common.flag.PaginationFlag;
 import com.demand.site.service.MobileAppService;
+import com.demand.site.service.NewsService;
 import com.demand.site.service.NoticeCategoryService;
 import com.demand.site.service.NoticeService;
 import com.demand.site.service.QuestionCategoryService;
@@ -68,6 +70,9 @@ public class MainController {
 
 	@Autowired
 	private QuestionService questionService;
+	
+	@Autowired
+	private NewsService newsService;
 
 	@Value("#{google['google.map.key']}")
 	private String GOOGLE_MAP_API_KEY;
@@ -107,6 +112,29 @@ public class MainController {
 
 		return "main/mobileApp";
 	}
+	
+	@RequestMapping(value = "/news", method = RequestMethod.GET)
+	public String news(@PageableDefault(size = 3, sort = "sort", direction = Direction.DESC) Pageable pageable,
+			Model model) throws Exception {
+		Page<News> newsPage = newsService.getNewsByPageable(pageable);
+		int currentPageNo = newsPage.getNumber();
+		int totalPageNo = newsPage.getTotalPages();
+		int startPageNo = ((currentPageNo) / PaginationFlag.PAGE_VIEW_SIZE) * PaginationFlag.PAGE_VIEW_SIZE + 1;
+
+		int endPageNo = startPageNo + PaginationFlag.PAGE_VIEW_SIZE - 1;
+
+		if (endPageNo > totalPageNo) {
+			endPageNo = totalPageNo;
+		}
+
+		model.addAttribute("newsPage", newsPage);
+		model.addAttribute("startPageNo", startPageNo);
+		model.addAttribute("endPageNo", endPageNo);
+
+
+		return "news/list";
+	}
+	
 
 	@RequestMapping(value = "/notices", method = RequestMethod.GET)
 	public String customerCenter(@RequestParam(name = "search", required = false) String search,

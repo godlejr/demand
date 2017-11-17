@@ -38,7 +38,7 @@ public class QuestionRepositoryImpl extends QueryDslRepositorySupport implements
 			booleanBuilder.and(question.questionCategory.id.eq(questionCategoryId));
 		}
 
-		SearchResults<Question> searchResults = from(question).where(booleanBuilder).orderBy(question.updatedAt.desc())
+		SearchResults<Question> searchResults = from(question).where(booleanBuilder).orderBy(question.createdAt.desc())
 				.offset(offset).limit(size).listResults(question);
 
 		long total = searchResults.getTotal();

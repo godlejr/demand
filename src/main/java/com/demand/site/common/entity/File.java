@@ -33,6 +33,14 @@ public class File extends Base {
 	@JsonBackReference
 	private List<NoticeFile> noticeFiles = new ArrayList<NoticeFile>();
 
+	@OneToMany(mappedBy = "file", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private List<NewsFile> newsFiles = new ArrayList<NewsFile>();
+
+	@OneToOne(mappedBy = "avatarFile", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private News news;
+
 	public File() {
 		super();
 	}
@@ -99,6 +107,22 @@ public class File extends Base {
 
 	public void setNoticeFiles(List<NoticeFile> noticeFiles) {
 		this.noticeFiles = noticeFiles;
+	}
+
+	public List<NewsFile> getNewsFiles() {
+		return newsFiles;
+	}
+
+	public void setNewsFiles(List<NewsFile> newsFiles) {
+		this.newsFiles = newsFiles;
+	}
+
+	public News getNews() {
+		return news;
+	}
+
+	public void setNews(News news) {
+		this.news = news;
 	}
 
 	@Override
